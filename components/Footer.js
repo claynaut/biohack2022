@@ -8,7 +8,7 @@ import {
 export default function Footer() {
   return (
     <footer className="flex justify-center w-full py-12 bg-gray-200">
-      <div className="flex justify-between items-center w-full max-w-5xl text-lg font-semibold">
+      <div className="flex justify-between items-center w-full max-w-5xl mx-4 text-lg font-semibold">
         <div>
           Made with ❤ by the BioHack Team.
         </div>

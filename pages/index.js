@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Element className="w-full">
+        <Element className="flex justify-center w-full">
           <Landing/>
         </Element>
       </Layout>
