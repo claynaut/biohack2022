@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.7",
     "mongodb": "^3.5.9",
     "next": "latest",
     "next-auth": "^3.29.0",
