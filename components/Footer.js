@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { 
   FaRegEnvelope,
   FaFacebookSquare,
@@ -12,11 +13,31 @@ export default function Footer() {
         <div>
           Made with ❤ by the BioHack Team.
         </div>
-        <div className="flex gap-2 text-2xl">
-          <FaRegEnvelope/>
-          <FaFacebookSquare/>
-          <FaInstagram/>
-          <FaLinkedin/>
+        <div className="flex gap-2 text-3xl">
+          <Link
+            passHref
+            href="mailto:biohack.ucr@gmail.com"
+          >
+            <FaRegEnvelope className="hover:text-accent-primary cursor-pointer"/>
+          </Link>
+          <Link
+            passHref
+            href="https://www.facebook.com/UCRBioHack/"
+          >
+            <FaFacebookSquare className="hover:text-accent-primary cursor-pointer"/>
+          </Link>
+          <Link
+            passHref
+            href="https://www.instagram.com/biohack_ucr/"
+          >
+            <FaInstagram className="hover:text-accent-primary cursor-pointer"/>
+          </Link>
+          <Link
+            passHref
+            href="https://www.linkedin.com/company/biohackucr/"
+          >
+            <FaLinkedin className="hover:text-accent-primary cursor-pointer"/>
+          </Link>
         </div>
       </div>
     </footer>
