@@ -9,7 +9,7 @@ export default function ProfileDropdown({ show, handler }) {
     <>
       <div
         className={
-          "fixed top-32 -right-34 w-76 p-4 rounded border-2 bg-white shadow-md transform -translate-x-1/2 -translate-y-1/2 transition-all duration-150 "
+          "fixed top-32 -right-34 lg:right-12 w-76 p-4 rounded border-2 bg-white shadow-md transform -translate-x-1/2 -translate-y-1/2 transition-all duration-150 "
           + ( show ? "z-50 visible opacity-100" : "z-0 invisible opacity-0" )
         }
       >

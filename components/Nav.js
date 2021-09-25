@@ -43,12 +43,12 @@ export default function Nav() {
       >
         <div 
           className={
-            "flex flex-col md:flex-row md:justify-between items-center overflow-y-hidden md:overflow-y-visible w-full max-w-5xl mx-4 py-4 md:py-0 text-md font-semibold "
+            "flex flex-col lg:grid lg:grid-cols-3 items-center overflow-y-hidden lg:overflow-y-visible w-full max-w-5xl mx-4 py-4 lg:py-0 text-md font-semibold "
             + ( navOpen ? "h-screen": "h-full max-h-18" )
           }
         >
-          <div className="grid grid-cols-3 md:flex items-center w-full md:w-min mt-2 md:my-6">
-            <button className="justify-self-start md:hidden" onClick={() => setNavOpen(!navOpen)}>
+          <div className="grid grid-cols-3 lg:flex justify-self-start items-center w-full lg:w-min mt-2 lg:my-6">
+            <button className="justify-self-start lg:hidden" onClick={() => setNavOpen(!navOpen)}>
               {
                 navOpen 
                 ? <HiX className="text-2xl"/>
@@ -80,7 +80,7 @@ export default function Nav() {
               session
               ?
                 <div
-                  className="relative justify-self-end md:hidden"
+                  className="relative justify-self-end lg:hidden"
                 >
                   <button
                     className="p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white"
@@ -100,7 +100,7 @@ export default function Nav() {
               :
                 <button
                   className={
-                    "justify-self-end md:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white "
+                    "justify-self-end lg:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white "
                   }
                   onClick={() => toggleLoginModal()}
                 >
@@ -108,126 +108,139 @@ export default function Nav() {
                 </button>
             }
           </div>
-          <div
-            className={
-              "flex flex-col md:flex-row text-center "
-              + ( navOpen ? "h-full max-h-112 justify-evenly gap-2" : "hidden md:flex gap-6" )
-            }
-          >
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="About"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
+          {
+            router.pathname === "/" &&
+            <div
+              className={
+                "flex flex-col lg:flex-row justify-self-center text-center "
+                + ( navOpen ? "h-full max-h-112 justify-evenly gap-2" : "hidden lg:flex gap-6" )
+              }
             >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                About
-              </motion.div>
-            </NavLink>
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="Winners"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
-            >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                Winners
-              </motion.div>
-            </NavLink>
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="Volunteer"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
-            >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                Volunteer
-              </motion.div>
-            </NavLink>
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="Sponsors"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
-            >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                Sponsors
-              </motion.div>
-            </NavLink>
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="Faq"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
-            >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                FAQ
-              </motion.div>
-            </NavLink>
-            <NavLink 
-              activeClass="border-accent-primary"
-              to="Team"
-              spy={true}
-              smooth={true}
-              offset={-90}
-              duration={500}
-              className="md:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
-              onClick={() => setNavOpen(false)}
-            >
-              <motion.div whileHover={{ y: -3 }} className="md:pb-6">
-                Team
-              </motion.div>
-            </NavLink>
-          </div>
-          <div className="flex">
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="About"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  About
+                </motion.div>
+              </NavLink>
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="Winners"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  Winners
+                </motion.div>
+              </NavLink>
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="Volunteer"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  Volunteer
+                </motion.div>
+              </NavLink>
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="Sponsors"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  Sponsors
+                </motion.div>
+              </NavLink>
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="Faq"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  FAQ
+                </motion.div>
+              </NavLink>
+              <NavLink 
+                activeClass="border-accent-primary"
+                to="Team"
+                spy={true}
+                smooth={true}
+                offset={-90}
+                duration={500}
+                className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                onClick={() => setNavOpen(false)}
+              >
+                <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                  Team
+                </motion.div>
+              </NavLink>
+            </div>
+          }
+          <div className="flex justify-self-end gap-4">
             {
               session
               ?
-                <div
-                className="relative justify-self-end hidden md:block"
-                >
+                <>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
-                    className="p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white"
-                    onClick={() => toggleProfile()}
+                    className="hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+                    // onClick={()}
                   >
-                    {
-                      profileOpen 
-                        ? <HiX className="text-2xl"/>
-                        : <HiUser className="text-2xl"/>
-                    }
+                    Check In
                   </motion.button>
-                  <ProfileDropdown
-                    show={profileOpen}
-                    handler={toggleProfile}
-                  />
-                </div>
+                  <div
+                    className="relative justify-self-end hidden lg:block"
+                  >
+                    <motion.button
+                      whileHover={{ scale: 1.05}} 
+                      whileTap={{ scale: 0.995 }}
+                      className="p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white"
+                      onClick={() => toggleProfile()}
+                    >
+                      {
+                        profileOpen 
+                          ? <HiX className="text-2xl"/>
+                          : <HiUser className="text-2xl"/>
+                      }
+                    </motion.button>
+                    <ProfileDropdown
+                      show={profileOpen}
+                      handler={toggleProfile}
+                    />
+                  </div>
+                </>
               :
                 <motion.button
                   whileHover={{ scale: 1.05}} 
                   whileTap={{ scale: 0.995 }}
-                  className="hidden md:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+                  className="hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
                   onClick={() => toggleLoginModal()}
                 >
                   Apply
