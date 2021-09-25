@@ -9,6 +9,7 @@ module.exports = {
       },
       maxHeight: {
         18: '4.5rem',
+        112: '28rem',
       },
       borderWidth: {
         '3': '3px',

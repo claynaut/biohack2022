@@ -39,7 +39,7 @@ export default function Nav() {
             + ( navOpen ? "h-screen": "h-full max-h-18" )
           }
         >
-          <div className="flex justify-between items-center justify-self-center w-full md:w-min mt-2 md:my-6">
+          <div className="flex justify-between items-center w-full md:w-min mt-2 md:my-6">
             <div className="md:hidden cursor-pointer" onClick={() => setNavOpen(!navOpen)}>
               {
                 navOpen 
@@ -75,7 +75,7 @@ export default function Nav() {
           <div
             className={
               "flex flex-col md:flex-row text-center "
-              + ( navOpen ? "min-h-full justify-evenly gap-2" : "hidden md:flex gap-6" )
+              + ( navOpen ? "h-full max-h-112 justify-evenly gap-2" : "hidden md:flex gap-6" )
             }
           >
             <NavLink 
