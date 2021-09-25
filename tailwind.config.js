@@ -3,11 +3,23 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        112: '28rem',
+        128: '36rem',
+      },
+      maxHeight: {
+        18: '4.5rem',
+      },
+      borderWidth: {
+        '3': '3px',
+      },
       colors: {
         accent: {
           primary: '#007fff',
+          'primary-dark': '#006cd9',
         },
-        overlay: '#00000032'
+        overlay: '#00000032',
+        'white-50': '#ffffff32',
       }
     },
   },

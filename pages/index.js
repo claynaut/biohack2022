@@ -10,6 +10,7 @@ import Winners from '../pages/winners'
 import Volunteer from '../pages/volunteer'
 import Sponsors from '../pages/sponsors'
 import Faq from '../pages/faq'
+import Team from './team'
 
 export default function Home() {
   return (
@@ -36,6 +37,9 @@ export default function Home() {
         </Element>
         <Element name="Faq" className="flex justify-center w-full">
           <Faq/>
+        </Element>
+        <Element name="Team" className="flex justify-center w-full">
+          <Team/>
         </Element>
       </Layout>
     </>
