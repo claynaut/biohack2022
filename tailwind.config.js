@@ -3,7 +3,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      inset : {
+        '-34': '-8.5rem',
+      },
       width: {
+        76: '19rem',
         112: '28rem',
         128: '36rem',
       },

@@ -6,15 +6,23 @@ import { signOut, useSession } from 'next-auth/client'
 import { motion } from 'framer-motion'
 import { HiOutlineMenuAlt2, HiX, HiUser } from 'react-icons/hi'
 import LoginModal from './LoginModal'
+import ProfileDropdown from './ProfileDropdown'
 
 export default function Nav() {
   const [session] = useSession()
   const router = useRouter()
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   const toggleLoginModal = () => {
     setLoginModalOpen(!loginModalOpen)
+    setNavOpen(false)
+  }
+
+  const toggleProfile = () => {
+    setProfileOpen(!profileOpen)
+    setNavOpen(false)
   }
 
   const handleResize = () => {
@@ -39,14 +47,14 @@ export default function Nav() {
             + ( navOpen ? "h-screen": "h-full max-h-18" )
           }
         >
-          <div className="flex justify-between items-center w-full md:w-min mt-2 md:my-6">
-            <div className="md:hidden cursor-pointer" onClick={() => setNavOpen(!navOpen)}>
+          <div className="grid grid-cols-3 md:flex items-center w-full md:w-min mt-2 md:my-6">
+            <button className="justify-self-start md:hidden" onClick={() => setNavOpen(!navOpen)}>
               {
                 navOpen 
                 ? <HiX className="text-2xl"/>
                 : <HiOutlineMenuAlt2 className="text-2xl"/>
               }
-            </div>
+            </button>
             {
               router.pathname === '/'
               ?
@@ -57,7 +65,7 @@ export default function Nav() {
                   smooth={true}
                   offset={-90}
                   duration={500}
-                  className="cursor-pointer"
+                  className="justify-self-center cursor-pointer"
                 >
                   BIO<b>HACK</b>
                 </NavLink>
@@ -68,9 +76,37 @@ export default function Nav() {
                   </span>
                 </Link>
             }
-            <div className="flex md:hidden">
-              <HiUser className="text-2xl"/>
-            </div>
+            {
+              session
+              ?
+                <div
+                  className="relative justify-self-end md:hidden"
+                >
+                  <button
+                    className="p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white"
+                    onClick={() => toggleProfile()}
+                  >
+                    {
+                      profileOpen 
+                        ? <HiX className="text-2xl"/>
+                        : <HiUser className="text-2xl"/>
+                    }
+                  </button>
+                  <ProfileDropdown
+                    show={profileOpen}
+                    handler={toggleProfile}
+                  />
+                </div>
+              :
+                <button
+                  className={
+                    "justify-self-end md:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white "
+                  }
+                  onClick={() => toggleLoginModal()}
+                >
+                  Apply
+                </button>
+            }
           </div>
           <div
             className={
@@ -163,23 +199,35 @@ export default function Nav() {
               </motion.div>
             </NavLink>
           </div>
-          <div className="flex hidden md:block">
+          <div className="flex">
             {
               session
               ?
-                <motion.button
-                  whileHover={{ scale: 1.05}} 
-                  whileTap={{ scale: 0.995 }}
-                  className="px-4 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
-                  onClick={signOut}
+                <div
+                className="relative justify-self-end hidden md:block"
                 >
-                  Sign Out
-                </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05}} 
+                    whileTap={{ scale: 0.995 }}
+                    className="p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white"
+                    onClick={() => toggleProfile()}
+                  >
+                    {
+                      profileOpen 
+                        ? <HiX className="text-2xl"/>
+                        : <HiUser className="text-2xl"/>
+                    }
+                  </motion.button>
+                  <ProfileDropdown
+                    show={profileOpen}
+                    handler={toggleProfile}
+                  />
+                </div>
               :
                 <motion.button
                   whileHover={{ scale: 1.05}} 
                   whileTap={{ scale: 0.995 }}
-                  className="px-4 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+                  className="hidden md:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
                   onClick={() => toggleLoginModal()}
                 >
                   Apply

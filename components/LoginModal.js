@@ -58,7 +58,7 @@ export default function LoginModal({ show, handler, csrfToken }) {
           </p>
           <div className="w-full max-w-sm">
             <label 
-              for="email"
+              htmlFor="email"
               className={
                 "w-full font-semibold "
                 + ( error ? "text-red-500" : "" )

@@ -5,7 +5,7 @@ export default function VerifyRequest() {
     <Layout>
       <section className="flex w-full max-w-5xl h-screen items-center self-center">
         <div className="w-full">
-          <h1 className="text-7xl">
+          <h1 className="font-semibold text-5xl">
             Verify Request
           </h1>
           <p className="mt-4 text-lg">
