@@ -3,13 +3,20 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      inset : {
-        '-34': '-8.5rem',
+      zIndex: {
+        60: 60,
+        70: 70,
+        80: 80,
+        90: 90,
+        100: 100,
       },
       width: {
         76: '19rem',
         112: '28rem',
         128: '36rem',
+      },
+      minHeight: {
+        'min': 'min-content',
       },
       maxHeight: {
         18: '4.5rem',
