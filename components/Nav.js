@@ -77,7 +77,7 @@ export default function Nav() {
                 </Link>
             }
             {
-              !session
+              session
               ?
                 <div
                   className="justify-self-end lg:hidden"
@@ -204,7 +204,7 @@ export default function Nav() {
           </div>
           <div className="flex justify-self-end gap-4">
             {
-              !session
+              session
               ?
                 <>
                   <Link passHref href="/check-in">
