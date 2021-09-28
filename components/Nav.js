@@ -109,7 +109,7 @@ export default function Nav() {
             id="nav"
             className={
               "flex flex-col lg:flex-row justify-self-center text-center "
-              + ( navOpen ? "h-full max-h-min py-8 justify-evenly gap-2 " : "hidden gap-6 " )
+              + ( navOpen ? "h-full max-h-min py-8 justify-evenly gap-2 " : "hidden lg:flex gap-6 " )
               + ( !navOpen && router.pathname !== "/" && "invisible")
             }
           >
