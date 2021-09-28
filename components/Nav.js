@@ -73,11 +73,12 @@ export default function Nav() {
                   offset={-90}
                   duration={500}
                   className="justify-self-center cursor-pointer"
+                  onClick={() => setNavOpen(false)}
                 >
                   BIO<b>HACK</b>
                 </NavLink>
               :
-                <Link passHref href="/">
+                <Link passHref href="/" onClick={() => setNavOpen(false)}>
                   <span className="justify-self-center cursor-pointer">
                     BIO<b>HACK</b>
                   </span>
@@ -204,7 +205,10 @@ export default function Nav() {
                 </>
               :
                 <Link passHref href="/">
-                  <span className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150">
+                  <span
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    onClick={() => setNavOpen(false)}
+                  >
                     Home
                   </span>
                 </Link>
