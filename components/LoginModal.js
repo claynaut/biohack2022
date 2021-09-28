@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { signIn, getCsrfToken } from 'next-auth/client'
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { FaTimes } from 'react-icons/fa'
 
 export default function LoginModal({ show, handler, csrfToken }) {
-  const [email, setEmail] = useState('')
+  const { register, handleSubmit } = useForm()
   const [error, setError] = useState('')
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
+  const handleEmailChange = () => {
     setError(false)
   }
 
-  const handleSubmit = () => {
+  const onSubmit = (data) => {
+    const { email, csrfToken } = data
     const matchRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 
     if (email === "" || !matchRegex) {
@@ -56,35 +57,37 @@ export default function LoginModal({ show, handler, csrfToken }) {
           <p className="w-full max-w-sm">
             Sign in to BioHack with your email to apply and access more. No password required.
           </p>
-          <div className="w-full max-w-sm">
-            <label 
-              htmlFor="email"
-              className={
-                "w-full font-semibold "
-                + ( error ? "text-red-500" : "" )
-              }
-            >
-              Email Address
-            </label>
+          <form
+            className="w-full max-w-sm"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <input
-              id="email"
-              name="email"
-              value={email}
-              onChange={handleEmailChange}
-              className={
-                "w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none "
-                + ( error ? "border-red-500" : "border-gray-300" )
-              }
+              type="hidden"
+              {...register("csrfToken")}
+              defaultValue={csrfToken}
             />
+            <div>
+              <label className={"font-semibold " + ( error && "text-red-500" )}>
+                Email Address
+              </label>
+              <input 
+                {...register("email")}
+                onChange={handleEmailChange}
+                className={
+                  "w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none "
+                  + ( error ? "border-red-500" : "border-gray-300")
+                }
+              />
+            </div>
             <motion.button
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
+              type="submit"
               className="w-full mt-4 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
-              onClick={() => handleSubmit()}
             >
               Sign In
             </motion.button>
-          </div>
+          </form>
         </div>
       </div>
       <div
