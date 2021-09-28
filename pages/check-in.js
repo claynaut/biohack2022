@@ -4,7 +4,7 @@ import ApplicationForm from '../components/ApplicationForm'
 export default function CheckIn() {
   return (
     <Layout>
-      <section className="flex flex-col w-full max-w-5xl mt-32 self-center">
+      <section className="flex flex-col w-full max-w-5xl my-32 self-center">
         <div className="w-full mb-12">
           <h1 className="font-semibold text-5xl">
             Check In

@@ -57,7 +57,7 @@ export default function ProfileDropdown() {
               <p className="flex">
                 Not checked in yet!
                 <FaRegQuestionCircle
-                  className="mt-1 text-sm text-gray-400 hover:text-accent-primary cursor-pointer"
+                  className="mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer"
                   onClick={() => toast('Fill out the check-in form to apply for BioHack 2021!', {icon: '📝'})}
                 />
               </p>
