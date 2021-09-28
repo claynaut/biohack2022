@@ -39,6 +39,79 @@ export default function About() {
     </div>
   ))
 
+  const Checkbox = ({ label, variable, options }) => (
+    <div>
+      <legend className="font-semibold">{label}</legend>
+      <div className="flex flex-col gap-2 pl-2">
+        {
+          options.map(({ value }) =>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id={value}
+                value={value}
+                {...register(variable)}
+                className="cursor-pointer"
+              />
+              <label
+                htmlFor={value}
+                className="cursor-pointer"
+              >
+                {value}
+              </label>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  )
+
+  const Radio = ({ label, variable, options }) => (
+    <div>
+      <legend className="font-semibold">{label}</legend>
+      <div className="flex flex-col gap-2 pl-2">
+        {
+          options.map(({ value }) =>
+            <div className="flex items-center gap-2">
+              <input
+                type="radio"
+                id={value}
+                value={value}
+                {...register(variable)}
+                className="cursor-pointer"
+              />
+              <label
+                htmlFor={value}
+                className="cursor-pointer"
+              >
+                {value}
+              </label>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  )
+
+  const genders = [
+    { value: 'Male', },
+    { value: 'Female', },
+    { value: 'Nonbinary', },
+    { value: 'Other', },
+    { value: 'Prefer not to say', },
+  ]
+
+  const ethnicities = [
+    { value: 'American Indian or Alaska Native', },
+    { value: 'Asian', },
+    { value: 'Black or African American', },
+    { value: 'Hispanic or Latino', },
+    { value: 'Native Hawaiian or Other Pacific Islander', },
+    { value: 'White', },
+    { value: 'Other', },
+    { value: 'Prefer not to say', },
+  ]
+
   const years = [
     { value: '1st Year', },
     { value: '2nd Year', },
@@ -61,10 +134,9 @@ export default function About() {
     { value: 'Other', },
   ]
 
-  const experiences = [
-    { value: 'I have created a project at a previous hackathon.', },
-    { value: 'I have attended previous hackathon, but not created a project.', },
-    { value: 'I have not attended a hackathon before!', },
+  const hackerExperience = [
+    { value: 'Yes', },
+    { value: 'No', },
   ]
 
   const sources = [
@@ -74,6 +146,7 @@ export default function About() {
     { value: 'LinkedIn', },
     { value: 'Slack', },
     { value: 'Discord', },
+    { value: 'Search engine', },
     { value: 'Other', },
   ]
 
@@ -87,16 +160,27 @@ export default function About() {
       first_name,
       last_name,
       phone_number,
+      gender,
+      ethnicity,
       school,
       year,
-      major
+      major,
+      first_time,
+      github,
+      linkedin,
+      portfolio,
+      project_story,
+      additional_info,
+      goal,
+      source,
+      tool_experience
     } = data
     console.log(data)
   }
 
   return (
     <form 
-      className="flex flex-col gap-1 w-full sm:max-w-md self-center"
+      className="flex flex-col gap-1.5 w-full sm:max-w-md self-center"
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="font-semibold text-xl">
@@ -123,8 +207,18 @@ export default function About() {
         register={register}
       />
       <h2 className="mt-4 font-semibold text-xl">
-        Education and Experience
+        Demographic Survey
       </h2>
+      <Select
+        label="Gender"
+        {...register("gender")}
+        options={genders}
+      />
+      <Select
+        label="Ethnicity"
+        {...register("ethnicity")}
+        options={ethnicities}
+      />
       <Input
         type="text"
         label="School"
@@ -142,10 +236,10 @@ export default function About() {
         {...register("major")}
         options={majors}
       />
-      <Select // bullet
-        label="Hackathon Experience"
-        {...register("experience")}
-        options={experiences}
+      <Radio
+        label="Is this your first time hacking?"
+        variable="first_time"
+        options={hackerExperience}
       />
       <h2 className="mt-4 font-semibold text-xl">
         Hacker App
@@ -211,14 +305,14 @@ export default function About() {
           className="w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none"
         />
       </div>
-      <Select // bullet
+      <Radio
         label="How did you hear about BioHack?"
-        {...register("source")}
+        variable="source"
         options={sources}
       />
-      <Select // checkbox
-        label="Which do you have experience using?"
-        {...register("tool")}
+      <Checkbox
+        label="Which of these do you have experience using?"
+        variable="tool_experience"
         options={tools}
       />
       <motion.button
