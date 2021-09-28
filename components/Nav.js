@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/client'
 import { motion } from 'framer-motion'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { HiOutlineMenuAlt2, HiX } from 'react-icons/hi'
 import LoginModal from './LoginModal'
 import ProfileDropdown from './ProfileDropdown'
@@ -14,6 +15,7 @@ export default function Nav() {
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
+  const [targetElement, setTargetElement] = useState(null)
 
   const toggleLoginModal = () => {
     setLoginModalOpen(!loginModalOpen)
@@ -31,7 +33,12 @@ export default function Nav() {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize)
-  }, [navOpen])
+    setTargetElement(document.querySelector('#nav'))
+    if (targetElement) {
+      if (navOpen) disableBodyScroll(targetElement)
+      else enableBodyScroll(targetElement)
+    }
+  }, [targetElement, navOpen])
 
   return (
     <>
@@ -99,6 +106,7 @@ export default function Nav() {
             }
           </div>
           <div
+            id="nav"
             className={
               "flex flex-col lg:flex-row justify-self-center text-center "
               + ( navOpen ? "h-full max-h-min my-8 justify-evenly gap-2 " : "hidden lg:flex gap-6 " )
