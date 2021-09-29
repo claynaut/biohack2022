@@ -10,7 +10,7 @@ export default function CheckIn() {
             Check In
           </h1>
           <p className="mt-4 text-lg">
-            Check in to confirm your application for BioHack 2022.
+            Fill out this check-in form to submit your application for BioHack 2022.
           </p>
         </div>
         <ApplicationForm/>

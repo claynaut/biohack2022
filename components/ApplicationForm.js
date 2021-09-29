@@ -1,7 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 import { motion } from 'framer-motion'
-import { options } from 'next-auth/client'
+import { toast } from 'react-hot-toast'
 
 export default function About() {
   const { register, handleSubmit } = useForm()
@@ -10,12 +11,12 @@ export default function About() {
     <div>
       <label className="font-semibold">
         {label}
-        {!required && <span className="text-gray-400"> (optional)</span>}
+        {(variable === "phone_number") && <span className="text-gray-400"> (optional)</span>}
       </label>
       <input
         type={type}
         {...register(variable, { required }, { pattern })}
-        className="w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none"
+        className="w-full px-2 py-1 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none"
       />
     </div>
   )
@@ -28,11 +29,12 @@ export default function About() {
         ref={ref}
         onChange={onChange}
         onBlur={onBlur}
-        className="w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none overflow-ellipsis"
+        className="w-full px-2 py-1.5 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none overflow-ellipsis"
       >
+        <option value="" disabled selected hidden>Select your {label.toLowerCase()}...</option>
         {
-          options.map(({ value }) =>
-            <option value={value}>{value}</option>
+          options.map((option) =>
+            <option value={option}>{option}</option>
           )
         }
       </select>
@@ -44,20 +46,20 @@ export default function About() {
       <legend className="font-semibold">{label}</legend>
       <div className="flex flex-col gap-2 pl-2">
         {
-          options.map(({ value }) =>
+          options.map((option) =>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id={value}
-                value={value}
+                id={"checkbox" + option.toString()}
+                value={option}
                 {...register(variable)}
                 className="cursor-pointer"
               />
               <label
-                htmlFor={value}
+                htmlFor={"checkbox" + option.toString()}
                 className="cursor-pointer"
               >
-                {value}
+                {option}
               </label>
             </div>
           )
@@ -71,20 +73,20 @@ export default function About() {
       <legend className="font-semibold">{label}</legend>
       <div className="flex flex-col gap-2 pl-2">
         {
-          options.map(({ value }) =>
+          options.map((option) =>
             <div className="flex items-center gap-2">
               <input
                 type="radio"
-                id={value}
-                value={value}
+                id={"radio" + option.toString()}
+                value={option}
                 {...register(variable)}
                 className="cursor-pointer"
               />
               <label
-                htmlFor={value}
+                htmlFor={"radio" + option.toString()}
                 className="cursor-pointer"
               >
-                {value}
+                {option}
               </label>
             </div>
           )
@@ -94,65 +96,70 @@ export default function About() {
   )
 
   const genders = [
-    { value: 'Male', },
-    { value: 'Female', },
-    { value: 'Nonbinary', },
-    { value: 'Other', },
-    { value: 'Prefer not to say', },
+    'Male',
+    'Female',
+    'Nonbinary',
+    'Other',
+    'Prefer not to say',
   ]
 
   const ethnicities = [
-    { value: 'American Indian or Alaska Native', },
-    { value: 'Asian', },
-    { value: 'Black or African American', },
-    { value: 'Hispanic or Latino', },
-    { value: 'Native Hawaiian or Other Pacific Islander', },
-    { value: 'White', },
-    { value: 'Other', },
-    { value: 'Prefer not to say', },
+    'American Indian or Alaska Native',
+    'Asian',
+    'Black or African American',
+    'Hispanic or Latino',
+    'Native Hawaiian or Other Pacific Islander',
+    'White',
+    'Other',
+    'Prefer not to say',
   ]
 
   const years = [
-    { value: '1st Year', },
-    { value: '2nd Year', },
-    { value: '3rd Year', },
-    { value: '4th Year', },
-    { value: '5th Year', },
-    { value: 'Other', },
+    '1st Year',
+    '2nd Year',
+    '3rd Year',
+    '4th Year',
+    '5th Year',
+    'Other',
   ]
 
   const majors = [
-    { value: 'Bioengineering', },
-    { value: 'Chemical Engineering', },
-    { value: 'Computer Engineering', },
-    { value: 'Computer Science', },
-    { value: 'C.S. w/ Business Applications', },
-    { value: 'Electric Engineering', },
-    { value: 'Environmental Engineering', },
-    { value: 'Materials Science & Engineering', },
-    { value: 'Mechanical Engineering', },
-    { value: 'Other', },
+    'Bioengineering',
+    'Chemical Engineering',
+    'Computer Engineering',
+    'Computer Science',
+    'C.S. w/ Business Applications',
+    'Electric Engineering',
+    'Environmental Engineering',
+    'Materials Science & Engineering',
+    'Mechanical Engineering',
+    'Other',
+  ]
+
+  const graduated = [
+    'Yes',
+    'No',
   ]
 
   const hackerExperience = [
-    { value: 'Yes', },
-    { value: 'No', },
+    'Yes',
+    'No',
   ]
 
   const sources = [
-    { value: 'University', },
-    { value: 'Facebook', },
-    { value: 'Instagram', },
-    { value: 'LinkedIn', },
-    { value: 'Slack', },
-    { value: 'Discord', },
-    { value: 'Search engine', },
-    { value: 'Other', },
+    'University',
+    'Facebook',
+    'Instagram',
+    'LinkedIn',
+    'Slack',
+    'Discord',
+    'Search engine',
+    'Other',
   ]
 
   const tools = [
-    { value: 'Discord', },
-    { value: 'Hopin', },
+    'Discord',
+    'Hopin',
   ]
   
   const onSubmit = data => {
@@ -165,6 +172,7 @@ export default function About() {
       school,
       year,
       major,
+      graduated,
       first_time,
       github,
       linkedin,
@@ -175,6 +183,10 @@ export default function About() {
       source,
       tool_experience
     } = data
+
+    if (first_name === "") {
+      toast.error("help")
+    }
     console.log(data)
   }
 
@@ -191,14 +203,12 @@ export default function About() {
         label="First Name"
         variable="first_name"
         register={register}
-        required
       />
       <Input
         type="text"
         label="Last Name"
         variable="last_name"
         register={register}
-        required
       />
       <Input
         type="text"
@@ -224,7 +234,6 @@ export default function About() {
         label="School"
         variable="school"
         register={register}
-        required
       />
       <Select
         label="Year"
@@ -235,6 +244,21 @@ export default function About() {
         label="Major"
         {...register("major")}
         options={majors}
+      />
+      <div>
+        <label className="font-semibold">
+          Graduation Date
+        </label>
+        <input
+          type="date"
+          {...register("graduation_date")}
+          className="w-full px-2 py-1.5 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none"
+        />
+      </div>
+      <Radio
+        label="Have you graduated or are you a graduate student?"
+        variable="graduated"
+        options={graduated}
       />
       <Radio
         label="Is this your first time hacking?"
@@ -249,28 +273,24 @@ export default function About() {
         label="Resume"
         variable="resume"
         register={register}
-        required
       />
       <Input
         type="text"
         label="Github Profile"
         variable="github"
         register={register}
-        required
       />
       <Input
         type="text"
         label="Linkedin Profile"
         variable="linkedin"
         register={register}
-        required
       />
       <Input
         type="text"
         label="Personal Website"
         variable="portfolio"
         register={register}
-        required
       />
       <div>
         <label className="font-semibold">
@@ -278,8 +298,7 @@ export default function About() {
         </label>
         <textarea
           {...register("project_story")}
-          required
-          className="w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none"
+          className="w-full px-2 py-1.5 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none"
         />
       </div>
       <div>
@@ -289,7 +308,7 @@ export default function About() {
         </label>
         <textarea
           {...register("additional_info")}
-          className="w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none"
+          className="w-full px-2 py-1.5 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none"
         />
       </div>
       <h2 className="mt-4 font-semibold text-xl">
@@ -302,7 +321,7 @@ export default function About() {
         </label>
         <textarea
           {...register("goal")}
-          className="w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none"
+          className="w-full px-2 py-1.5 rounded border-2 border-gray-300 focus:border-accent-primary focus:outline-none"
         />
       </div>
       <Radio
