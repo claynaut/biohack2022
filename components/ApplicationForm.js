@@ -185,7 +185,7 @@ export default function About() {
     } = data
 
     if (first_name === "") {
-      toast.error("help")
+      toast.error('help')
     }
     console.log(data)
   }

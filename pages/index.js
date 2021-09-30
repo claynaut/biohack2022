@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import React from 'react'
+import Head from 'next/head'
 import { connectToDatabase } from '../util/mongodb'
 import { Element } from 'react-scroll'
 
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BioHack</title>
+        <title>BioHack 2022</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
