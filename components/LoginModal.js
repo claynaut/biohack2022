@@ -67,7 +67,7 @@ export default function LoginModal({ show, handler, csrfToken }) {
               defaultValue={csrfToken}
             />
             <div>
-              <label className={"font-semibold " + ( error && "text-red-500" )}>
+              <label className="font-semibold">
                 Email Address
               </label>
               <input 

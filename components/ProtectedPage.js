@@ -20,7 +20,7 @@ export default function ProtectedPage({ requiredSignin, requiredCheckedin, requi
   if (loading || (!session && requiredSignin)) {
     return (
       <Layout>
-        <p>Loading...</p>
+        <p className="self-center">Loading...</p>
       </Layout>
     )
   }
