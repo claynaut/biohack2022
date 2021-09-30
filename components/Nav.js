@@ -119,13 +119,13 @@ export default function Nav() {
               ?
                 <>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="About"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -133,13 +133,13 @@ export default function Nav() {
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="Winners"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -147,13 +147,13 @@ export default function Nav() {
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="Volunteer"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -161,13 +161,13 @@ export default function Nav() {
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="Sponsors"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -175,13 +175,13 @@ export default function Nav() {
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="Faq"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -189,13 +189,13 @@ export default function Nav() {
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary"
+                    activeClass="border-accent-primary text-accent-primary"
                     to="Team"
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
@@ -206,7 +206,7 @@ export default function Nav() {
               :
                 <Link passHref href="/">
                   <span
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary cursor-pointer transition-all duration-150"
+                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
                     onClick={() => setNavOpen(false)}
                   >
                     Home
