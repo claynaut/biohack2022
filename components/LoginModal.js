@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { signIn, getCsrfToken } from 'next-auth/client'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { FaTimes } from 'react-icons/fa'
 
 export default function LoginModal({ show, handler, csrfToken }) {
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState('')
+  const [targetElement, setTargetElement] = useState(null)
 
   const handleEmailChange = () => {
     setError(false)
@@ -38,9 +40,18 @@ export default function LoginModal({ show, handler, csrfToken }) {
     }
   }
 
+  useEffect(() => {
+    setTargetElement(document.querySelector('#login-modal'))
+    if (targetElement) {
+      if (show) disableBodyScroll(targetElement)
+      else enableBodyScroll(targetElement)
+    }
+  }, [targetElement, show])
+
   return (
     <>
       <div
+        id="login-modal"
         className={
           "fixed top-1/2 left-1/2 w-11/12 sm:w-112 p-4 rounded bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-150 "
           + ( show ? "z-50 visible opacity-100" : "z-0 invisible opacity-0" )
