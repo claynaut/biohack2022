@@ -44,42 +44,42 @@ export default function Nav() {
     <>
       <div 
         className={
-          "fixed flex justify-center w-full "
-          + ( navOpen ? "h-full bg-white" : "bg-gradient-to-b from-white to-white-50" )
+          'fixed flex justify-center w-full '
+          + ( navOpen ? 'h-full bg-white' : 'bg-gradient-to-b from-white to-white-50' )
         }
       >
         <div 
           className={
-            "flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-5xl h-full mx-4 py-4 lg:py-0 text-md font-semibold "
-            + ( !navOpen && "max-h-18" )
+            'flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-5xl h-full mx-4 py-4 lg:py-0 text-md font-semibold '
+            + ( !navOpen && 'max-h-[4.5rem]' )
           }
         >
-          <div className="grid grid-cols-3 lg:flex justify-self-start items-center w-full lg:w-min mt-2 lg:my-6">
-            <button className="justify-self-start lg:hidden" onClick={() => setNavOpen(!navOpen)}>
+          <div className='grid grid-cols-3 lg:flex justify-self-start items-center w-full lg:w-min mt-2 lg:my-6'>
+            <button className='justify-self-start lg:hidden' onClick={() => setNavOpen(!navOpen)}>
               {
                 navOpen 
-                ? <HiX className="text-2xl"/>
-                : <HiOutlineMenuAlt2 className="text-2xl"/>
+                ? <HiX className='text-2xl'/>
+                : <HiOutlineMenuAlt2 className='text-2xl'/>
               }
             </button>
             {
               router.pathname === '/'
               ?
                 <NavLink
-                  activeClass="active"
-                  to="Home"
+                  activeClass='active'
+                  to='Home'
                   spy={true}
                   smooth={true}
                   offset={-90}
                   duration={500}
-                  className="justify-self-center cursor-pointer"
+                  className='justify-self-center cursor-pointer'
                   onClick={() => setNavOpen(false)}
                 >
                   BIO<b>HACK</b>
                 </NavLink>
               :
-                <Link passHref href="/" onClick={() => setNavOpen(false)}>
-                  <span className="justify-self-center cursor-pointer">
+                <Link passHref href='/' onClick={() => setNavOpen(false)}>
+                  <span className='justify-self-center cursor-pointer'>
                     BIO<b>HACK</b>
                   </span>
                 </Link>
@@ -88,7 +88,7 @@ export default function Nav() {
               session
               ?
                 <div
-                  className="justify-self-end lg:hidden"
+                  className='justify-self-end lg:hidden'
                 >
                   <ProfileDropdown
                     show={profileOpen}
@@ -98,7 +98,7 @@ export default function Nav() {
               :
                 <button
                   className={
-                    "justify-self-end lg:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white "
+                    'justify-self-end lg:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white '
                   }
                   onClick={() => toggleLoginModal()}
                 >
@@ -107,106 +107,106 @@ export default function Nav() {
             }
           </div>
           <div
-            id="nav"
+            id='nav'
             className={
-              "flex flex-col lg:flex-row justify-self-center text-center "
-              + ( navOpen ? "h-full max-h-min py-8 justify-evenly gap-2 " : "hidden lg:flex gap-6 " )
-              + ( !navOpen && router.pathname !== "/" && "invisible")
+              'flex flex-col lg:flex-row justify-self-center text-center '
+              + ( navOpen ? 'h-full max-h-[min-content] py-8 justify-evenly gap-2 ' : 'hidden lg:flex gap-6 ' )
+              + ( !navOpen && router.pathname !== '/' && 'invisible')
             }
           >
             {
-              router.pathname === "/"
+              router.pathname === '/'
               ?
                 <>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="About"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='About'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       About
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="Winners"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='Winners'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       Winners
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="Volunteer"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='Volunteer'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       Volunteer
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="Sponsors"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='Sponsors'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       Sponsors
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="Faq"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='Faq'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       FAQ
                     </motion.div>
                   </NavLink>
                   <NavLink 
-                    activeClass="border-accent-primary text-accent-primary"
-                    to="Team"
+                    activeClass='border-accent-primary text-accent-primary'
+                    to='Team'
                     spy={true}
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className="lg:pb-6">
+                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
                       Team
                     </motion.div>
                   </NavLink>
                 </>
               :
-                <Link passHref href="/">
+                <Link passHref href='/'>
                   <span
-                    className="lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150"
+                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     Home
@@ -214,22 +214,22 @@ export default function Nav() {
                 </Link>
             }
           </div>
-          <div className="flex justify-self-end gap-4">
+          <div className='flex justify-self-end gap-4'>
             {
               session
               ?
                 <>
-                  <Link passHref href="/check-in">
+                  <Link passHref href='/check-in'>
                     <motion.button
                       whileHover={{ scale: 1.05}} 
                       whileTap={{ scale: 0.995 }}
-                      className="hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+                      className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                     >
                       Check In
                     </motion.button>
                   </Link>
                   <div
-                    className="hidden lg:block"
+                    className='hidden lg:block'
                   >
                     <ProfileDropdown
                       show={profileOpen}
@@ -241,7 +241,7 @@ export default function Nav() {
                 <motion.button
                   whileHover={{ scale: 1.05}} 
                   whileTap={{ scale: 0.995 }}
-                  className="hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+                  className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                   onClick={() => toggleLoginModal()}
                 >
                   Apply

@@ -9,42 +9,42 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="flex justify-center w-full py-12 bg-gray-200">
-      <div className="flex justify-between items-center w-full max-w-5xl mx-4 text-md font-semibold">
+    <footer className='flex justify-center w-full py-12 bg-gray-200'>
+      <div className='flex justify-between items-center w-full max-w-5xl mx-4 text-md font-semibold'>
         <div>
           Made with ❤ by the BioHack Team.
         </div>
-        <div className="flex gap-2 text-2xl">
+        <div className='flex gap-2 text-2xl'>
           <motion.span whileHover={{ y: -3 }}>
             <Link
               passHref
-              href="mailto:biohack.ucr@gmail.com"
+              href='mailto:biohack.ucr@gmail.com'
             >
-              <FaRegEnvelope className="hover:text-accent-primary cursor-pointer"/>
+              <FaRegEnvelope className='hover:text-accent-primary cursor-pointer'/>
             </Link>
           </motion.span>
           <motion.span whileHover={{ y: -3 }}>
             <Link
               passHref
-              href="https://www.facebook.com/UCRBioHack/"
+              href='https://www.facebook.com/UCRBioHack/'
             >
-              <FaFacebookSquare className="hover:text-accent-primary cursor-pointer"/>
+              <FaFacebookSquare className='hover:text-accent-primary cursor-pointer'/>
             </Link>
           </motion.span>
           <motion.span whileHover={{ y: -3 }}>
             <Link
               passHref
-              href="https://www.instagram.com/biohack_ucr/"
+              href='https://www.instagram.com/biohack_ucr/'
             >
-              <FaInstagram className="hover:text-accent-primary cursor-pointer"/>
+              <FaInstagram className='hover:text-accent-primary cursor-pointer'/>
             </Link>
           </motion.span>
           <motion.span whileHover={{ y: -3 }}>
             <Link
               passHref
-              href="https://www.linkedin.com/company/biohackucr/"
+              href='https://www.linkedin.com/company/biohackucr/'
             >
-              <FaLinkedin className="hover:text-accent-primary cursor-pointer"/>
+              <FaLinkedin className='hover:text-accent-primary cursor-pointer'/>
             </Link>
           </motion.span>
         </div>

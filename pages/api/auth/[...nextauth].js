@@ -18,6 +18,12 @@ export default NextAuth({
       from: process.env.EMAIL_FROM
     }),
   ],
+  callbacks: {
+    async session(session, user) {
+      session.user.id = user.id
+      return session
+    },
+  },
   database: process.env.MONGODB_URI,
   secret: process.env.SECRET,
   pages: {

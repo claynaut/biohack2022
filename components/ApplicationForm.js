@@ -1,22 +1,23 @@
 import React from 'react'
 import { useForm, useFormState } from 'react-hook-form'
+import { useSession } from 'next-auth/client'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { toast } from 'react-hot-toast'
 
 const Input = ({ type, label, variable, register, required, pattern, errors }) => (
   <div>
-    <label className="font-semibold">
+    <label className='font-semibold'>
       {label}
-      {!required && <span className="text-gray-400"> (optional)</span>}
+      {!required && <span className='text-gray-400'> (optional)</span>}
     </label>
     <input
       type={type}
       {...register(variable, {required}, {pattern})}
       className={
-        "w-full px-2 rounded border-2 focus:border-accent-primary focus:outline-none "
-        + (type === "date" ? "py-1.5 " : "py-1 ")
-        + (errors[variable] ? "border-red-500" : "border-gray-300")
+        'w-full px-2 rounded border-2 focus:border-accent-primary focus:outline-none '
+        + (type === 'date' ? 'py-1.5 ' : 'py-1 ')
+        + (errors[variable] ? 'border-red-500' : 'border-gray-300')
       }
     />
   </div>
@@ -24,15 +25,15 @@ const Input = ({ type, label, variable, register, required, pattern, errors }) =
 
 const TextArea = ({ label, variable, register, required, errors }) => (
   <div>
-    <label className="font-semibold">
+    <label className='font-semibold'>
       {label}
-      {!required && <span className="text-gray-400"> (optional)</span>}
+      {!required && <span className='text-gray-400'> (optional)</span>}
     </label>
     <textarea
       {...register(variable, {required})}
       className={
-        "w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none "
-        + (errors[variable] ? "border-red-500" : "border-gray-300")
+        'w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none '
+        + (errors[variable] ? 'border-red-500' : 'border-gray-300')
       }
     />
   </div>
@@ -40,7 +41,7 @@ const TextArea = ({ label, variable, register, required, errors }) => (
 
 const Select = React.forwardRef(({ onChange, onBlur, name, label, variable, register, required, options, errors }, ref) => (
   <div>
-    <label className="font-semibold">{label}</label>
+    <label className='font-semibold'>{label}</label>
     <select
       name={name}
       ref={ref}
@@ -48,13 +49,13 @@ const Select = React.forwardRef(({ onChange, onBlur, name, label, variable, regi
       onBlur={onBlur}
       {...register(variable, {required})}
       className={
-        "w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none overflow-ellipsis "
-        + (errors[variable] ? "border-red-500" : "border-gray-300")
+        'w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none overflow-ellipsis '
+        + (errors[variable] ? 'border-red-500' : 'border-gray-300')
       }
       
     >
       <option 
-        value=""
+        value=''
         disabled
         selected
         hidden
@@ -72,21 +73,21 @@ const Select = React.forwardRef(({ onChange, onBlur, name, label, variable, regi
 
 const Checkbox = ({ register, label, variable, options }) => (
   <div>
-    <legend className="font-semibold">{label}</legend>
-    <div className="flex flex-col gap-2 pl-2">
+    <legend className='font-semibold'>{label}</legend>
+    <div className='flex flex-col gap-2 pl-2'>
       {
         options.map((option) =>
-          <div id={label} className="flex items-center gap-2">
+          <div id={label} className='flex items-center gap-2'>
             <input
-              type="checkbox"
+              type='checkbox'
               id={variable.toString() + option.toString()}
               value={option}
               {...register(variable)}
-              className="cursor-pointer"
+              className='cursor-pointer'
             />
             <label
               htmlFor={variable.toString() + option.toString()}
-              className="cursor-pointer"
+              className='cursor-pointer'
             >
               {option}
             </label>
@@ -99,24 +100,24 @@ const Checkbox = ({ register, label, variable, options }) => (
 
 const Radio = ({ register, label, variable, required, options, errors }) => (
   <div>
-    <legend className="font-semibold">{label}</legend>
-    <div className="flex flex-col gap-2 pl-2">
+    <legend className='font-semibold'>{label}</legend>
+    <div className='flex flex-col gap-2 pl-2'>
       {
         options.map((option) =>
-          <div id={label} className="flex items-center gap-2">
+          <div id={label} className='flex items-center gap-2'>
             <input
-              type="radio"
+              type='radio'
               id={variable.toString() + option.toString()}
               value={option}
               {...register(variable, {required})}
               className={
-                "cursor-pointer " + (errors[variable] && "border-red-500")
+                'cursor-pointer ' + (errors[variable] && 'border-red-500')
               }
             />
             <label
               htmlFor={variable.toString() + option.toString()}
               className={
-                "cursor-pointer " + (errors[variable] && "text-red-500")
+                'cursor-pointer ' + (errors[variable] && 'text-red-500')
               }
             >
               {option}
@@ -129,6 +130,7 @@ const Radio = ({ register, label, variable, required, options, errors }) => (
 )
 
 export default function About() {
+  const [session] = useSession()
   const { register, handleSubmit, control } = useForm()
   const { errors, isSubmitSuccessful } = useFormState({ control })
   const genders = [
@@ -204,6 +206,7 @@ export default function About() {
       graduation_date,
       graduated,
       first_time,
+      resume,
       github,
       linkedin,
       portfolio,
@@ -215,6 +218,35 @@ export default function About() {
     } = data
     
     console.log(data)
+    axios.post('/api/apps/create', {
+      first_name,
+      last_name,
+      phone_number,
+      gender,
+      ethnicity,
+      school,
+      year,
+      major,
+      graduation_date,
+      graduated,
+      resume,
+      first_time,
+      github,
+      linkedin,
+      portfolio,
+      project_story,
+      additional_info,
+      goal,
+      source,
+      tool_experience,
+      id: session.user.id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 
   const triggerErrorNotification = () => {
@@ -227,44 +259,44 @@ export default function About() {
 
   return (
     <form 
-      className="flex flex-col gap-1.5 w-full sm:max-w-md self-center"
+      className='flex flex-col gap-1.5 w-full sm:max-w-md self-center'
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="font-semibold text-xl">
+      <h2 className='font-semibold text-xl'>
         Personal Information
       </h2>
       <Input
-        type="text"
-        label="First Name"
-        variable="first_name"
+        type='text'
+        label='First Name'
+        variable='first_name'
         register={register}
         errors={errors}
         control={control}
         required
       />
       <Input
-        type="text"
-        label="Last Name"
-        variable="last_name"
+        type='text'
+        label='Last Name'
+        variable='last_name'
         register={register}
         errors={errors}
         control={control}
         required
       />
       <Input
-        type="text"
-        label="Phone Number"
-        variable="phone_number"
+        type='text'
+        label='Phone Number'
+        variable='phone_number'
         register={register}
         errors={errors}
         control={control}
       />
-      <h2 className="mt-4 font-semibold text-xl">
+      <h2 className='mt-4 font-semibold text-xl'>
         Demographic Survey
       </h2>
       <Select
-        label="Gender"
-        variable="gender"
+        label='Gender'
+        variable='gender'
         register={register}
         errors={errors}
         options={genders}
@@ -272,8 +304,8 @@ export default function About() {
         required
       />
       <Select
-        label="Ethnicity"
-        variable="ethnicity"
+        label='Ethnicity'
+        variable='ethnicity'
         register={register}
         errors={errors}
         options={ethnicities}
@@ -281,9 +313,9 @@ export default function About() {
         required
       />
       <Input
-        type="text"
-        label="School"
-        variable="school"
+        type='text'
+        label='School'
+        variable='school'
         register={register}
         errors={errors}
         errors={errors}
@@ -291,8 +323,8 @@ export default function About() {
         required
       />
       <Select
-        label="Year"
-        variable="year"
+        label='Year'
+        variable='year'
         register={register}
         errors={errors}
         options={years}
@@ -300,8 +332,8 @@ export default function About() {
         required
       />
       <Select
-        label="Major"
-        variable="major"
+        label='Major'
+        variable='major'
         register={register}
         errors={errors}
         options={majors}
@@ -309,69 +341,69 @@ export default function About() {
         required
       />
       <Input
-        type="date"
-        label="Graduation Date"
-        variable="graduation_date"
+        type='date'
+        label='Graduation Date'
+        variable='graduation_date'
         register={register}
         errors={errors}
         control={control}
         required
       />
       <Radio
-        label="Have you graduated or are you a graduate student?"
-        variable="graduated"
+        label='Have you graduated or are you a graduate student?'
+        variable='graduated'
         options={graduated}
         register={register}
         errors={errors}
         required
       />
       <Radio
-        label="Is this your first time hacking?"
-        variable="first_time"
+        label='Is this your first time hacking?'
+        variable='first_time'
         options={hackerExperience}
         register={register}
         errors={errors}
         required
       />
-      <h2 className="mt-4 font-semibold text-xl">
+      <h2 className='mt-4 font-semibold text-xl'>
         Hacker App
       </h2>
       <Input
-        type="file"
-        label="Resume"
-        variable="resume"
+        type='file'
+        label='Resume'
+        variable='resume'
         register={register}
         errors={errors}
         control={control}
         required
       />
       <Input
-        type="text"
-        label="Github Profile"
-        variable="github"
+        type='text'
+        label='Github Profile'
+        variable='github'
         register={register}
         errors={errors}
         control={control}
       />
       <Input
-        type="text"
-        label="Linkedin Profile"
-        variable="linkedin"
+        type='text'
+        label='Linkedin Profile'
+        variable='linkedin'
         register={register}
         errors={errors}
         control={control}
       />
       <Input
-        type="text"
-        label="Personal Website"
-        variable="portfolio"
+        type='text'
+        label='Personal Website'
+        variable='portfolio'
         register={register}
         errors={errors}
         control={control}
       />
       <TextArea
         label="Tell us about a project you're proud of!"
-        variable="project_story"
+        variable='project_story'
         register={register}
         errors={errors}
         control={control}
@@ -379,40 +411,40 @@ export default function About() {
       />
       <TextArea
         label="Anything you'd like to add?"
-        variable="additional_info"
+        variable='additional_info'
         register={register}
         errors={errors}
         control={control}
       />
-      <h2 className="mt-4 font-semibold text-xl">
+      <h2 className='mt-4 font-semibold text-xl'>
         Feedback Survey
       </h2>
       <TextArea
-        label="What do you want to learn from BioHack?"
-        variable="goal"
+        label='What do you want to learn from BioHack?'
+        variable='goal'
         register={register}
         errors={errors}
         control={control}
       />
       <Radio
-        label="How did you hear about BioHack?"
-        variable="source"
+        label='How did you hear about BioHack?'
+        variable='source'
         options={sources}
         register={register}
         errors={errors}
         required
       />
       <Checkbox
-        label="Which of these do you have experience using?"
-        variable="tool_experience"
+        label='Which of these do you have experience using?'
+        variable='tool_experience'
         options={tools}
         register={register}
       />
       <motion.button
         whileHover={{ scale: 1.03}} 
         whileTap={{ scale: 0.995 }}
-        type="submit"
-        className="w-full mt-6 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white"
+        type='submit'
+        className='w-full mt-6 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
         onClick={() => triggerErrorNotification()}
       >
         Submit

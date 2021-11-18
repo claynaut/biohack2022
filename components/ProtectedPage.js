@@ -9,18 +9,27 @@ export default function ProtectedPage({ requiredSignin, requiredCheckedin, requi
   const [session, loading] = useSession()
 
   useEffect(() => {
-    if (!loading && !session && requiredSignin) {
+    if (!loading && !session) {
       router.push('/')
-      toast.error('Access denied. Please sign in!', {
-        id: 'notSignedInCheckInError',
-      })
+      if (requiredSignin)
+        toast.error('Access denied. Please sign in!', {
+          id: 'notSignedInError',
+        })
+      else if (requiredCheckedin)
+        toast.error('Access denied. Please check in!', {
+          id: 'notCheckedInError',
+        })
+      else if (requiredQualified)
+        toast.error('Access denied.', {
+          id: 'notQualifiedError',
+        })
     }
   }, [loading, session, router])
 
-  if (loading || (!session && requiredSignin)) {
+  if (loading || (!session && (requiredSignin || requiredCheckedin || requiredQualified))) {
     return (
       <Layout>
-        <p className="self-center">Loading...</p>
+        <p className='self-center'>Loading...</p>
       </Layout>
     )
   }

@@ -1,14 +1,14 @@
 export default function Landing() {
   return (
-    <section className="flex w-full max-w-5xl h-screen items-center">
+    <section className='flex w-full max-w-5xl h-screen items-center'>
       <div>
-        <h1 className="text-7xl">
+        <h1 className='text-7xl'>
           BIO<b>HACK</b>
         </h1>
-        <p className="my-4 text-4xl">
+        <p className='my-4 text-4xl'>
           UCR&#39;s <b>Healthcare</b> Hackathon
         </p>
-        <p className="text-3xl">
+        <p className='text-3xl'>
           Coming May 7, 2022
         </p>
       </div>

@@ -11,7 +11,7 @@ export default function MyApp({ Component, pageProps }) {
     <Provider session={pageProps.session}>
       <Toaster />
       <Nav />
-      <div className="flex flex-col min-h-screen">
+      <div className='flex flex-col min-h-screen'>
         <Component {...pageProps} />
         <Footer />
       </div>

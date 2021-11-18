@@ -17,28 +17,28 @@ export default function Home() {
     <>
       <Head>
         <title>BioHack 2022</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout>
-        <Element name="Home" className="flex justify-center w-full">
+        <Element name='Home' className='flex justify-center w-full'>
           <Landing/>
         </Element>
-        <Element name="About" className="flex justify-center w-full">
+        <Element name='About' className='flex justify-center w-full'>
           <About/>
         </Element>
-        <Element name="Winners" className="flex justify-center w-full">
+        <Element name='Winners' className='flex justify-center w-full'>
           <Winners/>
         </Element>
-        <Element name="Volunteer" className="flex justify-center w-full">
+        <Element name='Volunteer' className='flex justify-center w-full'>
           <Volunteer/>
         </Element>
-        <Element name="Sponsors" className="flex justify-center w-full">
+        <Element name='Sponsors' className='flex justify-center w-full'>
           <Sponsors/>
         </Element>
-        <Element name="Faq" className="flex justify-center w-full">
+        <Element name='Faq' className='flex justify-center w-full'>
           <Faq/>
         </Element>
-        <Element name="Team" className="flex justify-center w-full">
+        <Element name='Team' className='flex justify-center w-full'>
           <Team/>
         </Element>
       </Layout>

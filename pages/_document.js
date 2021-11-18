@@ -8,9 +8,9 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang='en'>
         <Head>
-          <meta name="description" content="BioHack, a bioengineering-focused, health and medicine-themed, hackathon at the University of California, Riverside." />
+          <meta name='description' content='BioHack, a bioengineering-focused, health and medicine-themed, hackathon at the University of California, Riverside.' />
         </Head>
         <body>
           <Main />
