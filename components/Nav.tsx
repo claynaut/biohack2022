@@ -225,7 +225,7 @@ export default function Nav() {
                       whileTap={{ scale: 0.995 }}
                       className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                     >
-                      Check In
+                      Apply
                     </motion.button>
                   </Link>
                   <div

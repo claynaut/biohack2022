@@ -16,7 +16,7 @@ export default function ProtectedPage({ requiredSignin = false, requiredCheckedi
           id: 'notSignedInError',
         })
       else if (requiredCheckedin)
-        toast.error('Access denied. Please check in!', {
+        toast.error('Access denied. Please apply!', {
           id: 'notCheckedInError',
         })
       else if (requiredQualified)

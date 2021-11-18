@@ -58,7 +58,7 @@ export default function ProfileDropdown() {
                 Not checked in yet!
                 <FaRegQuestionCircle
                   className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
-                  onClick={() => toast('Fill out the check-in form to apply for BioHack 2021!', {icon: '📝'})}
+                  onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝'})}
                 />
               </p>
               <Link passHref href='/check-in'>
@@ -68,7 +68,7 @@ export default function ProfileDropdown() {
                   className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                   onClick={() => setProfileOpen(!profileOpen)}
                 >
-                  Check In Here
+                  Apply Here
                 </motion.button>
               </Link>
             </div>
