@@ -50,7 +50,7 @@ export default function Nav() {
       >
         <div 
           className={
-            'flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-5xl h-full mx-4 py-4 lg:py-0 text-md font-semibold '
+            'flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-[60rem] h-full mx-4 py-4 lg:py-0 text-md font-semibold '
             + ( !navOpen && 'max-h-[4.5rem]' )
           }
         >

@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Faq() {
   return (
-    <section className='flex w-full max-w-5xl h-screen items-center'>
+    <section className='flex w-full min-h-[60rem] items-center'>
       <div>
         <h1 className='font-semibold text-5xl'>
           Questions?

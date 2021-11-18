@@ -1,6 +1,6 @@
 export default function Landing() {
   return (
-    <section className='flex w-full max-w-5xl h-screen items-center'>
+    <section className='flex w-full min-h-[60rem] items-center'>
       <div>
         <h1 className='text-7xl'>
           BIO<b>HACK</b>

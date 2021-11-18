@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
-import Layout from '@/components/Layout'
+import Page from '@/components/Page'
 
-export default function ProtectedPage({ requiredSignin = false, requiredCheckedin = false, requiredQualified = false, children }) {
+export default function ProtectedPage({ title = '', requiredSignin = false, requiredCheckedin = false, requiredQualified = false, children }) {
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -26,17 +26,17 @@ export default function ProtectedPage({ requiredSignin = false, requiredCheckedi
     }
   }, [status, session, router])
 
-  if (status === 'loading' || (!session && (requiredSignin || requiredCheckedin || requiredQualified))) {
+  if (status === 'loading' || (status === 'unauthenticated' && requiredSignin || (status === 'authenticated' && (requiredCheckedin || requiredQualified)))) {
     return (
-      <Layout>
+      <Page title={title}>
         <p className='self-center'>Loading...</p>
-      </Layout>
+      </Page>
     )
   }
 
   return (
-    <>
+    <Page title={title}>
       {children}
-    </>
+    </Page>
   )
 }
