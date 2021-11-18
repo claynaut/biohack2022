@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { signIn, getCsrfToken } from 'next-auth/client'
+import { getCsrfToken } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
@@ -7,9 +7,9 @@ import { motion } from 'framer-motion'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { FaTimes } from 'react-icons/fa'
 
-export default function LoginModal({ show, handler, csrfToken }) {
+export default function LoginModal({ show, handler, csrfToken = '' }) {
   const { register, handleSubmit } = useForm()
-  const [error, setError] = useState('')
+  const [error, setError] = useState(false)
   const [targetElement, setTargetElement] = useState(null)
 
   const handleEmailChange = () => {
@@ -35,8 +35,6 @@ export default function LoginModal({ show, handler, csrfToken }) {
       .catch(function (error) {
         console.log(error);
       })
-  
-      signIn('email', { csrfToken: csrfToken, email: email })
     }
   }
 
@@ -112,7 +110,7 @@ export default function LoginModal({ show, handler, csrfToken }) {
   )
 }
 
-export async function getServerSideProps(context){
+export async function getServerSideProps(context) {
   const csrfToken = await getCsrfToken(context)
   return {
     props: { csrfToken }

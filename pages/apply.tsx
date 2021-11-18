@@ -1,8 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
-import ProtectedPage from '../components/ProtectedPage'
-import Layout from '../components/Layout'
-import ApplicationForm from '../components/ApplicationForm'
+import ProtectedPage from '@/components/ProtectedPage'
+import Layout from '@/components/Layout'
+import ApplicationForm from '@/components/ApplicationForm'
 
 export default function CheckIn() {
   return (

@@ -6,12 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next-auth/mongodb-adapter": "^0.0.2-next.285",
     "@sendgrid/mail": "^7.4.7",
     "@tailwindcss/forms": "^0.3.4",
     "axios": "^0.21.4",
     "body-scroll-lock": "^4.0.0-beta.0",
     "framer-motion": "^4.1.17",
-    "mongodb": "^3.5.9",
+    "mongodb": "^4.2.0",
     "multer": "^1.4.3",
     "multer-gridfs-storage": "^5.0.2",
     "next": "latest",

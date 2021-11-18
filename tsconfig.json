@@ -8,6 +8,9 @@
       "@/pages/*": [
         "pages/*"
       ],
+      "@/sections/*": [
+        "pages/sections/*"
+      ],
       "@/lib/*": [
         "lib/*"
       ]

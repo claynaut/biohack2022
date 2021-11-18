@@ -1,16 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
-import { connectToDatabase } from '../util/mongodb'
 import { Element } from 'react-scroll'
 
-import Layout from '../components/Layout'
-import Landing from '../pages/landing'
-import About from '../pages/about'
-import Winners from '../pages/winners'
-import Volunteer from '../pages/volunteer'
-import Sponsors from '../pages/sponsors'
-import Faq from '../pages/faq'
-import Team from './team'
+import Layout from '@/components/Layout'
+import Landing from '@/sections/landing'
+import About from '@/sections/about'
+import Winners from '@/sections/winners'
+import Volunteer from '@/sections/volunteer'
+import Sponsors from '@/sections/sponsors'
+import Faq from '@/sections/faq'
+import Team from '@/sections/team'
 
 export default function Home() {
   return (
@@ -44,9 +43,4 @@ export default function Home() {
       </Layout>
     </>
   )
-}
-
-export async function getServerSideProps() {
-  await connectToDatabase()
-  return { props: {} }
 }

@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Link as NavLink } from 'react-scroll'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { HiOutlineMenuAlt2, HiX } from 'react-icons/hi'
-import LoginModal from './LoginModal'
-import ProfileDropdown from './ProfileDropdown'
+import LoginModal from '@/components/LoginModal'
+import ProfileDropdown from '@/components/ProfileDropdown'
 
 export default function Nav() {
-  const [session] = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
@@ -78,8 +78,11 @@ export default function Nav() {
                   BIO<b>HACK</b>
                 </NavLink>
               :
-                <Link passHref href='/' onClick={() => setNavOpen(false)}>
-                  <span className='justify-self-center cursor-pointer'>
+                <Link passHref href='/'>
+                  <span
+                    className='justify-self-center cursor-pointer'
+                    onClick={() => setNavOpen(false)}
+                  >
                     BIO<b>HACK</b>
                   </span>
                 </Link>
@@ -90,10 +93,7 @@ export default function Nav() {
                 <div
                   className='justify-self-end lg:hidden'
                 >
-                  <ProfileDropdown
-                    show={profileOpen}
-                    handler={toggleProfile}
-                  />
+                  <ProfileDropdown />
                 </div>
               :
                 <button
@@ -231,10 +231,7 @@ export default function Nav() {
                   <div
                     className='hidden lg:block'
                   >
-                    <ProfileDropdown
-                      show={profileOpen}
-                      handler={toggleProfile}
-                    />
+                    <ProfileDropdown />
                   </div>
                 </>
               :

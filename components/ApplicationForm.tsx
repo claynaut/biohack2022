@@ -1,11 +1,11 @@
 import React from 'react'
 import { useForm, useFormState } from 'react-hook-form'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { toast } from 'react-hot-toast'
 
-const Input = ({ type, label, variable, register, required, pattern, errors }) => (
+const Input = ({ type, label, variable, register, required, errors }) => (
   <div>
     <label className='font-semibold'>
       {label}
@@ -13,7 +13,7 @@ const Input = ({ type, label, variable, register, required, pattern, errors }) =
     </label>
     <input
       type={type}
-      {...register(variable, {required}, {pattern})}
+      {...register(variable, {required})}
       className={
         'w-full px-2 rounded border-2 focus:border-accent-primary focus:outline-none '
         + (type === 'date' ? 'py-1.5 ' : 'py-1 ')
@@ -39,14 +39,10 @@ const TextArea = ({ label, variable, register, required, errors }) => (
   </div>
 )
 
-const Select = React.forwardRef(({ onChange, onBlur, name, label, variable, register, required, options, errors }, ref) => (
+const Select = ({ label, variable, register, required, options, errors }) => (
   <div>
     <label className='font-semibold'>{label}</label>
     <select
-      name={name}
-      ref={ref}
-      onChange={onChange}
-      onBlur={onBlur}
       {...register(variable, {required})}
       className={
         'w-full px-2 py-1.5 rounded border-2 focus:border-accent-primary focus:outline-none overflow-ellipsis '
@@ -69,7 +65,7 @@ const Select = React.forwardRef(({ onChange, onBlur, name, label, variable, regi
       }
     </select>
   </div>
-))
+)
 
 const Checkbox = ({ register, label, variable, options }) => (
   <div>
@@ -130,7 +126,7 @@ const Radio = ({ register, label, variable, required, options, errors }) => (
 )
 
 export default function About() {
-  const [session] = useSession()
+  const { data: session } = useSession()
   const { register, handleSubmit, control } = useForm()
   const { errors, isSubmitSuccessful } = useFormState({ control })
   const genders = [
@@ -239,7 +235,6 @@ export default function About() {
       goal,
       source,
       tool_experience,
-      id: session.user.id,
     })
     .then(function (response) {
       console.log(response);
@@ -271,7 +266,6 @@ export default function About() {
         variable='first_name'
         register={register}
         errors={errors}
-        control={control}
         required
       />
       <Input
@@ -280,7 +274,6 @@ export default function About() {
         variable='last_name'
         register={register}
         errors={errors}
-        control={control}
         required
       />
       <Input
@@ -289,7 +282,7 @@ export default function About() {
         variable='phone_number'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <h2 className='mt-4 font-semibold text-xl'>
         Demographic Survey
@@ -300,7 +293,6 @@ export default function About() {
         register={register}
         errors={errors}
         options={genders}
-        control={control}
         required
       />
       <Select
@@ -309,7 +301,6 @@ export default function About() {
         register={register}
         errors={errors}
         options={ethnicities}
-        control={control}
         required
       />
       <Input
@@ -318,8 +309,6 @@ export default function About() {
         variable='school'
         register={register}
         errors={errors}
-        errors={errors}
-        control={control}
         required
       />
       <Select
@@ -328,7 +317,6 @@ export default function About() {
         register={register}
         errors={errors}
         options={years}
-        control={control}
         required
       />
       <Select
@@ -337,7 +325,6 @@ export default function About() {
         register={register}
         errors={errors}
         options={majors}
-        control={control}
         required
       />
       <Input
@@ -346,7 +333,6 @@ export default function About() {
         variable='graduation_date'
         register={register}
         errors={errors}
-        control={control}
         required
       />
       <Radio
@@ -374,7 +360,6 @@ export default function About() {
         variable='resume'
         register={register}
         errors={errors}
-        control={control}
         required
       />
       <Input
@@ -383,7 +368,7 @@ export default function About() {
         variable='github'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <Input
         type='text'
@@ -391,7 +376,7 @@ export default function About() {
         variable='linkedin'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <Input
         type='text'
@@ -399,14 +384,13 @@ export default function About() {
         variable='portfolio'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <TextArea
         label="Tell us about a project you're proud of!"
         variable='project_story'
         register={register}
         errors={errors}
-        control={control}
         required
       />
       <TextArea
@@ -414,7 +398,7 @@ export default function About() {
         variable='additional_info'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <h2 className='mt-4 font-semibold text-xl'>
         Feedback Survey
@@ -424,7 +408,7 @@ export default function About() {
         variable='goal'
         register={register}
         errors={errors}
-        control={control}
+        required={false}
       />
       <Radio
         label='How did you hear about BioHack?'

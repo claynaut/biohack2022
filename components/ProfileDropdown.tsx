@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/client'
+import { signOut } from 'next-auth/react'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { HiUser, HiX } from 'react-icons/hi'
@@ -76,7 +76,7 @@ export default function ProfileDropdown() {
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
               className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
-              onClick={signOut}
+              onClick={() => signOut()}
             >
               Sign Out
             </motion.button>
