@@ -6,7 +6,7 @@ export default async function queryGroups(req: NextApiRequest, res: NextApiRespo
   const session = await getSession({ req })
   const db = (await clientPromise).db(process.env.MONGODB_DB)
   
-  if (session && session.user.qualified === 'yeah' && session.user.gid !== '') {
+  if (session && session.user.qualified === 'yes' && session.user.gid !== '') {
     const groups = await db.collection('groups').find().toArray()
     
     res.status(200).json({ groups })

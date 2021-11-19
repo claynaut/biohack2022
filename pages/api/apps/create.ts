@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid'
 export default async function createApp(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession({ req })
   const db = (await clientPromise).db(process.env.MONGODB_DB)
+  
   if (session) {
     const {
       first_name,

@@ -7,7 +7,7 @@ export default async function createGroup(req: NextApiRequest, res: NextApiRespo
   const session = await getSession({ req })
   const db = (await clientPromise).db(process.env.MONGODB_DB)
   
-  if (session && session.user.qualified === 'yeah') {
+  if (session && session.user.qualified === 'yes') {
     const newGroupId = nanoid()
     
     await db.collection('users').updateOne(

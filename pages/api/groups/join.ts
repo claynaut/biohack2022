@@ -6,7 +6,7 @@ export default async function joinGroup(req: NextApiRequest, res: NextApiRespons
   const session = await getSession({ req })
   const db = (await clientPromise).db(process.env.MONGODB_DB)
   
-  if (session && session.user.qualified === 'yeah' && session.user.gid === '') {
+  if (session && session.user.qualified === 'yes' && session.user.gid === '') {
     const { invite_code } = req.body
 
     const group = await db.collection('groups').find({ gid: invite_code }).toArray()
