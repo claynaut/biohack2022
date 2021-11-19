@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { HiUser, HiX } from 'react-icons/hi'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 
 export default function ProfileDropdown() {
+  const { data: session } = useSession()
   const router = useRouter()
   const [profileOpen, setProfileOpen] = useState(false)
 
@@ -48,20 +49,24 @@ export default function ProfileDropdown() {
         </motion.button>
         <div
           className={
-            'absolute top-12 right-0 w-[19rem] p-4 rounded border-2 bg-white shadow-md transition-all duration-150 '
+            'absolute top-12 right-0 w-72 p-4 rounded border-2 bg-white shadow-md transition-all duration-150 '
             + ( profileOpen ? 'z-50 visible opacity-100' : 'z-0 invisible opacity-0' )
           }
         >
           <div className='flex flex-col gap-4 items-center w-full text-lg'>
             <div className='flex flex-col gap-2 items-center w-full pb-4 border-b-2 border-gray-300'>
+              <p className='text-center text-base text-gray-500'>
+                Signed in as <br/>
+                {session.user.email}
+              </p>
               <p className='flex'>
-                Not checked in yet!
+                Haven&apos;t applied yet!
                 <FaRegQuestionCircle
                   className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
                   onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝'})}
                 />
               </p>
-              <Link passHref href='/check-in'>
+              <Link passHref href='/apply'>
                 <motion.button
                   whileHover={{ scale: 1.05}} 
                   whileTap={{ scale: 0.995 }}

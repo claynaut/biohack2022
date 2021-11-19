@@ -33,7 +33,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
       },
     },
     pages: {
-      verifyRequest: '/verify-signin', // Used for check email page
+      verifyRequest: '/verify-request', // Used for check email page
       newUser: '/apply' // Redirect new users to apply
     },
     secret: process.env.SECRET

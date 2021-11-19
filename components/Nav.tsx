@@ -10,7 +10,7 @@ import LoginModal from '@/components/LoginModal'
 import ProfileDropdown from '@/components/ProfileDropdown'
 
 export default function Nav() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
@@ -88,7 +88,7 @@ export default function Nav() {
                 </Link>
             }
             {
-              session
+              (status === 'authenticated' && !session.user.uid)
               ?
                 <div
                   className='justify-self-end lg:hidden'
@@ -102,7 +102,7 @@ export default function Nav() {
                   }
                   onClick={() => toggleLoginModal()}
                 >
-                  Apply
+                  Sign In
                 </button>
             }
           </div>
@@ -216,10 +216,10 @@ export default function Nav() {
           </div>
           <div className='flex justify-self-end gap-4'>
             {
-              session
+              (status === 'authenticated' && !session.user.uid)
               ?
                 <>
-                  <Link passHref href='/check-in'>
+                  <Link passHref href='/apply'>
                     <motion.button
                       whileHover={{ scale: 1.05}} 
                       whileTap={{ scale: 0.995 }}
@@ -241,7 +241,7 @@ export default function Nav() {
                   className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                   onClick={() => toggleLoginModal()}
                 >
-                  Apply
+                  Sign In
                 </motion.button>
             }
           </div>

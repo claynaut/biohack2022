@@ -4,36 +4,42 @@ import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import Page from '@/components/Page'
 
-export default function ProtectedPage({ title = '', requiredSignin = false, requiredCheckedin = false, requiredQualified = false, onlyApplyOnce = false, children }) {
+export default function ProtectedPage({ title = '', restrictions, children }) {
   const router = useRouter()
   const { data: session, status } = useSession()
 
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.push('/')
-      if (requiredSignin)
+      if (restrictions.includes('signin')) {
         toast.error('Access denied. Please sign in!', {
-          id: 'notSignedInError',
+          id: 'signinRestriction',
         })
+        router.push('/')
+      }
     }
     else if (status === 'authenticated') {
-      router.push('/')
-      if (!session.user.uid && requiredCheckedin)
-        toast.error('Access denied. Please apply!', {
-          id: 'notCheckedInError',
-        })
-      else if (session.user.qualified === 'no' && requiredQualified)
+      if (session.user.qualified === 'no' && restrictions.includes('qualified')) {
         toast.error('Access denied.', {
-          id: 'notQualifiedError',
+          id: 'qualifiedRestriction',
         })
-      else if (session.user.uid && onlyApplyOnce)
+        router.push('/')
+      }
+      else if (session.user.uid && restrictions.includes('applied')) {
         toast.error('Access denied. You already applied!', {
-          id: 'alreadyAppliedError',
+          id: 'alreadyAppliedRestriction',
         })
+        router.push('/')
+      }
+      else if (restrictions.includes('admin') && !session.user.admin) {
+        toast.error('Access denied. Unauthorized user.', {
+          id: 'adminRestriction'
+        })
+        router.push('/')
+      }
     }
   }, [status, session, router])
 
-  if (status === 'loading' || (status === 'unauthenticated' && requiredSignin || (status === 'authenticated' && (requiredCheckedin || requiredQualified)))) {
+  if (status === 'loading') {
     return (
       <Page title={title}>
         <p className='self-center'>Loading...</p>
@@ -43,7 +49,15 @@ export default function ProtectedPage({ title = '', requiredSignin = false, requ
 
   return (
     <Page title={title}>
-      {children}
+      {
+        status === 'authenticated' && (restrictions.includes('signin')
+        || (restrictions.includes('admin') && session.user.admin)
+        || (restrictions.includes('applied') && !session.user.uid)
+        || (restrictions.includes('qualified') && session.user.qualified === 'yeah')) && 
+        <>
+          {children}
+        </> 
+      }
     </Page>
   )
 }

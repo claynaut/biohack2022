@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCsrfToken } from 'next-auth/react'
+import { signIn, getCsrfToken } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
@@ -29,11 +29,8 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
         csrfToken: csrfToken,
         email: email
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
+      .then(() => {
+        signIn('email', { csrfToken: csrfToken, email: email })
       })
     }
   }
