@@ -25,9 +25,9 @@ export default function ProtectedPage({ title = '', restrictions, children }) {
         router.push('/')
       }
       else if (session.user.uid && restrictions.includes('applied')) {
-        toast.error('Access denied. You already applied!', {
-          id: 'alreadyAppliedRestriction',
-        })
+        // toast.error('Access denied. You already applied!', {
+        //   id: 'alreadyAppliedRestriction',
+        // })
         router.push('/')
       }
       else if (restrictions.includes('admin') && !session.user.admin) {

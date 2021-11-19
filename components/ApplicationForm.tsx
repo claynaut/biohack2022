@@ -252,7 +252,7 @@ export default function ApplicationForm() {
       toast.success('Successfully submitted your application!', {
         id: 'applicationFilledSuccess',
       })
-      router.push('/')
+      router.reload()
     })
   }
 

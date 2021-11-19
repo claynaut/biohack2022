@@ -94,7 +94,7 @@ export default function ProfileDropdown() {
                     <HiOutlineQuestionMarkCircle
                       className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
                       onClick={() => toast(
-                        <div className='flex flex-col gap-4'>
+                        <div className='flex flex-col gap-3'>
                           <span>
                             This determines your eligibility to participate in BioHack.
                           </span>
