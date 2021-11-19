@@ -145,12 +145,13 @@ export default function ApplicationForm() {
     'Other',
     'Prefer not to say',
   ]
-  const years = [
-    '1st Year',
-    '2nd Year',
-    '3rd Year',
-    '4th Year',
-    '5th Year',
+  const grades = [
+    '1st Year Undergraduate',
+    '2nd Year Undergraduate',
+    '3rd Year Undergraduate',
+    '4th Year Undergraduate',
+    '5th+ Year Undergraduate',
+    'Graduate',
     'Other',
   ]
   const majors = [
@@ -196,10 +197,9 @@ export default function ApplicationForm() {
       gender,
       ethnicity,
       school,
-      year,
+      grade,
       major,
       graduation_date,
-      graduated,
       first_time,
       // resume,
       github,
@@ -212,7 +212,20 @@ export default function ApplicationForm() {
       tool_experience
     } = data
     
-    console.log(data)
+    const [year, month, day] = graduation_date.split('-')
+    let criteria_met = true
+
+    // determine if criteria to participate is met
+    if (grade === 'Graduate')
+      criteria_met = false
+    if (parseInt(year) < 2022)
+      criteria_met = false
+    else if (parseInt(year) === 2022)
+      if (parseInt(month) < 4)
+        criteria_met = false
+      else if (parseInt(month) === 5 && parseInt(day) <= 7)
+        criteria_met = false
+    
     axios.post('/api/apps/create', {
       first_name,
       last_name,
@@ -223,7 +236,6 @@ export default function ApplicationForm() {
       year,
       major,
       graduation_date,
-      graduated,
       // resume,
       first_time,
       github,
@@ -234,9 +246,10 @@ export default function ApplicationForm() {
       goal,
       source,
       tool_experience,
+      criteria_met
     })
     .then(() => {
-      toast.error('Successfully submitted your application!', {
+      toast.success('Successfully submitted your application!', {
         id: 'applicationFilledSuccess',
       })
       router.push('/')
@@ -244,7 +257,7 @@ export default function ApplicationForm() {
   }
 
   const triggerErrorNotification = () => {
-    if (!isSubmitSuccessful) {
+    if (Object.keys(errors).length > 0) {
       toast.error('Please fill out all required fields.', {
         id: 'checkinMissingFieldsError',
       })
@@ -312,10 +325,10 @@ export default function ApplicationForm() {
       />
       <Select
         label='Year'
-        variable='year'
+        variable='grade'
         register={register}
         errors={errors}
-        options={years}
+        options={grades}
         required
       />
       <Select
@@ -330,14 +343,6 @@ export default function ApplicationForm() {
         type='date'
         label='Graduation Date'
         variable='graduation_date'
-        register={register}
-        errors={errors}
-        required
-      />
-      <Radio
-        label='Have you graduated or are you a graduate student?'
-        variable='graduated'
-        options={graduated}
         register={register}
         errors={errors}
         required
