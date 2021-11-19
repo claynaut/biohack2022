@@ -233,7 +233,7 @@ export default function ApplicationForm() {
       gender,
       ethnicity,
       school,
-      year,
+      grade,
       major,
       graduation_date,
       // resume,
