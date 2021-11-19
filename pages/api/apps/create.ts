@@ -35,8 +35,10 @@ export default async function createApp(req: NextApiRequest, res: NextApiRespons
       },
       {
         $set: {
-          first_name,
-          last_name,
+          name: {
+            first: first_name,
+            last: last_name,
+          },
           phone_number,
           gender,
           ethnicity,
