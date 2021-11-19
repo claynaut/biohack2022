@@ -8,7 +8,7 @@ import { HiUser, HiX } from 'react-icons/hi'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 
 export default function ProfileDropdown() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
   const [profileOpen, setProfileOpen] = useState(false)
 
@@ -59,23 +59,61 @@ export default function ProfileDropdown() {
                 Signed in as <br/>
                 {session.user.email}
               </p>
-              <p className='flex'>
-                Haven&apos;t applied yet!
-                <FaRegQuestionCircle
-                  className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
-                  onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝'})}
-                />
-              </p>
-              <Link passHref href='/apply'>
-                <motion.button
-                  whileHover={{ scale: 1.05}} 
-                  whileTap={{ scale: 0.995 }}
-                  className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
-                  onClick={() => setProfileOpen(!profileOpen)}
-                >
-                  Apply Here
-                </motion.button>
-              </Link>
+              {
+                status === 'authenticated' && !session.user.uid &&
+                <>
+                  <p className='flex'>
+                    Haven&apos;t applied yet!
+                    <FaRegQuestionCircle
+                      className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
+                      onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝', id: 'applyInfo'})}
+                    />
+                  </p>
+                  <Link passHref href='/apply'>
+                    <motion.button
+                      whileHover={{ scale: 1.05}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                      onClick={() => setProfileOpen(!profileOpen)}
+                    >
+                      Apply Here
+                    </motion.button>
+                  </Link>
+                </>
+              }
+              {
+                status === 'authenticated' && session.user.uid &&
+                <>
+                  <p className='flex'>
+                    Your Application Status
+                    <FaRegQuestionCircle
+                      className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
+                      onClick={() => toast(
+                        <div className='flex flex-col gap-4'>
+                          <span>
+                            This determines your eligibility to participate in BioHack.
+                          </span>
+                          <span>
+                            Application status will be updated within 24 hours, and you will
+                            receive an email notification. Check back again later!
+                          </span>
+                        </div>,
+                        {
+                          id: 'appStatusInfo',
+                          duration: 6000,
+                        }
+                      )}
+                    />
+                  </p>
+                  <div
+                    className='w-full py-1.5 text-center rounded bg-accent-primary font-semibold text-white'
+                  >
+                    { session.user.qualified === '' && 'Pending' }
+                    { session.user.qualified === 'yes' && 'Approved' }
+                    { session.user.qualified === 'no' && 'Rejected' }
+                  </div>
+                </>
+              }
             </div>
             <motion.button
               whileHover={{ scale: 1.03}} 

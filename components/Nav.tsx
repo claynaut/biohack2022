@@ -88,7 +88,7 @@ export default function Nav() {
                 </Link>
             }
             {
-              (status === 'authenticated' && !session.user.uid)
+              (status === 'authenticated')
               ?
                 <div
                   className='justify-self-end lg:hidden'
@@ -217,17 +217,21 @@ export default function Nav() {
           <div className='flex justify-self-end gap-4'>
             {
               (status === 'authenticated' && !session.user.uid)
+              &&
+              <Link passHref href='/apply'>
+                <motion.button
+                  whileHover={{ scale: 1.05}} 
+                  whileTap={{ scale: 0.995 }}
+                  className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                >
+                  Apply
+                </motion.button>
+              </Link>
+            }
+            {
+              (status === 'authenticated')
               ?
                 <>
-                  <Link passHref href='/apply'>
-                    <motion.button
-                      whileHover={{ scale: 1.05}} 
-                      whileTap={{ scale: 0.995 }}
-                      className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
-                    >
-                      Apply
-                    </motion.button>
-                  </Link>
                   <div
                     className='hidden lg:block'
                   >

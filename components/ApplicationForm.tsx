@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm, useFormState } from 'react-hook-form'
-import { useSession } from 'next-auth/react'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { toast } from 'react-hot-toast'
+import router from 'next/router'
 
 const Input = ({ type, label, variable, register, required, errors }) => (
   <div>
@@ -125,8 +125,7 @@ const Radio = ({ register, label, variable, required, options, errors }) => (
   </div>
 )
 
-export default function About() {
-  const { data: session } = useSession()
+export default function ApplicationForm() {
   const { register, handleSubmit, control } = useForm()
   const { errors, isSubmitSuccessful } = useFormState({ control })
   const genders = [
@@ -236,11 +235,11 @@ export default function About() {
       source,
       tool_experience,
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+    .then(() => {
+      toast.error('Successfully submitted your application!', {
+        id: 'applicationFilledSuccess',
+      })
+      router.push('/')
     })
   }
 

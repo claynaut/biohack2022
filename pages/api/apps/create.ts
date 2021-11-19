@@ -8,27 +8,25 @@ export default async function createApp(req: NextApiRequest, res: NextApiRespons
   const db = (await clientPromise).db(process.env.MONGODB_DB)
   if (session) {
     const {
-      user: [ 
-        first_name,
-        last_name,
-        phone_number,
-        gender,
-        ethnicity,
-        school,
-        year,
-        major,
-        graduation_date,
-        graduated,
-        first_time,
-        github,
-        linkedin,
-        portfolio,
-        project_story,
-        additional_info,
-        goal,
-        source,
-        tool_experience
-      ]
+      first_name,
+      last_name,
+      phone_number,
+      gender,
+      ethnicity,
+      school,
+      year,
+      major,
+      graduation_date,
+      graduated,
+      first_time,
+      github,
+      linkedin,
+      portfolio,
+      project_story,
+      additional_info,
+      goal,
+      source,
+      tool_experience
     } = req.body
     
     await db.collection('users').updateOne(
