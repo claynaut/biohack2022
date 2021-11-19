@@ -125,7 +125,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -139,7 +139,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -153,7 +153,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -167,7 +167,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -181,7 +181,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -195,7 +195,7 @@ export default function Nav() {
                     smooth={true}
                     offset={-90}
                     duration={500}
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
@@ -206,7 +206,7 @@ export default function Nav() {
               :
                 <Link passHref href='/'>
                   <span
-                    className='lg:mt-6 border-b-3 border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
                     Home
