@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import Page from '@/components/Page'
 
-export default function ProtectedPage({ title = '', requiredSignin = false, requiredCheckedin = false, requiredQualified = false, children }) {
+export default function ProtectedPage({ title = '', requiredSignin = false, requiredCheckedin = false, requiredQualified = false, onlyApplyOnce = false, children }) {
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -15,13 +15,20 @@ export default function ProtectedPage({ title = '', requiredSignin = false, requ
         toast.error('Access denied. Please sign in!', {
           id: 'notSignedInError',
         })
-      else if (requiredCheckedin)
+    }
+    else if (status === 'authenticated') {
+      router.push('/')
+      if (!session.user.uid && requiredCheckedin)
         toast.error('Access denied. Please apply!', {
           id: 'notCheckedInError',
         })
-      else if (requiredQualified)
+      else if (session.user.qualified === 'no' && requiredQualified)
         toast.error('Access denied.', {
           id: 'notQualifiedError',
+        })
+      else if (session.user.uid && onlyApplyOnce)
+        toast.error('Access denied. You already applied!', {
+          id: 'alreadyAppliedError',
         })
     }
   }, [status, session, router])
