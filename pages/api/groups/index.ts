@@ -2,15 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import clientPromise from '@/lib/mongodb'
 import { getSession } from 'next-auth/react'
 
-export default async function findGroup(req: NextApiRequest, res: NextApiResponse) {
+export default async function queryGroups(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession({ req })
   const db = (await clientPromise).db(process.env.MONGODB_DB)
   
   if (session && session.user.qualified === 'yes' && session.user.gid !== '') {
-    const group = await db.collection('groups').find({ gid: session.user.gid }).toArray()
-    const members = group[0].users
+    const groups = await db.collection('groups').find().toArray()
     
-    res.status(200).json({ members })
+    res.status(200).json({ groups })
   }
   else {
     res.status(401).json({})

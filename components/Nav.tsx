@@ -216,7 +216,7 @@ export default function Nav() {
           </div>
           <div className='flex justify-self-end gap-4'>
             {
-              (status === 'authenticated' && !session.user.uid)
+              (status === 'authenticated' && !session.user.uid && router.pathname !== '/apply')
               &&
               <Link passHref href='/apply'>
                 <motion.button

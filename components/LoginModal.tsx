@@ -5,7 +5,7 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { FaTimes } from 'react-icons/fa'
+import { HiX } from 'react-icons/hi'
 
 export default function LoginModal({ show, handler, csrfToken = '' }) {
   const { register, handleSubmit } = useForm()
@@ -53,7 +53,7 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
         }
       >
         <div className='flex flex-col gap-4 items-center w-full mb-8 text-lg'>
-          <FaTimes
+          <HiX
             className='self-end hover:text-accent-primary cursor-pointer'
             onClick={handler}
           />
