@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import useSWR from 'swr'
-import { HiChevronRight } from 'react-icons/hi'
-import ProtectedPage from '@/components/ProtectedPage'
 import { motion } from 'framer-motion'
+import { HiChevronRight, HiChevronDown } from 'react-icons/hi'
+import ProtectedPage from '@/components/ProtectedPage'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 export default function Groups() {
   const { data, error } = useSWR('/api/groups', fetcher)
   const [selectedFilter, setSelectedFilter] = useState('All Groups')
+  const [expandedGroups, setExpandedGroups] = useState([])
 
   const filters = [
     'All Groups',
@@ -17,6 +18,11 @@ export default function Groups() {
     '2 Hackers',
     '3 Hackers',
   ]
+
+  const selectFilter = (filter: string) => {
+    setSelectedFilter(filter)
+    setExpandedGroups([])
+  }
 
   if (error) 
     return (
@@ -60,9 +66,9 @@ export default function Groups() {
                 whileTap={{ scale: 0.995 }}
                 className={
                   'w-full max-w-lg py-1.5 rounded font-semibold text-white '
-                  + (selectedFilter === filter ? 'bg-accent-primary hover:bg-accent-primary-dark' : 'bg-gray-400 hover:bg-gray-500')
+                  + (selectedFilter === filter ? 'bg-accent-primary hover:bg-accent-primary-dark' : 'bg-gray-300 hover:bg-gray-400')
                 }
-                onClick={() => setSelectedFilter(filter)}
+                onClick={() => selectFilter(filter)}
               >
                 {filter}
               </motion.button>
@@ -73,21 +79,301 @@ export default function Groups() {
               <div className='col-start-2 whitespace-nowrap'>
                 Group Code
               </div>
-              <div className='col-start-4'>
+              <div className='col-start-3 col-span-2'>
                 Size
               </div>
             </div>
+            {/* query all groups */}
             {
-              data.groups.map(({ gid, users }) =>
-                <div className='grid grid-cols-5 items-center text-center px-2 border-2 rounded-md bg-white shadow-md'>
-                  <div className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'>
-                    <HiChevronRight />
+              selectedFilter === filters[0] && data.groups &&
+              data.groups.map((group) =>
+                <div 
+                  className={
+                    'flex flex-col h-screen border-2 rounded-md bg-white shadow-md transition-size duration-150 overflow-hidden '
+                    + (expandedGroups.includes(group) ? 'max-h-[15rem]' : 'max-h-[2.75rem]')
+                  }
+                >
+                  <div className='grid grid-cols-5 items-center text-center px-2'>
+                    <button 
+                      className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'
+                      onClick={
+                        () => setExpandedGroups(
+                          expandedGroups.includes(group) ?
+                            expandedGroups.filter(expandedGroup => expandedGroup !== group) :
+                            expandedGroups.concat([group])
+                        )
+                      }
+                    >
+                      {
+                        expandedGroups.includes(group) ?
+                        <HiChevronDown />
+                        :
+                        <HiChevronRight />
+                      }
+                    </button>
+                    <div className='col-start-2 py-2'>
+                      {group.gid.substring(0,6)}
+                    </div>
+                    <div className='col-start-3 col-span-2 py-2'>
+                      {group.users.length} / 4
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full max-w-lg py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white whitespace-nowrap'
+                    >
+                      Request Invite
+                    </motion.button>
                   </div>
-                  <div className='col-start-2 py-2'>
-                    {gid.substring(0,6)}
+                  <div className='grid grid-cols-5 items-center text-center px-2 border-t-2'>
+                    <div className='col-start-2 py-2'>
+                      <div className='font-semibold'>
+                        Hackers
+                      </div>
+                      {
+                        group.users.map((user) =>
+                          <div className='py-2'>
+                            {user.name.first}
+                          </div>
+                        )
+                      }
+                    </div>
                   </div>
-                  <div className='col-start-4 py-2'>
-                    {users.length} / 4
+                </div>
+              )
+            }
+            {/* query all groups that aren't full */}
+            {
+              selectedFilter === filters[1] && data.groups &&
+              data.groups.filter(group => group.users.length < 4).map((group) =>
+                <div 
+                  className={
+                    'flex flex-col h-screen border-2 rounded-md bg-white shadow-md transition-size duration-150 overflow-hidden '
+                    + (expandedGroups.includes(group) ? 'max-h-[15rem]' : 'max-h-[2.75rem]')
+                  }
+                >
+                  <div className='grid grid-cols-5 items-center text-center px-2'>
+                    <button 
+                      className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'
+                      onClick={
+                        () => setExpandedGroups(
+                          expandedGroups.includes(group) ?
+                            expandedGroups.filter(expandedGroup => expandedGroup !== group) :
+                            expandedGroups.concat([group])
+                        )
+                      }
+                    >
+                      {
+                        expandedGroups.includes(group) ?
+                        <HiChevronDown />
+                        :
+                        <HiChevronRight />
+                      }
+                    </button>
+                    <div className='col-start-2 py-2'>
+                      {group.gid.substring(0,6)}
+                    </div>
+                    <div className='col-start-3 col-span-2 py-2'>
+                      {group.users.length} / 4
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full max-w-lg py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white whitespace-nowrap'
+                    >
+                      Request Invite
+                    </motion.button>
+                  </div>
+                  <div className='grid grid-cols-5 items-center text-center px-2 border-t-2'>
+                    <div className='col-start-2 py-2'>
+                      <div className='font-semibold'>
+                        Hackers
+                      </div>
+                      {
+                        group.users.map((user) =>
+                          <div className='py-2'>
+                            {user.name.first}
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+            {/* query groups with only 1 hacker */}
+            {
+              selectedFilter === filters[2] && data.groups &&
+              data.groups.filter(group => group.users.length === 1).map((group) =>
+                <div 
+                  className={
+                    'flex flex-col h-screen border-2 rounded-md bg-white shadow-md transition-size duration-150 overflow-hidden '
+                    + (expandedGroups.includes(group) ? 'max-h-[15rem]' : 'max-h-[2.75rem]')
+                  }
+                >
+                  <div className='grid grid-cols-5 items-center text-center px-2'>
+                    <button 
+                      className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'
+                      onClick={
+                        () => setExpandedGroups(
+                          expandedGroups.includes(group) ?
+                            expandedGroups.filter(expandedGroup => expandedGroup !== group) :
+                            expandedGroups.concat([group])
+                        )
+                      }
+                    >
+                      {
+                        expandedGroups.includes(group) ?
+                        <HiChevronDown />
+                        :
+                        <HiChevronRight />
+                      }
+                    </button>
+                    <div className='col-start-2 py-2'>
+                      {group.gid.substring(0,6)}
+                    </div>
+                    <div className='col-start-3 col-span-2 py-2'>
+                      {group.users.length} / 4
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full max-w-lg py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white whitespace-nowrap'
+                    >
+                      Request Invite
+                    </motion.button>
+                  </div>
+                  <div className='grid grid-cols-5 items-center text-center px-2 border-t-2'>
+                    <div className='col-start-2 py-2'>
+                      <div className='font-semibold'>
+                        Hackers
+                      </div>
+                      {
+                        group.users.map((user) =>
+                          <div className='py-2'>
+                            {user.name.first}
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+            {/* query groups with 2 hackers */}
+            {
+              selectedFilter === filters[3] && data.groups &&
+              data.groups.filter(group => group.users.length === 2).map((group) =>
+                <div 
+                  className={
+                    'flex flex-col h-screen border-2 rounded-md bg-white shadow-md transition-size duration-150 overflow-hidden '
+                    + (expandedGroups.includes(group) ? 'max-h-[15rem]' : 'max-h-[2.75rem]')
+                  }
+                >
+                  <div className='grid grid-cols-5 items-center text-center px-2'>
+                    <button 
+                      className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'
+                      onClick={
+                        () => setExpandedGroups(
+                          expandedGroups.includes(group) ?
+                            expandedGroups.filter(expandedGroup => expandedGroup !== group) :
+                            expandedGroups.concat([group])
+                        )
+                      }
+                    >
+                      {
+                        expandedGroups.includes(group) ?
+                        <HiChevronDown />
+                        :
+                        <HiChevronRight />
+                      }
+                    </button>
+                    <div className='col-start-2 py-2'>
+                      {group.gid.substring(0,6)}
+                    </div>
+                    <div className='col-start-3 col-span-2 py-2'>
+                      {group.users.length} / 4
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full max-w-lg py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white whitespace-nowrap'
+                    >
+                      Request Invite
+                    </motion.button>
+                  </div>
+                  <div className='grid grid-cols-5 items-center text-center px-2 border-t-2'>
+                    <div className='col-start-2 py-2'>
+                      <div className='font-semibold'>
+                        Hackers
+                      </div>
+                      {
+                        group.users.map((user) =>
+                          <div className='py-2'>
+                            {user.name.first}
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+            {/* query groups with 3 hackers */}
+            {
+              selectedFilter === filters[4] && data.groups &&
+              data.groups.filter(group => group.users.length === 3).map((group) =>
+                <div 
+                  className={
+                    'flex flex-col h-screen border-2 rounded-md bg-white shadow-md transition-size duration-150 overflow-hidden '
+                    + (expandedGroups.includes(group) ? 'max-h-[15rem]' : 'max-h-[2.75rem]')
+                  }
+                >
+                  <div className='grid grid-cols-5 items-center text-center px-2'>
+                    <button 
+                      className='p-1 max-w-min rounded-full hover:bg-gray-200 cursor-pointer text-xl'
+                      onClick={
+                        () => setExpandedGroups(
+                          expandedGroups.includes(group) ?
+                            expandedGroups.filter(expandedGroup => expandedGroup !== group) :
+                            expandedGroups.concat([group])
+                        )
+                      }
+                    >
+                      {
+                        expandedGroups.includes(group) ?
+                        <HiChevronDown />
+                        :
+                        <HiChevronRight />
+                      }
+                    </button>
+                    <div className='col-start-2 py-2'>
+                      {group.gid.substring(0,6)}
+                    </div>
+                    <div className='col-start-3 col-span-2 py-2'>
+                      {group.users.length} / 4
+                    </div>
+                    <motion.button 
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='w-full max-w-lg py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white whitespace-nowrap'
+                    >
+                      Request Invite
+                    </motion.button>
+                  </div>
+                  <div className='grid grid-cols-5 items-center text-center px-2 border-t-2'>
+                    <div className='col-start-2 py-2'>
+                      <div className='font-semibold'>
+                        Hackers
+                      </div>
+                      {
+                        group.users.map((user) =>
+                          <div className='py-2'>
+                            {user.name.first}
+                          </div>
+                        )
+                      }
+                    </div>
                   </div>
                 </div>
               )

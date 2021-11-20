@@ -133,6 +133,24 @@ export default function GroupDashbaord() {
                   Create a Group
                 </motion.button>
               </div>
+              <div className='w-full mb-12'>
+                <h1 className='font-semibold text-5xl'>
+                  View Groups
+                </h1>
+                <p className='my-4 text-lg'>
+                  Still looking for a group to join? Click the button below to view all groups you can request an invite code from.
+                </p>
+                <Link passHref href='/groups'>
+                  <motion.button
+                    whileHover={{ scale: 1.03}} 
+                    whileTap={{ scale: 0.995 }}
+                    type='submit'
+                    className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                  >
+                    View Groups
+                  </motion.button>
+                </Link>
+              </div>
             </>
           :
             <div className='w-full mb-12'>
