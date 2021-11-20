@@ -121,18 +121,19 @@ export default function ProfileDropdown() {
               }
               {
                 status === 'authenticated' && session.user.qualified === 'yes' &&
-                <div className='flex flex-col gap-2 w-full border-t-2 border-gray-300 pt-2'>
-                  <Link passHref href='/groups/dashboard'>
-                    <motion.button
-                      whileHover={{ scale: 1.03}} 
-                      whileTap={{ scale: 0.995 }}
-                      className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent-primary font-semibold hover:text-white'
-                      onClick={() => signOut()}
-                    >
-                      <HiOutlineUserGroup className='text-2xl'/> My Group
-                    </motion.button>
-                  </Link>
-                </div>
+                <Link passHref href='/groups/dashboard'>
+                  <div className='flex flex-col gap-2 w-full border-t-2 border-gray-300 pt-2'>
+                    <Link passHref href='/groups/dashboard'>
+                      <motion.button
+                        whileHover={{ scale: 1.03}} 
+                        whileTap={{ scale: 0.995 }}
+                        className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent-primary font-semibold hover:text-white'
+                      >
+                        <HiOutlineUserGroup className='text-2xl'/> My Group
+                      </motion.button>
+                    </Link>
+                  </div>
+                </Link>
               }
             </div>
             <motion.button
