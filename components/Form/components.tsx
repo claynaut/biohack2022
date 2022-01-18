@@ -2,15 +2,22 @@ export const Input = ({ type, label, variable, register, required, errors }) => 
   <div>
     <label className='font-semibold'>
       {label}
-      {!required && <span className='text-gray-400'> (optional)</span>}
+      {required && <span className='text-red-400'>*</span>}
     </label>
+    {
+      type === 'file' &&
+      <p className='text-sm italic'>
+        Will be shared with sponsors for recruiting purposes.
+      </p>
+    }
     <input
       type={type}
       {...register(variable, {required})}
       className={
-        'w-full px-2 rounded border-2 focus:border-accent-primary focus:outline-none '
+        'w-full rounded focus:border-accent-primary focus:outline-none file:mr-2 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold hover:file:bg-gray-200 file:cursor-pointer '
+        + (type === 'file' ? 'border-0 ' : 'px-2 border-2 ')
         + (type === 'date' ? 'py-1.5 ' : 'py-1 ')
-        + (errors[variable] ? 'border-red-500' : 'border-gray-300')
+        + (errors[variable] ? 'border-red-500 ' : 'border-gray-300 ')
       }
     />
   </div>
@@ -20,7 +27,7 @@ export const TextArea = ({ label, variable, register, required, errors }) => (
   <div>
     <label className='font-semibold'>
       {label}
-      {!required && <span className='text-gray-400'> (optional)</span>}
+      {required && <span className='text-red-400'>*</span>}
     </label>
     <textarea
       {...register(variable, {required})}
@@ -34,7 +41,10 @@ export const TextArea = ({ label, variable, register, required, errors }) => (
 
 export const Select = ({ label, variable, register, required, options, errors }) => (
   <div>
-    <label className='font-semibold'>{label}</label>
+    <label className='font-semibold'>
+      {label}
+      {required && <span className='text-red-400'>*</span>}
+    </label>
     <select
       {...register(variable, {required})}
       className={
@@ -49,7 +59,7 @@ export const Select = ({ label, variable, register, required, options, errors })
         selected
         hidden
       >
-        Select your {label.toLowerCase()}...
+        Select {label.toLowerCase()}...
       </option>
       {
         options.map((option) =>
@@ -62,7 +72,9 @@ export const Select = ({ label, variable, register, required, options, errors })
 
 export const Checkbox = ({ register, label, variable, options }) => (
   <div>
-    <legend className='font-semibold'>{label}</legend>
+    <legend className='font-semibold'>
+      {label}
+    </legend>
     <div className='flex flex-col gap-2 pl-2'>
       {
         options.map((option) =>
@@ -89,7 +101,10 @@ export const Checkbox = ({ register, label, variable, options }) => (
 
 export const Radio = ({ register, label, variable, required, options, errors }) => (
   <div>
-    <legend className='font-semibold'>{label}</legend>
+    <legend className='font-semibold'>
+      {label}
+      {required && <span className='text-red-400'>*</span>}
+    </legend>
     <div className='flex flex-col gap-2 pl-2'>
       {
         options.map((option) =>

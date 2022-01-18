@@ -5,8 +5,8 @@ import ApplicationForm from '@/components/ApplicationForm'
 export default function Apply() {
   return (
     <ProtectedPage title='Apply' restrictions={['signin', 'applied']}>
-      <section className='flex flex-col w-full max-w-md my-32 self-center'>
-        <div className='w-full mb-12'>
+      <section className='flex flex-col w-full max-w-2xl my-32 self-center'>
+        <div className='w-full mb-4'>
           <h1 className='font-semibold text-5xl'>
             Apply
           </h1>
