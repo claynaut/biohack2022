@@ -61,7 +61,7 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
             Sign In
           </h1>
           <p className='w-full max-w-sm'>
-            Sign in to BioHack with your email to apply and access more. No password required.
+            Sign in to BioHack via email or Google to apply and access more. No password required.
           </p>
           <form
             className='w-full max-w-sm'
@@ -89,11 +89,24 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
               type='submit'
-              className='w-full mt-4 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              className='w-full mt-2 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
             >
-              Sign In
+              Sign In With Email
             </motion.button>
           </form>
+          <div className='flex flex-col gap-6 pt-2 justify-center w-full max-w-sm'>
+            <div className='text-center border-b-2 border-gray-300 leading-[0.1rem]'>
+              <span className='px-4 bg-white text-gray-400'>or</span>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.03}} 
+              whileTap={{ scale: 0.995 }}
+              className='w-full py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              onClick={() => signIn('google')}
+            >
+              Sign In With Google
+            </motion.button>
+          </div>
         </div>
       </div>
       <div

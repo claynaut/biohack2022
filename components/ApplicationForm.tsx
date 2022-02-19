@@ -4,6 +4,7 @@ import axios from 'axios'
 import { motion } from 'framer-motion'
 import { toast } from 'react-hot-toast'
 import { nanoid } from 'nanoid'
+import { useSession } from 'next-auth/react'
 import router from 'next/router'
 import storage from '@/lib/firebase'
 import { ref, uploadBytes } from 'firebase/storage'
@@ -22,6 +23,7 @@ const Group = ({title, children}: GroupProps) => (
 )
 
 export default function ApplicationForm() {
+  const { data: session } = useSession()
   const { register, handleSubmit, control } = useForm()
   const { errors, isSubmitSuccessful } = useFormState({ control })
   const genders = [
@@ -176,6 +178,11 @@ export default function ApplicationForm() {
         <div className='grid sm:grid-cols-2 gap-3'>
           <Input
             type='text'
+            defaultValue={
+              (session.user.name && session.user.name.first !== 'undefined')
+              ? session.user.name.first 
+              : undefined
+            }
             label='First Name'
             variable='first_name'
             register={register}
@@ -184,6 +191,11 @@ export default function ApplicationForm() {
           />
           <Input
             type='text'
+            defaultValue={
+              (session.user.name && session.user.name.last !== 'undefined')
+              ? session.user.name.last 
+              : undefined
+            }
             label='Last Name'
             variable='last_name'
             register={register}
