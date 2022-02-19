@@ -130,6 +130,7 @@ export default function ApplicationForm() {
     uploadBytes(fileRef, file) // upload file
     
     axios.post('/api/apps/create', {
+      uid,
       first_name,
       last_name,
       phone_number,

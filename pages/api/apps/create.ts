@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import clientPromise from '@/lib/mongodb'
 import { sendEmail } from '@/lib/sendgrid'
 import { getSession } from 'next-auth/react'
-import { nanoid } from 'nanoid'
 
 export default async function createApp(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession({ req })
@@ -10,6 +9,7 @@ export default async function createApp(req: NextApiRequest, res: NextApiRespons
   
   if (session) {
     const {
+      uid,
       first_name,
       last_name,
       phone_number,
@@ -47,6 +47,7 @@ export default async function createApp(req: NextApiRequest, res: NextApiRespons
       },
       {
         $set: {
+          uid,
           name: {
             first: first_name,
             last: last_name,
@@ -67,7 +68,6 @@ export default async function createApp(req: NextApiRequest, res: NextApiRespons
           goal,
           source,
           tool_experience,
-          uid: nanoid(),
           criteria_met,
           qualified: '',
           gid: '',
