@@ -4,7 +4,7 @@ const WinnerCard = ({ place, project, description}) => (
   <motion.div
     whileHover={{ y: -3 }} 
     className={
-      'p-4 px-6 bg-white rounded shadow-md '
+      'p-4 px-6 bg-white rounded-md shadow-md '
       + (place === 'Overall 1st Place' ? 'col-span-2' : '')
     }
   >
