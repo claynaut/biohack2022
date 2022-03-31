@@ -42,13 +42,13 @@ const staff = [
     role: 'Operations Lead',
   },
   {
-    link: '/',
+    link: 'https://www.linkedin.com/in/shruti-jawale-294566195/',
     image: '/vercel.svg',
     name: 'Shruti Jawale',
     role: 'Sponsorship Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/evelyn-aguirre-vargas-346922205',
+    link: 'https://www.linkedin.com/in/evelyn-aguirre-vargas-346922205/',
     image: '/vercel.svg',
     name: 'Evelyn Aguirre Vargas',
     role: 'Marketing Lead',
@@ -60,7 +60,7 @@ const staff = [
     role: 'Marketing Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/jspescasio',
+    link: 'https://www.linkedin.com/in/jspescasio/',
     image: '/vercel.svg',
     name: 'J.S. Pescasio',
     role: 'Web Dev Lead',
