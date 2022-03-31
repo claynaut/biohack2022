@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export const TeamProfile = ({ link, image, name, role }) => (
-  <div className='flex flex-col w-full max-w-[8rem] md:max-w-[9rem] items-center'>
+  <div className='flex flex-col w-full max-w-[8rem] sm:max-w-[12rem] items-center'>
     <motion.span whileHover={{ y: -4 }} className='cursor-pointer'>
       <a target='_blank' rel='noreferrer noopener' href={link}>
         {/* <Image
@@ -14,61 +14,49 @@ export const TeamProfile = ({ link, image, name, role }) => (
           quality={100}
           className="rounded-full"
         /> */}
-        <div className='w-[140px] h-[140px] bg-white rounded-full'/>
+        <div className='w-[140px] sm:w-[180px] h-[140px] sm:h-[180px] bg-white rounded-full'/>
       </a>
     </motion.span>
-    <p className='mb-0 mt-2 w-max font-bold'>{name}</p>
+    <p className='mb-0 mt-2 w-max font-bold text-sm sm:text-base'>{name}</p>
     <p className='mt-0 leading-4 text-sm text-center font-mono'>{role}</p>
   </div>
 )
 
 const staff = [
   {
-    link: 'https://www.linkedin.com/in/audrey-kim-696922168/',
+    link: '/',
     image: '/vercel.svg',
-    name: 'Audrey Kim',
+    name: 'Aneesh Sharma',
     role: 'Director',
   },
   {
-    link: 'https://www.linkedin.com/in/rajbirjohar/',
-    image: '/vercel.svg',
-    name: 'Rajbir Johar',
-    role: 'Director',
-  },
-  {
-    link: 'https://www.linkedin.com/in/paulianle7/',
-    image: '/vercel.svg',
+    link: '/',
+    image: 'Jimmy Ho',
     name: 'Paulian Le',
     role: 'Operations Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/westin-montano/',
+    link: '/',
     image: '/vercel.svg',
-    name: 'Westin Montano',
+    name: 'Kevin Ho',
     role: 'Operations Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/mariam-golwalla-74930949/',
+    link: '/',
     image: '/vercel.svg',
-    name: 'Mariam Golwalla',
+    name: 'Shruti Jawale',
     role: 'Sponsorship Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/marshall-jones-0/',
+    link: '/',
     image: '/vercel.svg',
-    name: 'Marshall Jones',
-    role: 'Sponsorship Lead',
-  },
-  {
-    link: 'https://www.linkedin.com/in/kimberlylac/',
-    image: '/vercel.svg',
-    name: 'Kimmy Lac',
+    name: 'Evelyn Aguirre Vargas',
     role: 'Marketing Lead',
   },
   {
-    link: 'https://www.linkedin.com/in/henry-zheng00/',
+    link: '/',
     image: '/vercel.svg',
-    name: 'Henry Zheng',
+    name: 'Natasha Brinkley',
     role: 'Marketing Lead',
   },
   {
@@ -76,24 +64,6 @@ const staff = [
     image: '/vercel.svg',
     name: 'J.S. Pescasio',
     role: 'Web Dev Lead',
-  },
-  {
-    link: 'https://www.linkedin.com/in/michellesspace/',
-    image: '/vercel.svg',
-    name: 'Michelle Kim',
-    role: 'UX Design Lead',
-  },
-  {
-    link: 'https://www.linkedin.com/in/abhivishwas/',
-    image: '/vercel.svg',
-    name: 'Abhi Vishwasrao',
-    role: 'Volunteer Lead',
-  },
-  {
-    link: 'https://www.linkedin.com/in/jakin200/',
-    image: '/vercel.svg',
-    name: 'Jakin Chan',
-    role: 'Volunteer Lead',
   },
 ]
 
