@@ -1,8 +1,8 @@
 export default function Landing() {
   return (
-    <section className='flex w-full min-h-[60rem] items-center'>
-      <div>
-        <h1 className='text-7xl font-semibold'>
+    <section className='flex w-full h-screen min-h-[48rem] md:min-h-[60rem] items-center justify-center xs:justify-start'>
+      <div className='text-center xs:text-left'>
+        <h1 className='text-6xl md:text-7xl font-semibold'>
           BIO<b>HACK</b>
         </h1>
         <h3>

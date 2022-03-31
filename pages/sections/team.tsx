@@ -1,7 +1,12 @@
+import { TeamGrid } from '@/components/Team'
+
 export default function Team() {
   return (
-    <section className='flex w-full min-h-[60rem] items-center'>
-      <h2>Our Team</h2>
+    <section className='flex w-full my-12'>
+      <div>
+        <h2 className='mb-4'>Our Team</h2>
+        <TeamGrid />
+      </div>
     </section>
   )
 }

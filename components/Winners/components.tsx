@@ -5,7 +5,7 @@ const WinnerCard = ({ place, project, description}) => (
     whileHover={{ y: -3 }} 
     className={
       'p-4 px-6 bg-white rounded-md shadow-md '
-      + (place === 'Overall 1st Place' ? 'col-span-2' : '')
+      + (place === 'Overall 1st Place' ? 'col-span-2' : 'col-span-2 sm:col-span-1')
     }
   >
     <h3 className='text-center'>{project}</h3>
@@ -56,6 +56,7 @@ export const WinnerGrid = () => (
   <div className='grid grid-cols-2 gap-4'>
     { winners.map(({ place, project, description }) =>
       <WinnerCard
+        key={place}
         place={place}
         project={project}
         description={description}

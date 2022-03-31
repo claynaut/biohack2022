@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { Element } from 'react-scroll'
 
 import Page from '@/components/Page'

@@ -1,6 +1,6 @@
 export default function Volunteer() {
   return (
-    <section className='flex w-full min-h-[60rem] items-center'>
+    <section className='flex w-full my-12'>
       <div>
         <h2>Get Involved</h2>
         <p>

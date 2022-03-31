@@ -5,12 +5,7 @@ function FaqAccordion({ question, answer }) {
   const [open, setOpen] = useState(true)
 
   return (
-    <div 
-      className={
-        'flex flex-col w-full h-min bg-white rounded-md shadow-md transition-size overflow-hidden duration-250 '
-        + (open ? 'max-h-[30rem]' : 'max-h-[3.75rem]')
-      }
-    >
+    <div className='flex flex-col w-full bg-white rounded-md shadow-md'>
       <div 
         className={
           'flex px-3 py-2 items-center gap-2 hover:text-highlight cursor-pointer '
@@ -27,7 +22,13 @@ function FaqAccordion({ question, answer }) {
         </div>
         <h4 className='font-bold text-xl'>{question}</h4>
       </div>
-      <div className='px-4'>
+      <div 
+        className={
+          'px-4 transition-size overflow-hidden duration-250 '
+          + (open ? 'max-h-[30rem]' : 'max-h-0')
+        }
+      
+      >
         { typeof answer === 'string' ?
           <p className='m-0 mb-4 text-base'>{answer}</p>
           :

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Faq() {
   return (
-    <section className='flex w-full min-h-[60rem]'>
+    <section className='flex w-full my-12'>
       <div>
         <h2>FAQ</h2>
         <p>
