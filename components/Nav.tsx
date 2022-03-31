@@ -44,13 +44,13 @@ export default function Nav() {
     <>
       <div 
         className={
-          'fixed flex justify-center w-full '
-          + ( navOpen ? 'h-full bg-white' : 'bg-gradient-to-b from-white to-white-50' )
+          'z-[1000] fixed flex justify-center w-full '
+          + ( navOpen ? 'h-full bg-primary-100' : 'bg-gradient-to-b from-primary-100 to-[#D1C6ACe1]' )
         }
       >
         <div 
           className={
-            'flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-[60rem] h-full mx-4 py-4 lg:py-0 text-md font-semibold '
+            'flex flex-col lg:grid lg:grid-cols-3 items-center w-full max-w-[64rem] h-full mx-4 py-4 lg:py-0 text-md font-bold '
             + ( !navOpen && 'max-h-[4.5rem]' )
           }
         >
@@ -87,29 +87,31 @@ export default function Nav() {
                   </span>
                 </Link>
             }
-            {
-              (status === 'authenticated')
-              ?
-                <div
-                  className='justify-self-end lg:hidden'
-                >
-                  <ProfileDropdown />
-                </div>
-              :
-                <button
-                  className={
-                    'justify-self-end lg:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white '
-                  }
-                  onClick={() => toggleLoginModal()}
-                >
-                  Sign In
-                </button>
+            { !navOpen &&
+              ( status === 'authenticated' 
+                ?
+                  <div
+                    className='justify-self-end lg:hidden'
+                  >
+                    <ProfileDropdown />
+                  </div>
+                :
+                  <button
+                    className={
+                      'justify-self-end lg:hidden px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white '
+                    }
+                    onClick={() => toggleLoginModal()}
+                  >
+                    Sign In
+                  </button>
+              )
             }
           </div>
+          
           <div
             id='nav'
             className={
-              'flex flex-col lg:flex-row justify-self-center text-center '
+              'flex flex-col lg:flex-row justify-self-center text-center font-semibold font-mono '
               + ( navOpen ? 'h-full max-h-[min-content] py-8 justify-evenly gap-2 ' : 'hidden lg:flex gap-6 ' )
               + ( !navOpen && router.pathname !== '/' && 'invisible')
             }
@@ -128,7 +130,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       About
                     </motion.div>
                   </NavLink>
@@ -142,7 +144,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Winners
                     </motion.div>
                   </NavLink>
@@ -156,7 +158,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Volunteer
                     </motion.div>
                   </NavLink>
@@ -170,7 +172,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Sponsors
                     </motion.div>
                   </NavLink>
@@ -184,7 +186,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       FAQ
                     </motion.div>
                   </NavLink>
@@ -198,7 +200,7 @@ export default function Nav() {
                     className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
                     onClick={() => setNavOpen(false)}
                   >
-                    <motion.div whileHover={{ y: -3 }} className='lg:pb-6'>
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Team
                     </motion.div>
                   </NavLink>
@@ -215,12 +217,12 @@ export default function Nav() {
             }
           </div>
           <div className='flex justify-self-end gap-4'>
-            {
-              (status === 'authenticated' && !session.user.uid && router.pathname !== '/apply')
-              &&
+            { status === 'authenticated' &&
+              !session.user.uid &&
+              router.pathname !== '/apply' &&
               <Link passHref href='/apply'>
                 <motion.button
-                  whileHover={{ scale: 1.05}} 
+                  whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.995 }}
                   className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
                 >
@@ -228,8 +230,7 @@ export default function Nav() {
                 </motion.button>
               </Link>
             }
-            {
-              (status === 'authenticated')
+            { status === 'authenticated'
               ?
                 <>
                   <div
@@ -242,7 +243,7 @@ export default function Nav() {
                 <motion.button
                   whileHover={{ scale: 1.05}} 
                   whileTap={{ scale: 0.995 }}
-                  className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                  className='hidden lg:block px-4 py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white'
                   onClick={() => toggleLoginModal()}
                 >
                   Sign In

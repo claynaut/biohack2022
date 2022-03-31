@@ -1,9 +1,13 @@
 export default function Volunteer() {
   return (
     <section className='flex w-full min-h-[60rem] items-center'>
-      <h1 className='font-semibold text-5xl'>
-        Get Involved
-      </h1>
+      <div>
+        <h2>Get Involved</h2>
+        <p>
+          Not interested in hacking, but still interested in the behind-the-scenes of BioHack? 
+          Great! We&apos;d love to have you on our team. Just click the button below to sign up!
+        </p>
+      </div>
     </section>
   )
 }

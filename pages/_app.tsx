@@ -5,6 +5,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
 import 'tailwindcss/tailwind.css'
+import 'tailwind.source.css'
 
 export default function MyApp({ Component, pageProps }) {
   return (

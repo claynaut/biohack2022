@@ -314,7 +314,7 @@ export default function ApplicationForm() {
           variable='project_story'
           register={register}
           errors={errors}
-          required
+          required={false}
         />
         <TextArea
           label="Anything you'd like to add?"
@@ -338,7 +338,7 @@ export default function ApplicationForm() {
           options={sources}
           register={register}
           errors={errors}
-          required
+          required={false}
         />
         <Checkbox
           label='Which of these do you have experience using?'

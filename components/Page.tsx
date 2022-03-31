@@ -6,7 +6,7 @@ export default function Page({ title = '', children }) {
       <Head>
         <title>BioHack 2022 { title && title !== '' && ('| ' + title) }</title>
       </Head>
-      <div className='w-full max-w-[60rem]'>
+      <div className='w-full max-w-[64rem]'>
         <section className='flex flex-col w-full'>
           {children}
         </section>
