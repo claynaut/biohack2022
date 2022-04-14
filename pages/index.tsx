@@ -22,14 +22,14 @@ export default function Home() {
       <Element name='Winners' className='flex justify-center w-full'>
         <Winners/>
       </Element>
+      <Element name='Faq' className='flex justify-center w-full'>
+        <Faq/>
+      </Element>
       <Element name='Volunteer' className='flex justify-center w-full'>
         <Volunteer/>
       </Element>
       <Element name='Sponsors' className='flex justify-center w-full'>
         <Sponsors/>
-      </Element>
-      <Element name='Faq' className='flex justify-center w-full'>
-        <Faq/>
       </Element>
       <Element name='Team' className='flex justify-center w-full'>
         <Team/>

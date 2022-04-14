@@ -150,6 +150,20 @@ export default function Nav() {
                   </NavLink>
                   <NavLink 
                     activeClass='border-accent-primary text-accent-primary'
+                    to='Faq'
+                    spy={true}
+                    smooth={true}
+                    offset={-90}
+                    duration={500}
+                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
+                    onClick={() => setNavOpen(false)}
+                  >
+                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                      FAQ
+                    </motion.div>
+                  </NavLink>
+                  <NavLink 
+                    activeClass='border-accent-primary text-accent-primary'
                     to='Volunteer'
                     spy={true}
                     smooth={true}
@@ -174,20 +188,6 @@ export default function Nav() {
                   >
                     <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Sponsors
-                    </motion.div>
-                  </NavLink>
-                  <NavLink 
-                    activeClass='border-accent-primary text-accent-primary'
-                    to='Faq'
-                    spy={true}
-                    smooth={true}
-                    offset={-90}
-                    duration={500}
-                    className='lg:mt-6 border-b-[3px] border-transparent hover:border-accent-primary hover:text-accent-primary cursor-pointer transition-all duration-150'
-                    onClick={() => setNavOpen(false)}
-                  >
-                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
-                      FAQ
                     </motion.div>
                   </NavLink>
                   <NavLink 
