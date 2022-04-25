@@ -3,8 +3,7 @@ module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['Red Hat Display', 'sans-serif'],
-      mono: ['Red Hat Mono', 'monospace'],
+      sans: ['Open Sans', 'sans-serif'],
     },
     screens: {
       'xs': '420px',
@@ -17,14 +16,31 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          100: '#D1C6AC',
+          100: 'var(--primary-100)',
+          200: 'var(--primary-200)',
+          300: 'var(--primary-300)',
+          400: 'var(--primary-400)',
+          500: 'var(--primary-500)',
+          600: 'var(--primary-600)',
         },
         accent: {
-          primary: '#007fff',
-          'primary-dark': '#006cd9',
+          DEFAULT: 'var(--accent)',
+          dark: 'var(--accent-dark)',
         },
-        overlay: '#00000032',
-        text: '#172025',
+        text: {
+          DEFAULT: 'var(--text)',
+          dark: 'var(--text-dark)'
+        },
+        card: {
+          DEFAULT: 'var(--card)'
+        },
+        sub: {
+          DEFAULT: 'var(--sub)'
+        },
+        highlight: {
+          DEFAULT: 'var(--highlight)',
+          dark: 'var(--highlight-dark)'
+        },
       }
     },
     transitionProperty: {

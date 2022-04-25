@@ -3,15 +3,15 @@ import Page from '@/components/Page'
 
 export default function Error404() {
   return (
-    <Page title='Verify Sign In Request'>
-      <div className='w-full'>
-        <h1 className='font-semibold text-5xl'>
+    <Page title='500'>
+      <section className='flex flex-col items-center w-full text-text-dark'>
+        <h1>
           500
         </h1>
-        <p className='mt-4 text-lg'>
+        <p>
           Oops! Something went wrong on our end. Check back later.
         </p>
-      </div>
+      </section>
     </Page>
   )
 }

@@ -4,14 +4,14 @@ import Page from '@/components/Page'
 export default function VerifyRequest() {
   return (
     <Page title='Verify Sign In Request'>
-      <div className='w-full'>
-        <h1 className='font-semibold text-5xl'>
+      <section className='flex flex-col items-center w-full text-text-dark'>
+        <h1>
           Verify Request
         </h1>
-        <p className='mt-4 text-lg'>
+        <p>
           Confirm your email to sign in to BioHack. Didn't find an email from us? Check your spam folder or double check if you typed in the correct email.
         </p>
-      </div>
+      </section>
     </Page>
   )
 }

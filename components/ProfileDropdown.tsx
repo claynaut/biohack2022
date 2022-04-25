@@ -31,7 +31,7 @@ export default function ProfileDropdown() {
     <>
       <div className='relative'>
         <button
-          className='flex lg:hidden p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white'
+          className='flex lg:hidden p-1.5 rounded bg-accent hover:bg-accent-dark text-text-dark'
           onClick={() => setProfileOpen(!profileOpen)}
         >
           {
@@ -43,7 +43,7 @@ export default function ProfileDropdown() {
         <motion.button
           whileHover={{ scale: 1.05}} 
           whileTap={{ scale: 0.995 }}
-          className='hidden lg:flex p-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark text-white'
+          className='hidden lg:flex p-1.5 rounded bg-accent hover:bg-accent-dark text-text-dark'
           onClick={() => setProfileOpen(!profileOpen)}
         >
           {
@@ -54,23 +54,23 @@ export default function ProfileDropdown() {
         </motion.button>
         <div
           className={
-            'absolute top-12 right-0 w-72 p-4 rounded border-2 bg-white shadow-md transition-all duration-150 '
+            'absolute top-12 right-0 w-72 p-4 rounded bg-text-dark shadow-lg transition-all duration-150 '
             + ( profileOpen ? 'z-50 visible opacity-100' : 'z-0 invisible opacity-0' )
           }
         >
           <div className='flex flex-col gap-2 items-center w-full text-lg'>
-            <div className='flex flex-col gap-2 items-center w-full pb-2 border-b-2 border-gray-300'>
-              <p className='text-center text-base text-gray-500'>
+            <div className='flex flex-col gap-2 items-center w-full pb-2 border-b-2 border-highlight'>
+              <p className='m-0 text-center text-base text-sub'>
                 Signed in as <br/>
-                {session.user.email}
+                <span className='font-semibold'>{session.user.email}</span>
               </p>
               {
                 status === 'authenticated' && !session.user.uid &&
                 <>
-                  <p className='flex'>
+                  <p className='flex m-0 text-base font-semibold'>
                     Haven&apos;t applied yet!
                     <HiOutlineQuestionMarkCircle
-                      className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
+                      className='mt-1 ml-px text-sm text-highlight hover:text-accent cursor-pointer'
                       onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝', id: 'applyInfo'})}
                     />
                   </p>
@@ -78,7 +78,7 @@ export default function ProfileDropdown() {
                     <motion.button
                       whileHover={{ scale: 1.05}} 
                       whileTap={{ scale: 0.995 }}
-                      className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                      className='w-full py-1.5 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
                       onClick={() => setProfileOpen(!profileOpen)}
                     >
                       Apply Here
@@ -89,10 +89,10 @@ export default function ProfileDropdown() {
               {
                 status === 'authenticated' && session.user.uid &&
                 <>
-                  <p className='flex'>
+                  <p className='flex m-0'>
                     Your Application Status
                     <HiOutlineQuestionMarkCircle
-                      className='mt-1 ml-px text-sm text-gray-400 hover:text-accent-primary cursor-pointer'
+                      className='mt-1 ml-px text-sm text-highlight hover:text-accent cursor-pointer'
                       onClick={() => toast(
                         <div className='flex flex-col gap-3'>
                           <span>
@@ -111,7 +111,10 @@ export default function ProfileDropdown() {
                     />
                   </p>
                   <div
-                    className='w-full py-1.5 text-center rounded bg-accent-primary font-semibold text-white'
+                    className={
+                      'w-full py-1.5 text-center rounded font-semibold text-text-dark '
+                      + (session.user.qualified === '' ? 'bg-highlight' : (session.user.qualified === 'yes' ? 'bg-[#2C5738]' : 'bg-accent'))
+                    }
                   >
                     { session.user.qualified === '' && 'Pending' }
                     { session.user.qualified === 'yes' && 'Approved' }
@@ -121,25 +124,23 @@ export default function ProfileDropdown() {
               }
               {
                 status === 'authenticated' && session.user.qualified === 'yes' &&
-                <Link passHref href='/groups/dashboard'>
-                  <div className='flex flex-col gap-2 w-full border-t-2 border-gray-300 pt-2'>
-                    <Link passHref href='/groups/dashboard'>
-                      <motion.button
-                        whileHover={{ scale: 1.03}} 
-                        whileTap={{ scale: 0.995 }}
-                        className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent-primary font-semibold hover:text-white'
-                      >
-                        <HiOutlineUserGroup className='text-2xl'/> My Group
-                      </motion.button>
-                    </Link>
-                  </div>
-                </Link>
+                <div className='flex flex-col gap-2 w-full'>
+                  <Link passHref href='/group/dashboard'>
+                    <motion.button
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent font-semibold text-accent hover:text-text-dark'
+                    >
+                      <HiOutlineUserGroup className='text-2xl'/> My Group
+                    </motion.button>
+                  </Link>
+                </div>
               }
             </div>
             <motion.button
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
-              className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent-primary font-semibold hover:text-white'
+              className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent font-semibold text-accent hover:text-text-dark'
               onClick={() => signOut()}
             >
               <HiOutlineLogout className='text-2xl'/> Sign Out

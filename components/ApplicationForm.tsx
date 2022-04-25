@@ -16,7 +16,7 @@ interface GroupProps {
 }
 
 const Group = ({title, children}: GroupProps) => (
-  <div className='flex flex-col gap-3 p-6 border-2 border-gray-300 rounded shadow-sm '>
+  <div className='flex flex-col gap-3 p-6 bg-text-dark rounded shadow-lg '>
     <h2 className='font-semibold text-xl'>{title}</h2>
     {children}
   </div>
@@ -87,29 +87,27 @@ export default function ApplicationForm() {
     'Hopin',
   ]
 
-  const onSubmit = data => {
-    const {
-      first_name,
-      last_name,
-      phone_number,
-      gender,
-      ethnicity,
-      school,
-      grade,
-      major,
-      graduation_date,
-      first_time,
-      resume,
-      github,
-      linkedin,
-      portfolio,
-      project_story,
-      additional_info,
-      goal,
-      source,
-      tool_experience
-    } = data
-    
+  const onSubmit = ({
+    first_name,
+    last_name,
+    phone_number,
+    gender,
+    ethnicity,
+    school,
+    grade,
+    major,
+    graduation_date,
+    first_time,
+    resume,
+    github,
+    linkedin,
+    portfolio,
+    project_story,
+    additional_info,
+    goal,
+    source,
+    tool_experience
+  }) => {
     const [year, month, day] = graduation_date.split('-')
     let criteria_met = true
 
@@ -351,7 +349,7 @@ export default function ApplicationForm() {
         whileHover={{ scale: 1.03}} 
         whileTap={{ scale: 0.995 }}
         type='submit'
-        className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+        className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
         onClick={() => triggerErrorNotification()}
       >
         Submit

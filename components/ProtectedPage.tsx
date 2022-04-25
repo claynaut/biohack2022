@@ -42,7 +42,7 @@ export default function ProtectedPage({ title = '', restrictions, children }) {
   if (status === 'loading') {
     return (
       <Page title={title}>
-        <p className='self-center'>Loading...</p>
+        <p className='self-center text-text-dark'>Loading...</p>
       </Page>
     )
   }

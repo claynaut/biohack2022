@@ -1,17 +1,28 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Page from '@/components/Page'
 
 export default function Error404() {
   return (
-    <Page title='Verify Sign In Request'>
-      <div className='w-full'>
-        <h1 className='font-semibold text-5xl'>
-          404
+    <Page title='404'>
+      <section className='flex flex-col items-center w-full text-text-dark'>
+        <h1>
+            404
         </h1>
-        <p className='mt-4 text-lg'>
+        <p>
           Oops! The page you&apos;re looking for doesn&apos;t exist.
         </p>
-      </div>
+        <Link passHref href='/'>
+          <motion.button
+            whileHover={{ scale: 1.05}} 
+            whileTap={{ scale: 0.995 }}
+            className='hidden lg:block px-4 py-1.5 rounded bg-accent hover:bg-accent-dark'
+          >
+            Go Back to Homepage
+          </motion.button>
+        </Link>
+      </section>
     </Page>
   )
 }

@@ -3,19 +3,74 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary-100: #99CBD1;
+    --primary-200: #736767;
+    --primary-300: #B28871;
+    --primary-400: #D1C7AC;
+    --primary-500: #D4B66E;
+    --primary-600: #D9A16E;
+    --accent: #740A0A;
+    --accent-dark: #5E0202;
+    --card: #EBDEBD;
+    --sub: #673F28;
+    --highlight: #BDA89D;
+    --highlight-dark: #9D8071;
+    --text: #18120D;
+    --text-dark: #F5F1E4;
+  }
+
+  [data-theme='light'] {
+    --primary-100: #99CBD1;
+    --primary-200: #736767;
+    --primary-300: #B28871;
+    --primary-400: #D1C7AC;
+    --primary-500: #D4B66E;
+    --primary-600: #D9A16E;
+    --accent: #740A0A;
+    --accent-dark: #5E0202;
+    --card: #EBDEBD;
+    --sub: #673F28;
+    --highlight: #BDA89D;
+    --highlight-dark: #9D8071;
+    --text: #18120D;
+    --text-dark: #F5F1E4;
+  }
+
+  [data-theme='dark'] {
+    --primary-100: #99CBD1;
+    --primary-200: #736767;
+    --primary-300: #B28871;
+    --primary-400: #D1C7AC;
+    --primary-500: #D4B66E;
+    --primary-600: #D9A16E;
+    --accent: #740A0A;
+    --accent-dark: #5E0202;
+    --card: #EBDEBD;
+    --sub: #673F28;
+    --highlight: #BDA89D;
+    --highlight-dark: #9D8071;
+    --text: #18120D;
+    --text-dark: #F5F1E4;
+  }
+
   h1 {
     @apply my-3;
     @apply text-6xl;
     @apply md:text-7xl;
-    @apply font-bold;
+    @apply font-extrabold;
+    @apply text-center;
+    @apply lg:text-left;
   }
 
   h2 {
     @apply my-3;
     @apply text-5xl;
     @apply md:text-6xl;
-    @apply font-bold;
-    @apply font-mono;
+    @apply font-extrabold;
+    @apply uppercase;
+    @apply text-center;
+    @apply lg:text-left;
   }
 
   h3 {
@@ -23,6 +78,8 @@
     @apply text-2xl;
     @apply md:text-3xl;
     @apply font-bold;
+    @apply text-center;
+    @apply lg:text-left;
   }
 
   h4 {
@@ -30,6 +87,8 @@
     @apply text-xl;
     @apply md:text-2xl;
     @apply font-semibold;
+    @apply text-center;
+    @apply lg:text-left;
   }
 
   p {
@@ -37,6 +96,8 @@
     @apply text-base;
     @apply md:text-lg;
     @apply font-medium;
+    @apply text-center;
+    @apply lg:text-left;
   }
 
   li {
@@ -46,5 +107,6 @@
 
   button {
     @apply font-bold;
+    @apply text-text-dark;
   }
 }

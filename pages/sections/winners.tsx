@@ -2,7 +2,7 @@ import { WinnerGrid } from '@/components/Winners'
 
 export default function Winners() {
   return (
-    <section className='flex w-full my-12'>
+    <section className='flex flex-col w-full h-full my-12 lg:mt-0 max-w-[64rem]'>
       <div>
         <h2>Past Winners</h2>
         <p>

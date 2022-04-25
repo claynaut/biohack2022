@@ -48,23 +48,23 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
       <div
         id='login-modal'
         className={
-          'fixed top-1/2 left-1/2 w-11/12 sm:w-[28rem] p-4 rounded bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-150 '
+          'fixed top-1/2 left-1/2 w-11/12 sm:w-[32rem] p-4 rounded bg-text-dark shadow-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-150 '
           + ( show ? 'z-[1200] visible opacity-100' : 'z-0 invisible opacity-0' )
         }
       >
         <div className='flex flex-col gap-4 items-center w-full mb-8 text-lg'>
           <HiX
-            className='self-end text-xl hover:text-accent-primary cursor-pointer'
+            className='self-end text-2xl hover:text-accent cursor-pointer'
             onClick={handler}
           />
-          <h1 className='text-center w-full max-w-sm font-semibold text-2xl'>
+          <h1 className='text-center w-full max-w-md font-bold text-2xl'>
             Sign In
           </h1>
-          <p className='w-full max-w-sm'>
-            Sign in to BioHack via email or Google to apply and access more. No password required.
+          <p className='mt-0 w-full max-w-md text-center'>
+            Sign in via email or Google to apply, view your application status, and more. No password required.
           </p>
           <form
-            className='w-full max-w-sm'
+            className='w-full max-w-md'
             onSubmit={handleSubmit(onSubmit)}
           >
             <input
@@ -80,8 +80,8 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
                 {...register('email')}
                 onChange={handleEmailChange}
                 className={
-                  'w-full px-2 py-1 rounded border-2 focus:border-accent-primary focus:outline-none '
-                  + ( error ? 'border-red-500' : 'border-gray-300')
+                  'w-full px-2 py-1 rounded border-2 focus:border-accent focus:outline-none '
+                  + ( error ? 'border-red-500' : 'border-highlight')
                 }
               />
             </div>
@@ -89,19 +89,19 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
               type='submit'
-              className='w-full mt-2 py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              className='w-full mt-2 py-2 rounded bg-accent hover:bg-accent-dark font-semibold'
             >
               Sign In With Email
             </motion.button>
           </form>
           <div className='flex flex-col gap-6 pt-2 justify-center w-full max-w-sm'>
-            <div className='text-center border-b-2 border-gray-300 leading-[0.1rem]'>
-              <span className='px-4 bg-white text-gray-400'>or</span>
+            <div className='text-center border-b-2 border-highlight leading-[0.1rem]'>
+              <span className='px-4 bg-text-dark text-highlight font-semibold'>or</span>
             </div>
             <motion.button
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
-              className='w-full py-1 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold'
               onClick={() => signIn('google')}
             >
               Sign In With Google

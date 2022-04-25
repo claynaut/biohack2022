@@ -5,63 +5,70 @@ export const TeamProfile = ({ link, image, name, role }) => (
   <div className='flex flex-col w-full max-w-[8rem] sm:max-w-[12rem] items-center'>
     <motion.span whileHover={{ y: -4 }} className='cursor-pointer'>
       <a target='_blank' rel='noreferrer noopener' href={link}>
-        {/* <Image
-          src={image}
-          width={150}
-          height={150}
-          objectFit='contain'
-          priority={true}
-          quality={100}
-          className="rounded-full"
-        /> */}
-        <div className='w-[140px] sm:w-[180px] h-[140px] sm:h-[180px] bg-white rounded-full'/>
+        { image ?
+            <div className='flex border-2 border-text-dark rounded-full w-full'>
+              <Image
+                src={image}
+                width={180}
+                height={180}
+                objectFit='contain'
+                priority={true}
+                quality={100}
+                className='rounded-full'
+              />
+            </div>
+          :
+            <div 
+              className='w-[140px] sm:w-[180px] h-[140px] sm:h-[180px] bg-text-dark rounded-full'
+            />
+        }
       </a>
     </motion.span>
     <p className='mb-0 mt-2 w-max font-bold text-sm sm:text-base'>{name}</p>
-    <p className='mt-0 leading-4 text-sm text-center font-mono'>{role}</p>
+    <p className='mt-0 leading-4 text-sm text-center'>{role}</p>
   </div>
 )
 
 const staff = [
   {
-    link: '/',
-    image: '/vercel.svg',
+    link: 'https://www.linkedin.com/in/aneesh-sharma/',
+    image: '/team/aneesh.jpg',
     name: 'Aneesh Sharma',
     role: 'Director',
   },
   {
     link: '/',
-    image: '/vercel.svg',
+    // image: '/vercel.svg',
     name: 'Jimmy Ho',
     role: 'Operations Lead',
   },
   {
-    link: '/',
-    image: '/vercel.svg',
+    link: 'https://www.linkedin.com/in/kevin-ho-a920491b4',
+    image: '/team/kevin.jpg',
     name: 'Kevin Ho',
     role: 'Operations Lead',
   },
   {
     link: 'https://www.linkedin.com/in/shruti-jawale-294566195/',
-    image: '/vercel.svg',
+    // image: '/vercel.svg',
     name: 'Shruti Jawale',
     role: 'Sponsorship Lead',
   },
   {
     link: 'https://www.linkedin.com/in/evelyn-aguirre-vargas-346922205/',
-    image: '/vercel.svg',
+    // image: '/vercel.svg',
     name: 'Evelyn Aguirre Vargas',
     role: 'Marketing Lead',
   },
   {
     link: '/',
-    image: '/vercel.svg',
+    // image: '/vercel.svg',
     name: 'Natasha Brinkley',
     role: 'Marketing Lead',
   },
   {
     link: 'https://www.linkedin.com/in/jspescasio/',
-    image: '/vercel.svg',
+    image: '/team/js.jpg',
     name: 'J.S. Pescasio',
     role: 'Web Dev Lead',
   },

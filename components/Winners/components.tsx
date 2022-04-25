@@ -4,12 +4,12 @@ const WinnerCard = ({ place, project, description}) => (
   <motion.div
     whileHover={{ y: -3 }} 
     className={
-      'p-4 px-6 bg-white rounded-md shadow-md '
+      'p-4 px-6 bg-card rounded-md shadow-md text-sub '
       + (place === 'Overall 1st Place' ? 'col-span-2' : 'col-span-2 sm:col-span-1')
     }
   >
     <h3 className='text-center'>{project}</h3>
-    <h4 className='text-center font-mono'>{place}</h4>
+    <h4 className='text-center'>{place}</h4>
     <p className='text-base'>{description}</p>
   </motion.div>
 )

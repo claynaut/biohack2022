@@ -11,6 +11,18 @@ import ProtectedPage from '@/components/ProtectedPage'
 import { Input } from '@/components/Form'
 import Modal from '@/components/Modal'
 
+interface GroupProps {
+  title: string
+  children: React.ReactNode | React.ReactNode[]
+}
+
+const Group = ({title, children}: GroupProps) => (
+  <div className='flex flex-col gap-3 p-6 bg-text-dark rounded shadow-lg '>
+    <h3 className='text-center text-3xl'>{title}</h3>
+    {children}
+  </div>
+)
+
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 export default function GroupDashbaord() {
@@ -81,20 +93,17 @@ export default function GroupDashbaord() {
 
   return (
     <ProtectedPage title='My Group' restrictions={['signin', 'qualified']}>
-      <section className='flex flex-col w-full max-w-md my-32 self-center'>
+      <section className='flex flex-col gap-8 w-full sm:max-w-xl self-center'>
         {
           status === 'authenticated' && (
           session.user.gid === '' ?
             <>
-              <div className='w-full mb-12'>
-                <h1 className='font-semibold text-5xl'>
-                  Join Group
-                </h1>
-                <p className='my-4 text-lg'>
+              <Group title='Join Group'>
+                <p className='my-4 text-lg text-center'>
                   Have a group to join? Input the invite code below.
                 </p>
                 <form 
-                  className='flex flex-col gap-3 w-full sm:max-w-md self-center'
+                  className='flex flex-col gap-3 w-full self-center'
                   onSubmit={handleSubmit(joinGroup)}
                 >
                   <Input
@@ -109,67 +118,46 @@ export default function GroupDashbaord() {
                     whileHover={{ scale: 1.03}} 
                     whileTap={{ scale: 0.995 }}
                     type='submit'
-                    className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                    className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
                     onClick={() => triggerErrorNotification()}
                   >
                     Join a Group
                   </motion.button>
                 </form>
-              </div>
-              <div className='w-full mb-12'>
-                <h1 className='font-semibold text-5xl'>
-                  Create Group
-                </h1>
-                <p className='my-4 text-lg'>
+              </Group>
+              <Group title='Create Group'>
+                <p>
                   Want to make a group? Just click the button below.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.03}} 
                   whileTap={{ scale: 0.995 }}
                   type='submit'
-                  className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+                  className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
                   onClick={() => createGroup()}
                 >
                   Create a Group
                 </motion.button>
-              </div>
-              <div className='w-full mb-12'>
-                <h1 className='font-semibold text-5xl'>
-                  View Groups
-                </h1>
-                <p className='my-4 text-lg'>
-                  Still looking for a group to join? Click the button below to view all groups you can request an invite code from.
-                </p>
-                <Link passHref href='/groups'>
-                  <motion.button
-                    whileHover={{ scale: 1.03}} 
-                    whileTap={{ scale: 0.995 }}
-                    type='submit'
-                    className='w-full py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
-                  >
-                    View Groups
-                  </motion.button>
-                </Link>
-              </div>
+              </Group>
             </>
           :
-            <div className='w-full mb-12'>
-              <h1 className='font-semibold text-5xl'>
+            <div className='w-full mb-12 text-text-dark'>
+              <h3 className='text-4xl'>
                 My Group
-              </h1>
+              </h3>
               <p className='my-4 text-lg'>
                 Invite others to your group by sharing the invite code below.
               </p>
               <p className='my-4 text-lg'>
                 Note that groups can only have a maximum of 4 hackers, including yourself.
               </p>
-              <h3 className='font-semibold text-3xl'>
+              <h3 className='text-4xl'>
                 Invite Code
               </h3>
               <p className='my-4 text-lg'>
                 {session.user.gid}
               </p>
-              <h3 className='font-semibold text-3xl'>
+              <h3 className='text-4xl'>
                 Members
               </h3>
               <ul className='mt-4 ml-5 list-disc text-lg'>
@@ -184,13 +172,13 @@ export default function GroupDashbaord() {
               </ul>
             </div>
         )}
-        <div className='flex flex-col w-full gap-3 max-w-md'>
+        <div className='flex flex-col w-full gap-3'>
           { status === 'authenticated' 
             && session.user.gid !== '' &&
             <motion.button
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
-              className='w-full max-w-lg py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
               onClick={() => setModalOpen(true)}
             >
               Leave Group
@@ -200,7 +188,7 @@ export default function GroupDashbaord() {
             <motion.button
               whileHover={{ scale: 1.03}} 
               whileTap={{ scale: 0.995 }}
-              className='w-full max-w-lg py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+              className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
             >
               Go Back to Homepage
             </motion.button>
@@ -217,7 +205,7 @@ export default function GroupDashbaord() {
           <motion.button
             whileHover={{ scale: 1.03}} 
             whileTap={{ scale: 0.995 }}
-            className='w-full max-w-lg py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+            className='w-full max-w-lg py-2 rounded bg-highlight hover:bg-highlight-dark font-semibold text-text-dark'
             onClick={() => leaveGroup()}
           >
             Confirm
@@ -225,7 +213,7 @@ export default function GroupDashbaord() {
           <motion.button
             whileHover={{ scale: 1.03}} 
             whileTap={{ scale: 0.995 }}
-            className='w-full max-w-lg py-1.5 rounded bg-accent-primary hover:bg-accent-primary-dark font-semibold text-white'
+            className='w-full max-w-lg py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
             onClick={() => setModalOpen(false)}
           >
             Cancel

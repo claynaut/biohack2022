@@ -2,15 +2,13 @@ import Head from 'next/head'
 
 export default function Page({ title = '', children }) {
   return (
-    <main className='flex flex-col justify-center items-center px-4 w-full min-h-screen'>
+    <main className='flex flex-col justify-center items-center w-full min-h-screen'>
       <Head>
         <title>BioHack 2022 { title && title !== '' && ('| ' + title) }</title>
       </Head>
-      <div className='w-full max-w-[64rem]'>
-        <section className='flex flex-col w-full'>
-          {children}
-        </section>
-      </div>
+      <section className='flex flex-col w-full justify-center items-center'>
+        {children}
+      </section>
     </main>
   )
 }

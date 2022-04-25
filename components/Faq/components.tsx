@@ -5,10 +5,10 @@ function FaqAccordion({ question, answer }) {
   const [open, setOpen] = useState(true)
 
   return (
-    <div className='flex flex-col w-full bg-white rounded-md shadow-md'>
+    <div className='flex flex-col w-full bg-card text-sub rounded-md shadow-md'>
       <div 
         className={
-          'flex px-3 py-2 items-center gap-2 hover:text-highlight cursor-pointer '
+          'flex px-3 py-2 items-center gap-2 cursor-pointer '
         }
         onClick={() => setOpen(!open)}
       >
@@ -30,7 +30,7 @@ function FaqAccordion({ question, answer }) {
       
       >
         { typeof answer === 'string' ?
-          <p className='m-0 mb-4 text-base'>{answer}</p>
+          <p className='m-0 mb-4 text-base text-left'>{answer}</p>
           :
           <div className='m-0 mb-4 text-base'>{answer}</div>
         }
@@ -42,7 +42,7 @@ function FaqAccordion({ question, answer }) {
 const questions = [
   {
     question: 'What is a hackathon?',
-    answer: 'A hackathon is a weekend-long event that invites curious minds to learn and build something new. You may pick up a project of your choosing to work on during the event, to dive into a topic you\'ve been meaning to explore. You also get to meet new friends as you work in a team of up to 4!'
+    answer: 'A hackathon is a weekend-long event that invites curious minds to learn and build something new. You may pick up a project of your choosing to work on during the event, to dive into a topic you\'ve been meaning to explore. You also get to meet new friends as you work in a team of up to 4 members!'
   },
   {
     question: 'Who can attend?',
