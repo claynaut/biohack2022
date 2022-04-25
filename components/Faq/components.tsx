@@ -20,7 +20,7 @@ function FaqAccordion({ question, answer }) {
             }
           />
         </div>
-        <h4 className='font-bold text-xl'>{question}</h4>
+        <h4 className='font-bold text-xl text-left'>{question}</h4>
       </div>
       <div 
         className={
