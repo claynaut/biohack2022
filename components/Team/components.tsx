@@ -6,7 +6,7 @@ export const TeamProfile = ({ link, image, name, role }) => (
     <motion.span whileHover={{ y: -4 }} className='cursor-pointer'>
       <a target='_blank' rel='noreferrer noopener' href={link}>
         { image ?
-            <div className='flex border-2 border-text-dark rounded-full w-full'>
+            <div className='flex border-2 border-text-dark rounded-full shadow-md w-full'>
               <Image
                 src={image}
                 width={180}

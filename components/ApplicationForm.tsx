@@ -16,7 +16,7 @@ interface GroupProps {
 }
 
 const Group = ({title, children}: GroupProps) => (
-  <div className='flex flex-col gap-3 p-6 bg-text-dark rounded shadow-lg '>
+  <div className='flex flex-col gap-3 p-6 bg-text-dark rounded shadow-lg'>
     <h2 className='font-semibold text-xl'>{title}</h2>
     {children}
   </div>
