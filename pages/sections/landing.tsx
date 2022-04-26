@@ -9,7 +9,7 @@ export default function Landing() {
           Virtual Healthcare Hackathon
         </h4>
         <h3>
-          May 7-8, 2022
+          May 14-15, 2022
         </h3>
       </div>
     </section>
