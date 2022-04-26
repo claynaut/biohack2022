@@ -131,7 +131,7 @@ export default function ProfileDropdown() {
                       whileTap={{ scale: 0.995 }}
                       className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent font-semibold text-accent hover:text-text-dark'
                     >
-                      <HiOutlineUserGroup className='text-2xl'/> My Group
+                      <HiOutlineUserGroup className='text-2xl'/> View My Group
                     </motion.button>
                   </Link>
                 </div>
