@@ -6,7 +6,7 @@ export const Sponsor = ({ image, width, height, link, shrink, tall }) => (
   <div
     className={
       'flex items-center min-h-[10rem] '
-      + (shrink ? 'w-[6.5rem] md:w-32 ' : (tall ? 'w-18 md:w-20 ' : 'w-64 md:w-80'))
+      + (shrink ? 'w-[6.5rem] md:w-32 ' : (tall ? 'w-18 md:w-20 ' : 'w-64 md:w-80 '))
     }
   >
     <motion.div
@@ -60,6 +60,14 @@ const sponsors = [
     height: 2256,
     link: 'https://acmucr.org/',
     shrink: Boolean(true),
+    tall: null,
+  },
+  {
+    image: '/sponsors/asucr.png',
+    width: 716,
+    height: 183,
+    link: 'https://asucr.ucr.edu/',
+    shrink: null,
     tall: null,
   },
 ]

@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
           <link rel='preload' as='image' href='/assets/sponsors/kgi.png' />
           <link rel='preload' as='image' href='/assets/sponsors/blackstone.png' />
           <link rel='preload' as='image' href='/assets/sponsors/acm.png' />
+          <link rel='preload' as='image' href='/assets/sponsors/asucr.png' />
         </Head>
         <body className='text-text bg-primary-300'>
           <Main />

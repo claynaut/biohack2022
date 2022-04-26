@@ -56,13 +56,13 @@ const staff = [
   },
   {
     link: 'https://www.linkedin.com/in/evelyn-aguirre-vargas-346922205/',
-    // image: '/vercel.svg',
+    image: '/team/evelyn.jpg',
     name: 'Evelyn Aguirre Vargas',
     role: 'Marketing Lead',
   },
   {
-    link: '/',
-    // image: '/vercel.svg',
+    link: 'https://www.linkedin.com/in/natasha-tbrinkley/',
+    image: '/team/natasha.jpg',
     name: 'Natasha Brinkley',
     role: 'Marketing Lead',
   },
