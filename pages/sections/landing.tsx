@@ -79,7 +79,7 @@ export default function Landing() {
                     View My Group
                   </motion.button>
                 </Link>
-                <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full justify-center'>
+                {/* <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
@@ -87,7 +87,7 @@ export default function Landing() {
                   >
                     Open Discord
                   </motion.button>
-                </a>
+                </a> */}
               </>
             }
           </div>
