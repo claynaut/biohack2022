@@ -6,7 +6,7 @@ import Page from '@/components/Page'
 export default function Error404() {
   return (
     <Page title='404'>
-      <section className='flex flex-col items-center w-full text-text-dark'>
+      <section className='flex flex-col items-center w-full px-4 text-text-dark'>
         <h1>
             404
         </h1>
