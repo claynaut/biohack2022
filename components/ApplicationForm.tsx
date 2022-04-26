@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm, useFormState } from 'react-hook-form'
 import axios from 'axios'
 import { motion } from 'framer-motion'
@@ -25,7 +25,10 @@ const Group = ({title, children}: GroupProps) => (
 export default function ApplicationForm() {
   const { data: session } = useSession()
   const { register, handleSubmit, control } = useForm()
-  const { errors, isSubmitSuccessful } = useFormState({ control })
+  const { errors } = useFormState({ control })
+  const [clickedSubmitOnce, setClickedSubmitOnce] = useState(false)
+  const [fileUploaded, setFileUploaded] = useState(false)
+
   const genders = [
     'Male',
     'Female',
@@ -44,6 +47,7 @@ export default function ApplicationForm() {
     'Prefer not to say',
   ]
   const grades = [
+    'High School',
     '1st Year Undergraduate',
     '2nd Year Undergraduate',
     '3rd Year Undergraduate',
@@ -64,10 +68,6 @@ export default function ApplicationForm() {
     'Mechanical Engineering',
     'Other',
   ]
-  const graduated = [
-    'Yes',
-    'No',
-  ]
   const hackerExperience = [
     'Yes',
     'No',
@@ -86,8 +86,40 @@ export default function ApplicationForm() {
     'Discord',
     'Hopin',
   ]
+  
+  const determineCriteriaMet = (graduation_date: string, grade: string) => {
+    const [year, month, day] = graduation_date.split('-')
+    let criteria_met = true
 
-  const onSubmit = ({
+    // determine if criteria to participate is met
+    if (grade === 'High School')
+      criteria_met = false
+    if (grade === 'Graduate')
+      criteria_met = false
+    if (parseInt(year) < 2022)
+      criteria_met = false
+    else if (parseInt(year) === 2022)
+      if (parseInt(month) < 5)
+        criteria_met = false
+      else if (parseInt(month) === 5 && parseInt(day) <= 14)
+        criteria_met = false
+    
+    return criteria_met
+  }
+
+  const uploadFile = async (resume, first_name: string, last_name: string, uid: string) => {
+    if (fileUploaded) {
+      const file = resume[0]
+      const filename = first_name.replace(/\s/g, '') + '___' + last_name.replace(/\s/g, '') + '___' + uid + '.pdf'
+      const fileRef = ref(storage, 'resumes/' + filename)
+      const metadata = {
+        contentType: 'application/pdf',
+      }
+      await uploadBytes(fileRef, file, metadata) // upload file
+    }
+  }
+
+  const onSubmit = async({
     first_name,
     last_name,
     phone_number,
@@ -108,26 +140,14 @@ export default function ApplicationForm() {
     source,
     tool_experience
   }) => {
-    const [year, month, day] = graduation_date.split('-')
-    let criteria_met = true
+    if (clickedSubmitOnce) { return }
+    setClickedSubmitOnce(Boolean(true))
 
-    // determine if criteria to participate is met
-    if (grade === 'Graduate')
-      criteria_met = false
-    if (parseInt(year) < 2022)
-      criteria_met = false
-    else if (parseInt(year) === 2022)
-      if (parseInt(month) < 4)
-        criteria_met = false
-      else if (parseInt(month) === 5 && parseInt(day) <= 7)
-        criteria_met = false
-
+    // generate other user attributes
+    let criteria_met = determineCriteriaMet(graduation_date, grade)
     const uid = nanoid()
 
-    const file = resume[0]
-    const filename = first_name + '_' + last_name + '_' + uid
-    const fileRef = ref(storage, 'resumes/' + filename)
-    uploadBytes(fileRef, file) // upload file
+    await uploadFile(resume, first_name, last_name, uid)
     
     axios.post('/api/apps/create', {
       uid,
@@ -156,6 +176,13 @@ export default function ApplicationForm() {
         id: 'applicationFilledSuccess',
       })
       router.reload()
+    })
+    .catch(() => {
+      toast.error(
+        'Uh oh. Something went wrong. If this issue persists, let us know.',
+        { id: 'submitApplicationError' }
+      )
+      setClickedSubmitOnce(Boolean(false))
     })
   }
 
@@ -352,7 +379,7 @@ export default function ApplicationForm() {
         className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
         onClick={() => triggerErrorNotification()}
       >
-        Submit
+        {clickedSubmitOnce ? 'Submitting...' : 'Submit'}
       </motion.button>
     </form>
   )

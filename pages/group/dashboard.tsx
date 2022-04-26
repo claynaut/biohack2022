@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from 'swr'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useForm, useFormState } from 'react-hook-form'
@@ -30,8 +30,22 @@ export default function GroupDashbaord() {
   const router = useRouter()
   const { register, handleSubmit, control } = useForm()
   const { errors } = useFormState({ control })
-  const { data, error } = useSWR('/api/groups/user', fetcher)
+  const { cache } = useSWRConfig()
+  const { data, error, isValidating } = useSWR('/api/groups/query', fetcher, {
+    onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
+      // Never retry on 404.
+      if (error.status === 404) return
+  
+      // Only retry up to 10 times.
+      if (retryCount >= 10) return
+  
+      // Retry after 1.5 seconds.
+      setTimeout(() => revalidate({ retryCount }), 1500)
+    },
+  })
   const [modalOpen, setModalOpen] = useState(false)
+  const [clickedCreateOnce, setClickedCreateOnce] = useState(false)
+  const [clickedLeaveOnce, setClickedLeaveOnce] = useState(false)
 
   const joinGroup = ({ invite_code }) => {
     axios.post('/api/groups/join', { invite_code })
@@ -56,6 +70,9 @@ export default function GroupDashbaord() {
   }
 
   const createGroup = () => {
+    if (clickedCreateOnce) { return }
+    setClickedCreateOnce(Boolean(true))
+
     axios.post('/api/groups/create')
     .then(() => {
       toast.success('Successfully created a group!', { id: 'createGroupSuccess' })
@@ -66,10 +83,14 @@ export default function GroupDashbaord() {
         'Uh oh. Something went wrong. If this issue persists, let us know.',
         { id: 'createGroupError'}
       )
+      setClickedCreateOnce(Boolean(false))
     })
   }
 
   const leaveGroup = () => {
+    if (clickedLeaveOnce) { return }
+    setClickedLeaveOnce(Boolean(true))
+
     axios.post('/api/groups/leave')
     .then(() => {
       toast.success('Successfully left your group!', { id: 'leaveGroupSuccess' })
@@ -80,6 +101,7 @@ export default function GroupDashbaord() {
         'Uh oh. Something went wrong. If this issue persists, let us know.',
         { id: 'leaveGroupError'}
       )
+      setClickedLeaveOnce(Boolean(false))
     })
   }
 
@@ -90,6 +112,8 @@ export default function GroupDashbaord() {
       })
     }
   }
+
+  const cachedData = cache.get('/api/groups/query')
 
   return (
     <ProtectedPage title='My Group' restrictions={['signin', 'qualified']}>
@@ -136,7 +160,7 @@ export default function GroupDashbaord() {
                   className='w-full py-2 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
                   onClick={() => createGroup()}
                 >
-                  Create a Group
+                  {clickedCreateOnce ? 'Creating Group...' : 'Create Group' }
                 </motion.button>
               </Group>
             </>
@@ -160,16 +184,30 @@ export default function GroupDashbaord() {
               <h3>
                 Members
               </h3>
-              <ul className='mt-4 ml-5 list-disc text-lg'>
-                {
-                  !error && data && 
-                  data.members.map(({ name }) =>
-                    <li>
+              { (error || !data) &&
+                (cachedData
+                  ?
+                  <ul className='mt-4 ml-5 list-disc text-lg'>
+                    {cachedData.members.map(({ name }) =>
+                      <li key={name}>
+                        {name.first} {name.last}
+                      </li>
+                    )}
+                  </ul>
+                  : 'Loading...'
+                )
+              }
+              { (!error && data && !isValidating) 
+                ?
+                <ul className='mt-4 ml-5 list-disc text-lg'>
+                  {data.members.map(({ name }) =>
+                    <li key={name}>
                       {name.first} {name.last}
                     </li>
-                  )
-                }
-              </ul>
+                  )}
+                </ul>
+                : 'Loading...'
+              }
             </div>
         )}
         <div className='flex flex-col w-full gap-3'>
@@ -208,7 +246,7 @@ export default function GroupDashbaord() {
             className='w-full max-w-lg py-2 rounded bg-highlight hover:bg-highlight-dark font-semibold text-text-dark'
             onClick={() => leaveGroup()}
           >
-            Confirm
+            {clickedLeaveOnce ? 'Leaving Group...' : 'Confirm Leave' }
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.03}} 
