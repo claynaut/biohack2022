@@ -94,7 +94,7 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
               Sign In With Email
             </motion.button>
           </form>
-          <div className='flex flex-col gap-6 pt-2 justify-center w-full max-w-sm'>
+          <div className='flex flex-col gap-6 pt-2 justify-center w-full max-w-md'>
             <div className='text-center border-b-2 border-highlight leading-[0.1rem]'>
               <span className='px-4 bg-text-dark text-highlight font-semibold'>or</span>
             </div>
@@ -111,7 +111,7 @@ export default function LoginModal({ show, handler, csrfToken = '' }) {
       </div>
       <div
         className={
-          'fixed top-0 left-0 w-full h-full bg-overlay '
+          'fixed top-0 left-0 w-full h-full bg-[#0000003F] '
           + ( show ? 'z-[1100] visible opacity-100' : 'z-0 invisible opacity-0' )
         }
         onClick={handler}
