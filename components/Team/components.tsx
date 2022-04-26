@@ -50,7 +50,7 @@ const staff = [
   },
   {
     link: 'https://www.linkedin.com/in/shruti-jawale-294566195/',
-    // image: '/vercel.svg',
+    image: '/team/shruti.jpg',
     name: 'Shruti Jawale',
     role: 'Sponsorship Lead',
   },
