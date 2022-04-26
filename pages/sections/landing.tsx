@@ -20,7 +20,7 @@ export default function Landing() {
           <h4>
             Virtual Healthcare Hackathon
           </h4>
-          <h3>
+          <h3 className='text-accent font-extrabold'>
             May 14-15, 2022
           </h3>
         </div>
