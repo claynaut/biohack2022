@@ -10,6 +10,7 @@ export default function Landing() {
             width={922}
             height={1063}
             quality={80}
+            priority={Boolean(true)}
             objectFit='contain'
           />
         </div>

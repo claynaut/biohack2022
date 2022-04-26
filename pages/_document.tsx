@@ -19,6 +19,7 @@ export default class MyDocument extends Document {
           <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
           <link rel='manifest' href='/site.webmanifest' />
           <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+          <link rel='preload' as='image' href='/logo.png' />
           <link rel='preload' as='image' href='/assets/sponsors/aspb.png' />
           <link rel='preload' as='image' href='/assets/sponsors/kgi.png' />
           <link rel='preload' as='image' href='/assets/sponsors/blackstone.png' />
