@@ -99,7 +99,7 @@ export default function GroupDashbaord() {
           session.user.gid === '' ?
             <>
               <Group title='Join Group'>
-                <p className='my-4 text-lg text-center'>
+                <p className='text-center'>
                   Have a group to join? Input the invite code below.
                 </p>
                 <form 
@@ -126,7 +126,7 @@ export default function GroupDashbaord() {
                 </form>
               </Group>
               <Group title='Create Group'>
-                <p>
+                <p className='text-center'>
                   Want to make a group? Just click the button below.
                 </p>
                 <motion.button
@@ -142,22 +142,22 @@ export default function GroupDashbaord() {
             </>
           :
             <div className='w-full mb-12 text-text-dark'>
-              <h3 className='text-4xl'>
+              <h3>
                 My Group
               </h3>
-              <p className='my-4 text-lg'>
+              <p>
                 Invite others to your group by sharing the invite code below.
               </p>
-              <p className='my-4 text-lg'>
+              <p>
                 Note that groups can only have a maximum of 4 hackers, including yourself.
               </p>
-              <h3 className='text-4xl'>
+              <h3>
                 Invite Code
               </h3>
-              <p className='my-4 text-lg'>
+              <p>
                 {session.user.gid}
               </p>
-              <h3 className='text-4xl'>
+              <h3>
                 Members
               </h3>
               <ul className='mt-4 ml-5 list-disc text-lg'>

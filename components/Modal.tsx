@@ -40,7 +40,7 @@ export default function Modal({ show, handler, title, description, children }) {
       </div>
       <div
         className={
-          'fixed top-0 left-0 w-full h-full bg-overlay '
+          'fixed top-0 left-0 w-full h-full bg-[#0000003F] '
           + ( show ? 'z-[1100] visible opacity-100' : 'z-0 invisible opacity-0' )
         }
         onClick={() => handler(false)}
