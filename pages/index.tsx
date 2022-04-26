@@ -1,5 +1,6 @@
 import React from 'react'
 import { Element } from 'react-scroll'
+import Image from 'next/image'
 
 import Page from '@/components/Page'
 import Landing from '@/sections/landing'
@@ -16,8 +17,52 @@ export default function Home() {
     <Page>
       <Element
         name='Home'
-        className='flex justify-center w-full px-4 bg-primary-100'
+        className='relative flex justify-center w-full px-4 bg-primary-100'
       >
+        <div className='absolute top-0 left-0 block md:hidden w-full max-w-lg'>
+          <Image
+            src='/assets/foliage-left.png'
+            width={740}
+            height={629}
+            quality={80}
+            priority={Boolean(true)}
+            layout='responsive'
+            objectFit='contain'
+          />
+        </div>
+        <div className='absolute bottom-0 right-0 block md:hidden w-80'>
+          <Image
+            src='/assets/foliage-right.png'
+            width={557}
+            height={563}
+            quality={80}
+            priority={Boolean(true)}
+            layout='responsive'
+            objectFit='contain'
+          />
+        </div>
+        <div className='absolute top-0 left-0 hidden md:block md:w-[34rem]'>
+          <Image
+            src='/assets/tree-left.png'
+            width={740}
+            height={1017}
+            quality={80}
+            priority={Boolean(true)}
+            layout='responsive'
+            objectFit='contain'
+          />
+        </div>
+        <div className='absolute top-0 right-0 hidden xl:block w-[40rem]'>
+          <Image
+            src='/assets/tree-right.png'
+            width={911}
+            height={1281}
+            quality={80}
+            priority={Boolean(true)}
+            layout='responsive'
+            objectFit='contain'
+          />
+        </div>
         <Landing/>
       </Element>
       <Border bgColor='bg-primary-100' fillColor='primary-200'/>
@@ -37,8 +82,19 @@ export default function Home() {
       <Border type={2} bgColor='bg-primary-300' fillColor='primary-400'/>
       <Element 
         name='Faq' 
-        className='flex justify-center w-full px-4 bg-primary-400'
+        className='relative flex justify-center w-full px-4 bg-primary-400'
       >
+        <div className='absolute top-0 left-0 hidden xl:block w-[40rem]'>
+          <Image
+            src='/assets/boating.png'
+            width={4239}
+            height={3889}
+            quality={80}
+            priority={Boolean(true)}
+            layout='responsive'
+            objectFit='contain'
+          />
+        </div>
         <Faq/>
       </Element>
       <Border type={3} bgColor='bg-primary-400' fillColor='primary-500'/>

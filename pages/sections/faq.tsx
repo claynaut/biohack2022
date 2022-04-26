@@ -4,7 +4,7 @@ import { FaqGrid } from '@/components/Faq'
 
 export default function Faq() {
   return (
-    <section className='flex flex-col w-full h-full my-12 lg:mt-0 max-w-[64rem]'>
+    <section className='flex flex-col w-full h-full my-12 lg:mt-0 max-w-[64rem] z-[50]'>
       <div className='flex flex-col w-full items-center'>
         <h2>FAQ</h2>
         <p className='text-center'>
