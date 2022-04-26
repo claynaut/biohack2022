@@ -17,7 +17,7 @@ export default function Error404() {
           <motion.button
             whileHover={{ scale: 1.05}} 
             whileTap={{ scale: 0.995 }}
-            className='hidden lg:block px-4 py-1.5 rounded bg-accent hover:bg-accent-dark'
+            className='px-4 py-1.5 rounded bg-accent hover:bg-accent-dark'
           >
             Go Back to Homepage
           </motion.button>

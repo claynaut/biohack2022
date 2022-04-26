@@ -81,7 +81,7 @@ export function SponsorsGrid() {
 
   return (
     <div className='grid grid-cols-2 flex flex-col mt-16'>
-      <div className='col-span-2 relative flex flex-wrap justify-center w-full gap-20 gap-y-0 md:gap-y-6 p-10 rounded-md overflow-hidden'>
+      <div className='col-span-2 relative flex flex-wrap justify-center w-full gap-20 gap-y-0 md:gap-y-6 rounded-md overflow-hidden'>
         { sponsors.map(({ image, width, height, link, shrink, tall }) =>
           <Sponsor
             key={link}
