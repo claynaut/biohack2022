@@ -57,6 +57,14 @@ const questions = [
     answer: 'Priority Registration will open soon. Please keep an eye out on our social media platforms to hear the announcement. Once applications are open, you will be able to register through this website.'
   },
   {
+    question: 'When does registration close?',
+    answer: 'Registration closes on Friday, May 13 midnight.'
+  },
+  {
+    question: 'How do I know if I\'m qualified to participate?',
+    answer: 'You can view your application status via the website\'s profile dropdown. We will also send an email to you once we have reviewed your application.'
+  },
+  {
     question: 'Does this event cost money?',
     answer: 'No! This event is completely free to all participants.'
   },
