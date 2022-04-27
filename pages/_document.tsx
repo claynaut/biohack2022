@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
           <link rel='preload' as='image' href='/assets/tree-right.png' />
           <link rel='preload' as='image' href='/assets/foliage-left.png' />
           <link rel='preload' as='image' href='/assets/foliage-right.png' />
+          <link rel='preload' as='image' href='/assets/footprints.svg' />
           <link rel='preload' as='image' href='/assets/sponsors/aspb.png' />
           <link rel='preload' as='image' href='/assets/sponsors/kgi.png' />
           <link rel='preload' as='image' href='/assets/sponsors/blackstone.png' />
