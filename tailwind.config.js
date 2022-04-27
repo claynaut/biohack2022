@@ -14,6 +14,9 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
+      backgroundImage: {
+        pattern: 'var(--pattern)',
+      },
       colors: {
         primary: {
           100: 'var(--primary-100)',
