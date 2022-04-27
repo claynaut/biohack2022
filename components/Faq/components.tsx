@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BiCaretRight } from 'react-icons/bi'
 
 function FaqAccordion({ question, answer }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   return (
     <div className='flex flex-col w-full bg-card text-sub rounded-md shadow-md'>
@@ -55,6 +55,14 @@ const questions = [
   {
     question: 'How do I register?',
     answer: 'Priority Registration will open soon. Please keep an eye out on our social media platforms to hear the announcement. Once applications are open, you will be able to register through this website.'
+  },
+  {
+    question: 'When does registration close?',
+    answer: 'Registration closes on Friday, May 13 midnight.'
+  },
+  {
+    question: 'How do I know if I\'m qualified to participate?',
+    answer: 'You can view your application status via the website\'s profile dropdown. We will also send an email to you once we have reviewed your application.'
   },
   {
     question: 'Does this event cost money?',

@@ -99,7 +99,7 @@ export default function ProfileDropdown() {
                             This determines your eligibility to participate in BioHack.
                           </span>
                           <span>
-                            Application status will be updated within 24 hours, and you will
+                            Application status will be updated within 48 hours, and you will
                             receive an email notification. Check back again later!
                           </span>
                         </div>,

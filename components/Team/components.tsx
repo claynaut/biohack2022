@@ -38,7 +38,7 @@ const staff = [
   },
   {
     link: '/',
-    // image: '/vercel.svg',
+    image: '/team/jimmy.jpg',
     name: 'Jimmy Ho',
     role: 'Operations Lead',
   },

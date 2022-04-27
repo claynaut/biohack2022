@@ -8,7 +8,7 @@ export default function Faq() {
       <div className='flex flex-col w-full items-center'>
         <h2>FAQ</h2>
         <p className='text-center'>
-          Still can&#39;t find an answer to your question? Feel free to ask us anything at <Link passHref href='mailto:biohackucr@gmail.com'><span className='font-semibold text-accent hover:underline cursor-pointer'>biohackucr@gmail.com</span></Link>.
+          Still can&#39;t find an answer to your question? Feel free to ask us anything at <a target='_blank' rel='noreferrer noopener' href='mailto:biohackucr@gmail.com'><span className='font-semibold text-accent hover:underline cursor-pointer'>biohackucr@gmail.com</span></a>.
         </p>
         <FaqGrid />
       </div>
