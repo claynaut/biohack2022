@@ -9,7 +9,6 @@ const WinnerCard = ({ place, project, description, link }) => (
       + (place === 'Overall 1st Place' ? 'col-span-2' : 'col-span-2 sm:col-span-1')
     }
   >
-    
     <a target='_blank' rel='noreferrer noopener' href={link}>
       <div className='flex w-full justify-center items-center gap-2 hover:underline hover:text-accent cursor-pointer'>
         <h3 className='text-center'>{project}</h3>
