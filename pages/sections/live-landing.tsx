@@ -4,9 +4,9 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import LoginModal from '@/components/LoginModal'
-import { CountdownWrapper } from '@/components/Countdown'
+import { HackerCountdownWrapper } from '@/components/Countdown'
 
-export default function Landing() {
+export default function LiveLanding() {
   const { data: session, status } = useSession()
   const [loginModalOpen, setLoginModalOpen] = useState(false)
 
@@ -41,7 +41,7 @@ export default function Landing() {
               </h3>
             </div>
           </div>
-          <CountdownWrapper date='2022-05-14T16:00:00Z' />
+          <HackerCountdownWrapper date='2022-05-15T16:00:00Z' />
           <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4'>
             {
               status !== 'authenticated' &&
