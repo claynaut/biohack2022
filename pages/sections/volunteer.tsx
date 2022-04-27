@@ -7,7 +7,7 @@ export default function Volunteer() {
       <div>
         <h2 className='text-center'>Get Involved</h2>
         <div className='flex flex-col-reverse lg:flex-row items-center gap-12'>
-          <div className='w-full max-w-sm'>
+          <div className='mt-6 w-full max-w-sm'>
             <Image
               src='/assets/excavating.png'
               width={519}

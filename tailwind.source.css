@@ -18,6 +18,7 @@
     --highlight-dark: #9D8071;
     --text: #18120D;
     --text-dark: #F5F1E4;
+    --pattern: url('/assets/footprints.svg');
   }
 
   [data-theme='light'] {
@@ -35,6 +36,7 @@
     --highlight-dark: #9D8071;
     --text: #18120D;
     --text-dark: #F5F1E4;
+    --pattern: url('/assets/footprints.svg');
   }
 
   [data-theme='dark'] {
@@ -52,6 +54,7 @@
     --highlight-dark: #9D8071;
     --text: #18120D;
     --text-dark: #F5F1E4;
+    --pattern: url('/assets/footprints.svg');
   }
 
   h1 {

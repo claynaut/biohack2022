@@ -68,21 +68,25 @@ export default function Home() {
       <Border bgColor='bg-primary-100' fillColor='primary-200'/>
       <Element
         name='About'
-        className='flex justify-center w-full px-4 bg-primary-200 text-text-dark'
+        className='flex justify-center w-full bg-primary-200 text-text-dark'
       >
-        <About/>
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <About/>
+        </span>
       </Element>
       <Border type={4} bgColor='bg-primary-200' fillColor='primary-300'/>
       <Element 
         name='Winners' 
-        className='flex justify-center w-full px-4 bg-primary-300 text-text-dark'
+        className='flex justify-center w-full bg-primary-300 text-text-dark'
       >
-        <Winners/>
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Winners/>
+        </span>
       </Element>
       <Border type={2} bgColor='bg-primary-300' fillColor='primary-400'/>
       <Element 
         name='Faq' 
-        className='relative flex justify-center w-full px-4 bg-primary-400'
+        className='relative flex justify-center w-full bg-primary-400'
       >
         <div className='absolute top-0 left-0 hidden xl:block w-[40rem]'>
           <Image
@@ -95,28 +99,36 @@ export default function Home() {
             objectFit='contain'
           />
         </div>
-        <Faq/>
+          <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Faq/>
+        </span>
       </Element>
       <Border type={3} bgColor='bg-primary-400' fillColor='primary-500'/>
       <Element 
         name='Volunteer' 
-        className='flex justify-center w-full px-4 bg-primary-500'
+        className='flex justify-center w-full bg-primary-500'
       >
-        <Volunteer/>
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Volunteer/>
+        </span>
       </Element>
       <Border bgColor='bg-primary-500' fillColor='primary-600'/>
       <Element 
         name='Sponsors' 
-        className='flex justify-center w-full px-4 bg-primary-600'
+        className='flex justify-center w-full bg-primary-600'
       >
-        <Sponsors/>
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Sponsors/>
+        </span>
       </Element>
       <Border type={2} bgColor='bg-primary-600' fillColor='primary-300'/>
       <Element 
         name='Team' 
-        className='flex justify-center w-full px-4 bg-primary-300 text-text-dark'
+        className='flex justify-center w-full bg-primary-300 text-text-dark'
       >
-        <Team/>
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Team/>
+        </span>
       </Element>
     </Page>
   )
