@@ -52,7 +52,7 @@ export default async function joinGroup(req: NextApiRequest, res: NextApiRespons
         await sendEmail({
           email: group[0].users[i].email,
           template_id: process.env.NEW_JOIN_EMAIL_ID,
-          name: '',
+          name: group[0].users[i].name.first,
           members: '',
           invite_code: invite_code,
           newcomer: session.user.name.first
