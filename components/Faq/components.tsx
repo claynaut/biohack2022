@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BiCaretRight } from 'react-icons/bi'
 
 function FaqAccordion({ question, answer }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   return (
     <div className='flex flex-col w-full bg-card text-sub rounded-md shadow-md'>
