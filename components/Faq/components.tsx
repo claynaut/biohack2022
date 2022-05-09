@@ -90,7 +90,7 @@ const questions = [
   },
   {
     question: 'Am I required to enter with a team?',
-    answer: 'Participating in the event within a team is not mandatory (although it is recommended, and accommodations can be made should you desire to join a team during check-in).'
+    answer: 'Participating in the event within a team of at least 2 is mandatory for project submission. (Accommodations can be made should you desire to join a team during check-in.)'
   },
   {
     question: 'How many people can be in my team?',
