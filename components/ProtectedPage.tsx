@@ -53,7 +53,7 @@ export default function ProtectedPage({ title = '', restrictions, children }) {
         status === 'authenticated' && (restrictions.includes('signin')
         || (restrictions.includes('admin') && session.user.admin)
         || (restrictions.includes('applied') && !session.user.uid)
-        || (restrictions.includes('qualified') && session.user.qualified === 'yeah')) && 
+        || (restrictions.includes('qualified') && session.user.qualified === 'yes')) && 
         <>
           {children}
         </> 

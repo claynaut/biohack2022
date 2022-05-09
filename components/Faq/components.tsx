@@ -54,11 +54,11 @@ const questions = [
   },
   {
     question: 'How do I register?',
-    answer: 'Priority Registration will open soon. Please keep an eye out on our social media platforms to hear the announcement. Once applications are open, you will be able to register through this website.'
+    answer: 'Priority registration will open soon. Please keep an eye out on our social media platforms to hear the announcement. Once applications are open, you will be able to register through this website.'
   },
   {
     question: 'When does registration close?',
-    answer: 'Registration closes on Friday, May 13 midnight.'
+    answer: 'Registration closes on Friday, May 13 at midnight PT.'
   },
   {
     question: 'How do I know if I\'m qualified to participate?',
@@ -67,6 +67,10 @@ const questions = [
   {
     question: 'Does this event cost money?',
     answer: 'No! This event is completely free to all participants.'
+  },
+  {
+    question: 'What timezone is this event in?',
+    answer: 'This event takes place in Pacific Time (PT).'
   },
   {
     question: 'Will there be hardware available?',
@@ -86,7 +90,7 @@ const questions = [
   },
   {
     question: 'Am I required to enter with a team?',
-    answer: 'Participating in the event within a team is not mandatory (although it is recommended, and accommodations can be made should you desire to join a team during check-in).'
+    answer: 'Participating in the event within a team of at least 2 is mandatory for project submission. (Accommodations can be made should you desire to join a team during check-in.)'
   },
   {
     question: 'How many people can be in my team?',
