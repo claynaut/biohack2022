@@ -41,7 +41,7 @@ export default function Landing() {
               </h3>
             </div>
           </div>
-          <CountdownWrapper date='2022-05-14T16:00:00Z' />
+          <CountdownWrapper date='2022-05-21T16:00:00Z' />
           <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4'>
             {
               status !== 'authenticated' &&
