@@ -37,7 +37,7 @@ export default function LiveLanding() {
                 Virtual <span className='font-bold'>Healthcare Hackathon</span>
               </h4>
               <h3 className='text-center 2xl:text-left text-accent font-extrabold'>
-                May 14-15, 2022
+                May 21-22, 2022
               </h3>
             </div>
           </div>
