@@ -12,7 +12,7 @@ export function Pages({ pageOptions, icons, selectedPage, selectPage }) {
         key={option}
         className={
           'flex flex-col items-center group text-3xl md:text-2xl bg-transparent '
-          + (selectedPage === option ? 'font-semibold' : 'font-medium text-sub-highlight hover:text-text')
+          + (selectedPage === option ? 'font-semibold text-admin-card' : 'font-medium text-admin-sub-highlight hover:text-admin-accent-sub')
         }
         onClick={() => { selectPage(option); if (option === 'Resumes'){ loadFiles(setDocs) } }}
       >

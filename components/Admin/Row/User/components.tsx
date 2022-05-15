@@ -23,7 +23,7 @@ export function UserBox({
       <div
         className={
           'h-full border-2 border-admin-sub rounded-md bg-admin-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
-          + (selectedUsers.includes(user) ? 'border-text ' : ' ')
+          + (selectedUsers.includes(user) ? 'border-admin-accent ' : ' ')
           + (expandedUsers.includes(user) ? 'max-h-[40rem] ' : 'max-h-[2.75rem] ')
           + (pending && (user.criteria_met ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'))
         }
@@ -32,8 +32,8 @@ export function UserBox({
           <div>
             <div 
               className={
-                'w-10 p-2 rounded-full text-2xl group-hover:text-text '
-                + (!pending ? 'hover:bg-sub ' : (user.criteria_met ? 'hover:bg-green-200 ' : 'hover:bg-red-200 '))
+                'w-10 p-2 rounded-full text-2xl group-hover:text-admin-accent '
+                + (!pending ? 'hover:bg-admin-sub-light ' : (user.criteria_met ? 'hover:bg-green-200 ' : 'hover:bg-red-200 '))
                 + (selectedUsers.includes(user) ? 'text-text' : (pending ? (user.criteria_met ? 'text-green-300' : 'text-red-300') : 'text-admin-sub' ))
               }
               onClick={() => setSelectedUsers(
@@ -115,7 +115,7 @@ export function UserBox({
                     <b>Grade:</b> {user.year}
                   </li>
                   <li className={'text-sm md:text-base ' + (pending ? (user.criteria_met ? 'text-green-500' : 'text-red-500') : '')}>
-                    <b>Graduation Date:</b> {user.graduationDate}
+                    <b>Graduation Date:</b> {user.graduation_date}
                   </li>
                   <li className='text-sm md:text-base'>
                     <b>App Status: </b>

@@ -45,7 +45,7 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
           <div className='flex'>
             <div className='mr-3'>
               <div 
-                className='w-10 p-2 rounded-full text-2xl hover:bg-admin-sub'
+                className='w-10 p-2 rounded-full text-2xl hover:bg-admin-sub-light'
                 onClick={() => setExpandedGroups(
                     expandedGroups.includes(group) ? 
                     expandedGroups.filter(expandedGroup => expandedGroup !== group) :

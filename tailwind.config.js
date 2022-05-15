@@ -33,6 +33,7 @@ module.exports = {
           },
           sub: {
             DEFAULT: 'var(--admin-sub)',
+            light: 'var(--admin-sub-light)',
             secondary: 'var(--admin-sub-secondary)',
             highlight: 'var(--admin-sub-highlight)',
             bright: 'var(--admin-sub-bright)',
