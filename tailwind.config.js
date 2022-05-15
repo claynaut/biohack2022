@@ -18,6 +18,27 @@ module.exports = {
         pattern: 'var(--pattern)',
       },
       colors: {
+        admin: {
+          primary: 'var(--admin-primary)',
+          secondary: 'var(--admin-secondary)',
+          accent: {
+            DEFAULT: 'var(--admin-accent)',
+            secondary: 'var(--admin-accent-secondary)',
+            sub: 'var(--admin-accent-sub)',
+          },
+          card: 'var(--admin-card)',
+          highlight: {
+            DEFAULT: 'var(--admin-highlight)',
+            dark: 'var(--admin-highlight-dark)',
+          },
+          sub: {
+            DEFAULT: 'var(--admin-sub)',
+            light: 'var(--admin-sub-light)',
+            secondary: 'var(--admin-sub-secondary)',
+            highlight: 'var(--admin-sub-highlight)',
+            bright: 'var(--admin-sub-bright)',
+          },
+        },
         primary: {
           100: 'var(--primary-100)',
           200: 'var(--primary-200)',

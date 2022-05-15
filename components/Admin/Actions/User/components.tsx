@@ -26,7 +26,6 @@ export function UserActions({
 }) {
   const router = useRouter()
   const [confirmApplyReminder, setConfirmApplyReminder] = useState(false)
-  const [confirmInPersonReminder, setConfirmInPersonReminder] = useState(false)
   const [confirmDiscordReminder, setConfirmDiscordReminder] = useState(false)
   const [confirmCheckInReminder, setConfirmCheckInReminder] = useState(false)
   const [confirmAuto, setConfirmAuto] = useState(false)
@@ -46,22 +45,6 @@ export function UserActions({
       toast.error(
         'Uh oh. Something went wrong...',
         { id: 'appReminderError' }
-      )
-    })
-  }
-
-  const remindAboutInPerson = (users) => {
-    axios.post('/api/apps/remind-inperson', { users })
-    .then(() => {
-      toast.success(
-        'Successfully sent reminders!',
-        { id: 'inPersonReminderSuccess' }
-      )
-    })
-    .catch(() => {
-      toast.error(
-        'Uh oh. Something went wrong...',
-        { id: 'inPersonReminderError' }
       )
     })
   }
@@ -186,7 +169,7 @@ export function UserActions({
           + (
               !(selectedView === 'Not Applied' || 
                 selectedView === 'Pending' || 
-                selectedView == 'Approved' || 
+                selectedView === 'Approved' || 
                 selectedView === 'Rejected' || 
                 selectedView === 'Not Checked-In'
               ) 
@@ -196,7 +179,7 @@ export function UserActions({
       >
         <div className='flex'>
           <div
-            className='p-2 rounded-full hover:bg-sub cursor-pointer'
+            className='p-2 rounded-full hover:bg-admin-sub cursor-pointer'
             onClick={() => toggleSelectAllUsers(!allSelected)}
           >
             {
@@ -204,7 +187,7 @@ export function UserActions({
             }
           </div>
           <div
-            className='p-2 rounded-full hover:bg-sub cursor-pointer'
+            className='p-2 rounded-full hover:bg-admin-sub cursor-pointer'
             onClick={() => toggleExpandAllUsers(!(expandedUsers.length > 0))}
           >
             {
@@ -223,7 +206,7 @@ export function UserActions({
             selectedView == 'Rejected' || 
             selectedView == 'Not Checked-In'
           ) &&
-          <div className='flex flex-col sm:flex-row gap-1 sm:items-center ml-[1.125rem] sm:ml-0 pl-2 border-l-2 border-sub'>
+          <div className='flex flex-col sm:flex-row gap-1 sm:items-center ml-[1.125rem] sm:ml-0 pl-2 border-l-2 border-admin-sub'>
             { selectedView === 'Not Applied' &&
               <div
                 className='flex items-center gap-2 p-2 pl-2.5 pr-3 rounded-full hover:text-amber-600 hover:bg-amber-200 cursor-pointer'
@@ -268,22 +251,13 @@ export function UserActions({
               </div>
             }
             { selectedView === 'Approved' &&
-              <>
-                <div
-                  className='flex items-center gap-2 p-2 pl-2.5 pr-3 rounded-full hover:text-amber-600 hover:bg-amber-200 cursor-pointer'
-                  onClick={() => setConfirmInPersonReminder(true)}
-                >
-                  <div><BiMailSend title='Remind Selected About In-Person' /></div>
-                  <span className='text-base'>Remind About In-Person</span>
-                </div>
-                <div
-                  className='flex items-center gap-2 p-2 pl-2.5 pr-3 rounded-full hover:text-indigo-600 hover:bg-indigo-200 cursor-pointer'
-                  onClick={() => setConfirmDiscordReminder(true)}
-                >
-                  <div><BiMobileVibration title='Remind Selected to Join Discord' /></div>
-                  <span className='text-base'>Remind to Join Discord</span>
-                </div>
-              </>
+              <div
+                className='flex items-center gap-2 p-2 pl-2.5 pr-3 rounded-full hover:text-indigo-600 hover:bg-indigo-200 cursor-pointer'
+                onClick={() => setConfirmDiscordReminder(true)}
+              >
+                <div><BiMobileVibration title='Remind Selected to Join Discord' /></div>
+                <span className='text-base'>Remind to Join Discord</span>
+              </div>
             }
             { selectedView === 'Rejected' &&
               <div
@@ -311,23 +285,6 @@ export function UserActions({
             onClick={() => { remindToApply(selectedUsers); setConfirmApplyReminder(false) }}
           >
             Remind Selected to Apply
-          </motion.button>
-        </div>
-      </Modal>
-      <Modal
-        show={confirmInPersonReminder}
-        handler={setConfirmInPersonReminder}
-        title='Confirm Action'
-        description='Are you sure you want to remind all of the selected users about in-person?'
-      >
-        <div className='flex justify-center'>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.995 }}
-            className='flex items-center self-center h-11 px-4 font-semibold text-lg rounded-md bg-amber-400 text-white cursor-pointer'
-            onClick={() => { remindAboutInPerson(selectedUsers); setConfirmInPersonReminder(false) }}
-          >
-            Remind Selected About In-Person
           </motion.button>
         </div>
       </Modal>

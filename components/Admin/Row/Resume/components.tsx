@@ -24,16 +24,16 @@ export function FileBox({ doc, selectedDocs, setSelectedDocs }) {
     >
       <div
         className={
-          'border-2 border-sub rounded-md bg-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
-          + (selectedDocs.includes(doc) ? 'border-text ' : ' ')
+          'border-2 border-admin-sub rounded-md bg-admin-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
+          + (selectedDocs.includes(doc) ? 'border-admin-accent ' : ' ')
         }
       >
         <div className='flex'>
           <div className='mr-3'>
             <div 
               className={
-                'w-10 p-2 rounded-full text-2xl group-hover:text-text hover:bg-sub '
-                + (selectedDocs.includes(doc) ? 'text-text' : 'text-sub')
+                'w-10 p-2 rounded-full text-2xl group-hover:text-admin-accent hover:bg-admin-sub-light '
+                + (selectedDocs.includes(doc) ? 'text-admin-accent' : 'text-sub')
               }
               onClick={() => { setSelectedDocs(
                   selectedDocs.includes(doc) ? 

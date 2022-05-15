@@ -22,19 +22,19 @@ export function UserBox({
     >
       <div
         className={
-          'h-full border-2 border-sub rounded-md bg-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
-          + (selectedUsers.includes(user) ? 'border-text ' : ' ')
+          'h-full border-2 border-admin-sub rounded-md bg-admin-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
+          + (selectedUsers.includes(user) ? 'border-admin-accent ' : ' ')
           + (expandedUsers.includes(user) ? 'max-h-[40rem] ' : 'max-h-[2.75rem] ')
-          + (pending && (user.criteriaMet ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'))
+          + (pending && (user.criteria_met ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'))
         }
       >
         <div className='flex items-center'>
           <div>
             <div 
               className={
-                'w-10 p-2 rounded-full text-2xl group-hover:text-text '
-                + (!pending ? 'hover:bg-sub ' : (user.criteriaMet ? 'hover:bg-green-200 ' : 'hover:bg-red-200 '))
-                + (selectedUsers.includes(user) ? 'text-text' : (pending ? (user.criteriaMet ? 'text-green-300' : 'text-red-300') : 'text-sub' ))
+                'w-10 p-2 rounded-full text-2xl group-hover:text-admin-accent '
+                + (!pending ? 'hover:bg-admin-sub-light ' : (user.criteria_met ? 'hover:bg-green-200 ' : 'hover:bg-red-200 '))
+                + (selectedUsers.includes(user) ? 'text-text' : (pending ? (user.criteria_met ? 'text-green-300' : 'text-red-300') : 'text-admin-sub' ))
               }
               onClick={() => setSelectedUsers(
                   selectedUsers.includes(user) ? 
@@ -65,7 +65,7 @@ export function UserBox({
                 <div 
                   className={
                     'flex items-center justify-center rounded-full p-1 px-2 w-full '
-                    + (pending ? (user.criteriaMet ? 'bg-green-100 border-2 border-green-200 text-green-600' : 'bg-red-100 border-2 border-red-200 text-red-500') : 'bg-amber-100 text-amber-500')
+                    + (pending ? (user.criteria_met ? 'bg-green-100 border-2 border-green-200 text-green-600' : 'bg-red-100 border-2 border-red-200 text-red-500') : 'bg-amber-100 text-amber-500')
                   }
                 >
                   <div className='flex md:hidden text-lg'><BiLoaderCircle /></div> 
@@ -94,8 +94,8 @@ export function UserBox({
         </div>
         <div 
           className={
-            'py-4 border-t-2 border-sub '
-            + (pending && (user.criteriaMet ? 'border-green-300' : 'border-red-300'))
+            'py-4 border-t-2 border-admin-sub '
+            + (pending && (user.criteria_met ? 'border-green-300' : 'border-red-300'))
           }
         >
           { user.uid ?
@@ -112,14 +112,14 @@ export function UserBox({
                     <b>School:</b> {user.school}
                   </li>
                   <li className='text-sm md:text-base'>
-                    <b>Grade:</b> {user.grade}
+                    <b>Grade:</b> {user.year}
                   </li>
-                  <li className={'text-sm md:text-base ' + (pending ? (user.criteriaMet ? 'text-green-500' : 'text-red-500') : '')}>
-                    <b>Graduation Date:</b> {user.graduationDate}
+                  <li className={'text-sm md:text-base ' + (pending ? (user.criteria_met ? 'text-green-500' : 'text-red-500') : '')}>
+                    <b>Graduation Date:</b> {user.graduation_date}
                   </li>
                   <li className='text-sm md:text-base'>
                     <b>App Status: </b>
-                    { user.qualified === '' && (user.criteriaMet ?
+                    { user.qualified === '' && (user.criteria_met ?
                       'Pending Approval'
                       :
                       'Pending Rejection'
@@ -129,9 +129,6 @@ export function UserBox({
                       :
                       'Rejected'
                     )}
-                  </li>
-                  <li className='text-sm md:text-base'>
-                    <b>Participation:</b> {user.participation}
                   </li>
                   { user.checkedIn &&
                     <li className='text-sm md:text-base'>

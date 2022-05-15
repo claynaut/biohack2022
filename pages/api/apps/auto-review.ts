@@ -11,7 +11,7 @@ export default async function autoReviewApplication(req: NextApiRequest, res: Ne
 
     // send email notification about user's application status and update current status
     for (let i = 0; i < users.length; i++) {
-      if (users[i].criteriaMet) {
+      if (users[i].criteria_met) {
         await sendEmail({
           email: users[i].email,
           template_id: process.env.APP_APPROVED_EMAIL_ID,

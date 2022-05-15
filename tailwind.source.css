@@ -3,43 +3,18 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --primary-100: #99CBD1;
-    --primary-200: #736767;
-    --primary-300: #B28871;
-    --primary-400: #D1C7AC;
-    --primary-500: #D4B66E;
-    --primary-600: #D9A16E;
-    --accent: #740A0A;
-    --accent-dark: #5E0202;
-    --card: #EBDEBD;
-    --sub: #673F28;
-    --highlight: #BDA89D;
-    --highlight-dark: #9D8071;
-    --text: #18120D;
-    --text-dark: #F5F1E4;
-    --pattern: url('/assets/footprints.svg');
-  }
-
-  [data-theme='light'] {
-    --primary-100: #99CBD1;
-    --primary-200: #736767;
-    --primary-300: #B28871;
-    --primary-400: #D1C7AC;
-    --primary-500: #D4B66E;
-    --primary-600: #D9A16E;
-    --accent: #740A0A;
-    --accent-dark: #5E0202;
-    --card: #EBDEBD;
-    --sub: #673F28;
-    --highlight: #BDA89D;
-    --highlight-dark: #9D8071;
-    --text: #18120D;
-    --text-dark: #F5F1E4;
-    --pattern: url('/assets/footprints.svg');
-  }
-
+  :root,
+  [data-theme='light'],
   [data-theme='dark'] {
+    --admin-accent: #D9A16E;
+    --admin-accent-sub: #F2CAA0;
+    --admin-card: #F5F1E4;
+    --admin-sub-light: #DDCEB6;
+    --admin-sub: #855F4B;
+    --admin-sub-secondary: #724D38;
+    --admin-sub-highlight: #5C3E2D;
+    --admin-sub-bright: #3F2D24;
+
     --primary-100: #99CBD1;
     --primary-200: #736767;
     --primary-300: #B28871;
@@ -56,7 +31,7 @@
     --text-dark: #F5F1E4;
     --pattern: url('/assets/footprints.svg');
   }
-
+  
   h1 {
     @apply my-3;
     @apply text-6xl;

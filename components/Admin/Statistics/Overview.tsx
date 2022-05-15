@@ -18,7 +18,7 @@ export function OverviewStats({ users }) {
           <p className='m-0 text-sm md:text-base'>Total users not applied</p>
         </div>
       </div>
-      <div className='flex flex-col px-8 py-6 bg-sub text-sub-bright rounded-2xl'>
+      <div className='flex flex-col px-8 py-6 bg-admin-sub text-admin-sub-bright rounded-2xl'>
         <h3 className='font-medium'>{numCheckedIn}</h3>
         <p className='m-0 text-sm md:text-base'>Total checked-in users</p>
       </div>
