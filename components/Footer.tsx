@@ -14,8 +14,8 @@ export default function Footer() {
     <div className='flex flex-col w-full'>
       <Border type={4} bgColor='bg-primary-300' fillColor='primary-200'/>
       <footer className='flex justify-center w-full pt-6 pb-12 bg-primary-200 text-text-dark'>
-        <div className='flex justify-between items-center w-full max-w-[64rem] mx-4 text-md font-semibold'>
-          <div>
+        <div className='flex flex-col sm:flex-row justify-between items-center w-full max-w-[64rem] mx-4 text-md font-semibold'>
+          <div className='mb-4 sm:mb-0'>
             Made with ❤ by the BioHack Team.
           </div>
           <div className='flex gap-2 text-2xl text-highlight'>

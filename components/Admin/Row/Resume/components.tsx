@@ -24,7 +24,7 @@ export function FileBox({ doc, selectedDocs, setSelectedDocs }) {
     >
       <div
         className={
-          'border-2 border-sub rounded-md bg-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
+          'border-2 border-admin-sub rounded-md bg-admin-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
           + (selectedDocs.includes(doc) ? 'border-text ' : ' ')
         }
       >
@@ -32,7 +32,7 @@ export function FileBox({ doc, selectedDocs, setSelectedDocs }) {
           <div className='mr-3'>
             <div 
               className={
-                'w-10 p-2 rounded-full text-2xl group-hover:text-text hover:bg-sub '
+                'w-10 p-2 rounded-full text-2xl group-hover:text-text hover:bg-admin-sub '
                 + (selectedDocs.includes(doc) ? 'text-text' : 'text-sub')
               }
               onClick={() => { setSelectedDocs(

@@ -43,12 +43,12 @@ export function SearchBar({
 
   return (
     <div className='w-full mb-3'>
-      <div className='w-full flex items-center pl-2 border-2 border-sub-highlight rounded-md bg-card'>
+      <div className='w-full flex items-center pl-2 border-2 border-admin-sub-highlight rounded-md bg-admin-card'>
         <div>
           <BiSearch className='text-2xl'/>
         </div>
         <input
-          className='w-full ml-2 py-2 outline-0 rounded-tr-md rounded-br-md bg-card'
+          className='w-full ml-2 py-2 outline-0 rounded-tr-md rounded-br-md bg-admin-card'
           value={searchFilter}
           onChange={handleSearchFilter}
         />

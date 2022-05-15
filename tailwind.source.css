@@ -4,6 +4,19 @@
 
 @layer base {
   :root {
+    --admin-primary: #8CDCFF;
+    --admin-secondary: #F3FBFF;
+    --admin-accent: #FFF5EB;
+    --admin-accent-secondary: #FFE4C8; /* same color for card buttons */
+    --admin-accent-sub: #F2CAA0;
+    --admin-card: #FFF;
+    --admin-highlight: #9DC300;
+    --admin-highlight-dark: #88A900;
+    --admin-sub: #B9CCDC;
+    --admin-sub-secondary: #A1B3C4;
+    --admin-sub-highlight: #92A6B9;
+    --admin-sub-bright: #5B7690;
+
     --primary-100: #99CBD1;
     --primary-200: #736767;
     --primary-300: #B28871;
@@ -22,6 +35,19 @@
   }
 
   [data-theme='light'] {
+    --admin-primary: #8CDCFF;
+    --admin-secondary: #F3FBFF;
+    --admin-accent: #FFF5EB;
+    --admin-accent-secondary: #FFE4C8; /* same color for card buttons */
+    --admin-accent-sub: #F2CAA0;
+    --admin-card: #FFF;
+    --admin-highlight: #9DC300;
+    --admin-highlight-dark: #88A900;
+    --admin-sub: #B9CCDC;
+    --admin-sub-secondary: #A1B3C4;
+    --admin-sub-highlight: #92A6B9;
+    --admin-sub-bright: #5B7690;
+    
     --primary-100: #99CBD1;
     --primary-200: #736767;
     --primary-300: #B28871;
@@ -40,6 +66,19 @@
   }
 
   [data-theme='dark'] {
+    --admin-primary: #8CDCFF;
+    --admin-secondary: #F3FBFF;
+    --admin-accent: #FFF5EB;
+    --admin-accent-secondary: #FFE4C8; /* same color for card buttons */
+    --admin-accent-sub: #F2CAA0;
+    --admin-card: #FFF;
+    --admin-highlight: #9DC300;
+    --admin-highlight-dark: #88A900;
+    --admin-sub: #B9CCDC;
+    --admin-sub-secondary: #A1B3C4;
+    --admin-sub-highlight: #92A6B9;
+    --admin-sub-bright: #5B7690;
+    
     --primary-100: #99CBD1;
     --primary-200: #736767;
     --primary-300: #B28871;

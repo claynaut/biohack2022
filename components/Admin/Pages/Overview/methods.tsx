@@ -100,8 +100,8 @@ export const userFilter = (filter, x, y) => {
   }
   else if (filter === 'Sort by Pending Approval') {
     if (x.uid && y.uid) {
-      if (x.criteriaMet && x.criteriaMet != y.criteriaMet) { return -1 }
-      else if (y.criteriaMet && x.criteriaMet != y.criteriaMet) { return 1 }
+      if (x.criteria_met && x.criteria_met != y.criteria_met) { return -1 }
+      else if (y.criteria_met && x.criteria_met != y.criteria_met) { return 1 }
       else { return 0 }
     }
     else if (x.uid) { return -1 }
@@ -109,8 +109,8 @@ export const userFilter = (filter, x, y) => {
   }
   else if (filter === 'Sort by Pending Rejection') {
     if (x.uid && y.uid) {
-      if (x.criteriaMet && x.criteriaMet != y.criteriaMet) { return 1 }
-      else if (y.criteriaMet && x.criteriaMet != y.criteriaMet) { return -1 }
+      if (x.criteria_met && x.criteria_met != y.criteria_met) { return 1 }
+      else if (y.criteria_met && x.criteria_met != y.criteria_met) { return -1 }
       else { return 0 }
     }
     else if (x.uid) { return -1 }

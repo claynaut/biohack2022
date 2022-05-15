@@ -196,7 +196,7 @@ export function UserActions({
       >
         <div className='flex'>
           <div
-            className='p-2 rounded-full hover:bg-sub cursor-pointer'
+            className='p-2 rounded-full hover:bg-admin-sub cursor-pointer'
             onClick={() => toggleSelectAllUsers(!allSelected)}
           >
             {
@@ -204,7 +204,7 @@ export function UserActions({
             }
           </div>
           <div
-            className='p-2 rounded-full hover:bg-sub cursor-pointer'
+            className='p-2 rounded-full hover:bg-admin-sub cursor-pointer'
             onClick={() => toggleExpandAllUsers(!(expandedUsers.length > 0))}
           >
             {
@@ -223,7 +223,7 @@ export function UserActions({
             selectedView == 'Rejected' || 
             selectedView == 'Not Checked-In'
           ) &&
-          <div className='flex flex-col sm:flex-row gap-1 sm:items-center ml-[1.125rem] sm:ml-0 pl-2 border-l-2 border-sub'>
+          <div className='flex flex-col sm:flex-row gap-1 sm:items-center ml-[1.125rem] sm:ml-0 pl-2 border-l-2 border-admin-sub'>
             { selectedView === 'Not Applied' &&
               <div
                 className='flex items-center gap-2 p-2 pl-2.5 pr-3 rounded-full hover:text-amber-600 hover:bg-amber-200 cursor-pointer'

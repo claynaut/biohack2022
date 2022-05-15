@@ -8,7 +8,7 @@ export function Overviews({ viewOptions, selectedView, selectView, setFilter, se
         key={option}
         className={
           'border-b-2 bg-transparent '
-          + (selectedView === option ? 'font-semibold border-text' : 'font-medium text-sub-highlight border-sub-highlight hover:text-text hover:border-text')
+          + (selectedView === option ? 'font-semibold border-text' : 'font-medium text-admin-sub-highlight border-admin-sub-highlight hover:text-text hover:border-text')
         }
         onClick={() => { selectView(option); setFilter('Default'); setSorted(false) }}
       >

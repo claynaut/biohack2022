@@ -38,14 +38,14 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
       >
         <div
           className={
-            'w-full border-2 border-sub rounded-md bg-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
+            'w-full border-2 border-admin-sub rounded-md bg-admin-card shadow-md cursor-pointer transform-gpu transition-size duration-150 overflow-hidden '
             + (!expandedGroups.includes(group) ? 'max-h-[2.75rem] ' : 'max-h-[20rem] ')
           }
         >
           <div className='flex'>
             <div className='mr-3'>
               <div 
-                className='w-10 p-2 rounded-full text-2xl hover:bg-sub'
+                className='w-10 p-2 rounded-full text-2xl hover:bg-admin-sub'
                 onClick={() => setExpandedGroups(
                     expandedGroups.includes(group) ? 
                     expandedGroups.filter(expandedGroup => expandedGroup !== group) :
@@ -80,15 +80,15 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
               </span>
             </div>
           </div>
-          <div className='border-t-2 border-sub text-xs md:text-sm'>
+          <div className='border-t-2 border-admin-sub text-xs md:text-sm'>
             <div className='flex w-full'>
-              <div className='w-10 p-2 border-b-2 border-sub text-center'>#</div>
-              <div className='w-full grid grid-cols-12 py-1.5 gap-4 border-b-2 border-sub'>
+              <div className='w-10 p-2 border-b-2 border-admin-sub text-center'>#</div>
+              <div className='w-full grid grid-cols-12 py-1.5 gap-4 border-b-2 border-admin-sub'>
                 <div className='col-span-12 xs:col-span-4'>Name</div>
                 <div className='hidden sm:block col-span-4'>Email</div>
                 <div className='hidden xs:block col-span-8 sm:col-span-4'>UID</div>
               </div>
-              <div className='w-10 p-2 border-b-2 border-sub text-center'/>
+              <div className='w-10 p-2 border-b-2 border-admin-sub text-center'/>
             </div>
             {
               group.users.map((user, idx) =>
@@ -96,7 +96,7 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
                   <div
                     className={
                       'w-10 p-2 text-center '
-                      + (idx+1 < group.users.length ? 'border-b-2 border-sub' : '')
+                      + (idx+1 < group.users.length ? 'border-b-2 border-admin-sub' : '')
                     }
                   >
                     {idx+1}
@@ -104,7 +104,7 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
                   <div
                     className={
                       'w-full grid grid-cols-12 py-2 gap-4 '
-                      + (idx+1 < group.users.length ? 'border-b-2 border-sub' : '')
+                      + (idx+1 < group.users.length ? 'border-b-2 border-admin-sub' : '')
                     }
                   >
                     <div className='col-span-12 xs:col-span-4'>
@@ -119,7 +119,7 @@ export function GroupBox({ group, expandedGroups, setExpandedGroups }) {
                   <div
                     className={
                       'text-center text-lg md:text-xl '
-                      + (idx+1 < group.users.length ? 'border-b-2 border-sub' : '')
+                      + (idx+1 < group.users.length ? 'border-b-2 border-admin-sub' : '')
                     }
                   >
                     <div

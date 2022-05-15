@@ -5,7 +5,7 @@ export function GroupActions({ expandedGroups, toggleExpandAllGroups}) {
     <>
       <div className='flex gap-2 items-center text-2xl'>
         <div
-          className='p-2 rounded-full hover:bg-sub cursor-pointer'
+          className='p-2 rounded-full hover:bg-admin-sub cursor-pointer'
           onClick={() => toggleExpandAllGroups(!(expandedGroups.length > 0))}
         >
           {
