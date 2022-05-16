@@ -309,6 +309,7 @@ export default function ApplicationForm() {
           register={register}
           errors={errors}
           required={false}
+          onChange={() => setFileUploaded(Boolean(true))}
         />
         <Input
           type='text'
