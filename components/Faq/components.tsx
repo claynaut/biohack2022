@@ -58,7 +58,7 @@ const questions = [
   },
   {
     question: 'When does registration close?',
-    answer: 'Registration closes on Friday, May 13 at midnight PT.'
+    answer: 'Registration closes on Friday, May 20 at midnight PT.'
   },
   {
     question: 'How do I know if I\'m qualified to participate?',
