@@ -1,4 +1,4 @@
-export const Input = ({ type, defaultValue = undefined, label, variable, register, required, errors }) => (
+export const Input = ({ type, defaultValue = undefined, label, variable, register, required, errors, onChange = null }) => (
   <div>
     <label className='font-semibold'>
       {label}
@@ -20,6 +20,7 @@ export const Input = ({ type, defaultValue = undefined, label, variable, registe
         + (type === 'date' ? 'py-1.5 ' : 'py-1 ')
         + (errors[variable] ? 'border-red-700 ' : 'border-highlight ')
       }
+      onChange={onChange ? onChange : () => {}}
     />
   </div>
 )

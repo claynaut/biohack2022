@@ -13,7 +13,7 @@ export default async function rereviewApplication(req: NextApiRequest, res: Next
     for (let i = 0; i < users.length; i++) {
       await sendEmail({
         email: users[i].email,
-        template_id: process.env.APP_REREVIEWED_EMAIL_ID,
+        template_id: process.env.APP_APPROVED_EMAIL_ID,
         name: users[i].name.first,
         members: '',
         invite_code: '',
