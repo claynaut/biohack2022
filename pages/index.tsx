@@ -68,7 +68,7 @@ export default function Home() {
       </Element>
       <Border bgColor='bg-primary-100' fillColor='primary-200'/>
       <Element
-        name='About'
+        name='Schedule'
         className='flex justify-center w-full bg-primary-200 text-text-dark'
       >
         <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>

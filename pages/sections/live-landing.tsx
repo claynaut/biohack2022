@@ -72,24 +72,33 @@ export default function LiveLanding() {
               session.user.uid && 
               session.user.qualified === 'yes' &&
               <>
+                <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full sm:w-52 justify-center'>
+                  <motion.button
+                    whileHover={{ scale: 1.05}} 
+                    whileTap={{ scale: 0.995 }}
+                    className='w-full sm:w-52 py-1.5 rounded bg-accent hover:bg-accent-dark'
+                  >
+                    Devpost
+                  </motion.button>
+                </a>
+                <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full sm:w-52 justify-center'>
+                  <motion.button
+                    whileHover={{ scale: 1.05}} 
+                    whileTap={{ scale: 0.995 }}
+                    className='w-full sm:w-52 py-1.5 rounded bg-highlight-dark hover:bg-primary-200'
+                  >
+                    Open Discord
+                  </motion.button>
+                </a>
                 <Link passHref href='/group/dashboard'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
-                    className='w-full sm:w-52 py-1.5 rounded bg-accent hover:bg-accent-dark'
+                    className='w-full sm:w-52 py-1.5 rounded bg-highlight-dark hover:bg-primary-200'
                   >
                     View My Group
                   </motion.button>
                 </Link>
-                {/* <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full justify-center'>
-                  <motion.button
-                    whileHover={{ scale: 1.05}} 
-                    whileTap={{ scale: 0.995 }}
-                    className='w-full sm:w-52 py-1.5 rounded bg-accent hover:bg-accent-dark'
-                  >
-                    Open Discord
-                  </motion.button>
-                </a> */}
               </>
             }
           </div>
