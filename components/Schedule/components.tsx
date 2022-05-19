@@ -93,7 +93,7 @@ const saturdaySchedule = {
     },
     {
       name: 'Dr. Alva - Modeling of Biological Systems w/ MATLAB',
-      startTime: '3 M',
+      startTime: '3',
       endTime: '4:30 PM',
     },
     {
