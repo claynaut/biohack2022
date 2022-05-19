@@ -93,7 +93,7 @@ const saturdaySchedule = {
     },
     {
       name: 'Dr. Alva - Modeling of Biological Systems w/ MATLAB',
-      startTime: '3 M',
+      startTime: '3',
       endTime: '4:30 PM',
     },
     {
@@ -123,8 +123,8 @@ const saturdaySchedule = {
     },
     {
       name: 'Cute Animals',
-      startTime: '1',
-      endTime: '9 PM',
+      startTime: '10',
+      endTime: '11 PM',
       note: 'Bring Your Pet(s)',
     },
     {
@@ -157,18 +157,11 @@ const sundaySchedule = {
       endTime: '5 PM',
     },
   ],
-  activities: [
-    {
-      name: 'CE CERT Presentation',
-      startTime: '10',
-      endTime: '11:30 AM',
-    },
-  ],
 }
 
 export const MasterSchedule = () => (
   <div className='flex flex-col gap-6 w-full text-center'>
-    <ScheduleGrid title='Saturday, April 2' schedule={saturdaySchedule} />
-    <ScheduleGrid title='Sunday, April 3' schedule={sundaySchedule} />
+    <ScheduleGrid title='Saturday, May 21' schedule={saturdaySchedule} />
+    <ScheduleGrid title='Sunday, May 22' schedule={sundaySchedule} />
   </div>
 )

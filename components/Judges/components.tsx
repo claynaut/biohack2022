@@ -27,28 +27,33 @@ const judges = [
   },
   {
     image: '/assets/judges/.jpg',
+    name: 'Brian Crites',
+    role: 'CS Faculty @ UCR',
+  },
+  {
+    image: '/assets/judges/.jpg',
     name: 'Dr. Robert McKee',
-    role: 'BIEN Professor',
+    role: 'BIEN Faculty @ UCR',
   },
   {
     image: '/assets/judges/.jpg',
     name: 'Dr. Modha',
-    role: 'PhD Candidate',
+    role: 'BIEN PhD Candidate @ UCR',
   },
   {
     image: '/assets/judges/.jpg',
     name: 'Dwarak Ravichandran',
-    role: 'UCR Alumni',
+    role: 'BioHack 2021 Director',
   },
   {
     image: '/assets/judges/.jpg',
     name: 'David Paul Villafuerte',
-    role: 'UCR Alumni',
+    role: 'BioHack 2021 Director',
   },
   {
     image: '/assets/judges/.jpg',
     name: 'Allexa Ortiz',
-    role: 'UCR Senior',
+    role: 'UCR BIEN Alumni',
   },
 ]
 
