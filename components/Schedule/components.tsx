@@ -41,11 +41,13 @@ function ScheduleGrid ({ title, schedule }) {
     <div className='flex flex-col gap-2'>
       <h3 className='col-span-3 font-bold text-center'>{title}</h3>
       <div className='flex flex-col justify-center items-center lg:items-baseline lg:flex-row gap-4'>
-        <EventStack
-          title='Events'
-          subtitle={null}
-          events={event}
-        />
+        { event &&
+          <EventStack
+            title='Events'
+            subtitle={null}
+            events={event}
+          />
+        }
         { workshops &&
           <EventStack
             title='Workshops'
@@ -53,11 +55,13 @@ function ScheduleGrid ({ title, schedule }) {
             events={workshops}
           />
         }
-        <EventStack
-          title='Activities'
-          subtitle={null}
-          events={activities}
-        />
+        { activities &&
+          <EventStack
+            title='Activities'
+            subtitle={null}
+            events={activities}
+          />
+        }
       </div>
     </div>
   )
