@@ -4,13 +4,16 @@ import Image from 'next/image'
 
 import Page from '@/components/Page'
 import Landing from '@/sections/live-landing'
+import Judges from './sections/judges'
+import Resources from './sections/resources'
 import Sponsors from '@/sections/sponsors'
 import Team from '@/sections/team'
+import Schedule from '@/pages/sections/schedule'
 import { Border } from '@/components/Border'
 
-export default function Home() {
+export default function Live() {
   return (
-    <Page>
+    <Page title='Live'>
       <Element
         name='Home'
         className='relative flex justify-center w-full px-4 bg-primary-100'
@@ -61,8 +64,33 @@ export default function Home() {
         </div>
         <Landing/>
       </Element>
-      
-      <Border bgColor='bg-primary-500' fillColor='primary-600'/>
+      <Border bgColor='bg-primary-100' fillColor='primary-200'/>
+      <Element
+        name='Schedule'
+        className='flex justify-center w-full bg-primary-200 text-text-dark'
+      >
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Schedule/>
+        </span>
+      </Element><Border bgColor='bg-primary-200' fillColor='primary-300'/>
+      <Element
+        name='Judges'
+        className='flex justify-center w-full bg-primary-300 text-text-dark'
+      >
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Judges/>
+        </span>
+      </Element>
+      <Border type={4} bgColor='bg-primary-300' fillColor='primary-400'/>
+      <Element 
+        name='Resources' 
+        className='flex justify-center w-full bg-primary-400 text-text'
+      >
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Resources/>
+        </span>
+      </Element>
+      <Border bgColor='bg-primary-400' fillColor='primary-600'/>
       <Element 
         name='Sponsors' 
         className='flex justify-center w-full bg-primary-600'

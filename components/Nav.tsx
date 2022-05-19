@@ -68,7 +68,7 @@ export default function Nav() {
               }
             </button>
             {
-              router.pathname === '/'
+              (router.pathname === '/' || router.pathname === '/live')
               ?
                 <NavLink
                   activeClass='active'
@@ -118,16 +118,16 @@ export default function Nav() {
             className={
               'flex flex-col lg:flex-row justify-self-center text-center font-semibold text-highlight '
               + ( navOpen ? 'h-full max-h-[min-content] py-8 justify-evenly gap-2 ' : 'hidden lg:flex gap-6 ' )
-              + ( !navOpen && router.pathname !== '/' && 'invisible')
+              + ( !navOpen && (router.pathname !== '/' && router.pathname !== '/live') && 'invisible')
             }
           >
             {
-              router.pathname === '/'
+              (router.pathname === '/' || router.pathname === '/live')
               ?
                 <>
                   <NavLink 
                     activeClass='text-text-dark font-bold'
-                    to='About'
+                    to='Schedule'
                     spy={true}
                     smooth={true}
                     offset={-90}
@@ -136,51 +136,101 @@ export default function Nav() {
                     onClick={() => setNavOpen(false)}
                   >
                     <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
-                      About
+                      Schedule
                     </motion.div>
                   </NavLink>
-                  <NavLink 
-                    activeClass='text-text-dark font-bold'
-                    to='Winners'
-                    spy={true}
-                    smooth={true}
-                    offset={-90}
-                    duration={500}
-                    className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
-                    onClick={() => setNavOpen(false)}
-                  >
-                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
-                      Winners
-                    </motion.div>
-                  </NavLink>
-                  <NavLink 
-                    activeClass='text-text-dark font-bold'
-                    to='Faq'
-                    spy={true}
-                    smooth={true}
-                    offset={-90}
-                    duration={500}
-                    className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
-                    onClick={() => setNavOpen(false)}
-                  >
-                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
-                      FAQ
-                    </motion.div>
-                  </NavLink>
-                  <NavLink 
-                    activeClass='text-text-dark font-bold'
-                    to='Volunteer'
-                    spy={true}
-                    smooth={true}
-                    offset={-90}
-                    duration={500}
-                    className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
-                    onClick={() => setNavOpen(false)}
-                  >
-                    <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
-                      Volunteer
-                    </motion.div>
-                  </NavLink>
+                  {router.pathname === '/' &&
+                    <>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='About'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          About
+                        </motion.div>
+                      </NavLink>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='Winners'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          Winners
+                        </motion.div>
+                      </NavLink>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='Faq'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          FAQ
+                        </motion.div>
+                      </NavLink>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='Volunteer'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          Volunteer
+                        </motion.div>
+                      </NavLink>
+                    </>
+                  }
+                  {router.pathname === '/live' &&
+                    <>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='Judges'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          Judges
+                        </motion.div>
+                      </NavLink>
+                      <NavLink 
+                        activeClass='text-text-dark font-bold'
+                        to='Resources'
+                        spy={true}
+                        smooth={true}
+                        offset={-90}
+                        duration={500}
+                        className='lg:mt-6 hover:text-text-dark hover:font-bold cursor-pointer transition-all duration-150'
+                        onClick={() => setNavOpen(false)}
+                      >
+                        <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
+                          Resources
+                        </motion.div>
+                      </NavLink>
+                    </>
+                  }
                   <NavLink 
                     activeClass='text-text-dark font-bold'
                     to='Sponsors'
