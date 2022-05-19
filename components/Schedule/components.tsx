@@ -123,8 +123,8 @@ const saturdaySchedule = {
     },
     {
       name: 'Cute Animals',
-      startTime: '1',
-      endTime: '9 PM',
+      startTime: '10',
+      endTime: '11 PM',
       note: 'Bring Your Pet(s)',
     },
     {
@@ -155,13 +155,6 @@ const sundaySchedule = {
       name: 'Closing Ceremony',
       startTime: '4:30',
       endTime: '5 PM',
-    },
-  ],
-  activities: [
-    {
-      name: 'CE CERT Presentation',
-      startTime: '10',
-      endTime: '11:30 AM',
     },
   ],
 }
