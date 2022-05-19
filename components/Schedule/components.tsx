@@ -6,7 +6,7 @@ const EventBlock = ({ name, startTime, endTime, note }) => (
       </span>
     </div>
     <div>
-      <p className='m-0 text-base text-sub font-bold'>{name}</p>
+      <p className='m-0 text-base text-sub font-bold text-left'>{name}</p>
       { note &&
         <div className='text-sm text-primary-300 font-semibold italic'>
           {note}
