@@ -10,6 +10,7 @@ import Volunteer from '@/sections/volunteer'
 import Sponsors from '@/sections/sponsors'
 import Faq from '@/sections/faq'
 import Team from '@/sections/team'
+import Schedule from '@/pages/sections/schedule'
 import { Border } from '@/components/Border'
 
 export default function Home() {
@@ -71,10 +72,19 @@ export default function Home() {
         className='flex justify-center w-full bg-primary-200 text-text-dark'
       >
         <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
+          <Schedule/>
+        </span>
+      </Element>
+      <Border bgColor='bg-primary-200' fillColor='primary-600'/>
+      <Element
+        name='About'
+        className='flex justify-center w-full bg-primary-600 text-text'
+      >
+        <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
           <About/>
         </span>
       </Element>
-      <Border type={4} bgColor='bg-primary-200' fillColor='primary-300'/>
+      <Border type={4} bgColor='bg-primary-600' fillColor='primary-300'/>
       <Element 
         name='Winners' 
         className='flex justify-center w-full bg-primary-300 text-text-dark'
