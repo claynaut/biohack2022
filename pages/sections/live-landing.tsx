@@ -81,7 +81,7 @@ export default function LiveLanding() {
                     Devpost
                   </motion.button>
                 </a>
-                <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full sm:w-52 justify-center'>
+                {/* <a target='_blank' rel='noreferrer noopener' href={process.env.discord} className='flex w-full sm:w-52 justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
@@ -89,7 +89,7 @@ export default function LiveLanding() {
                   >
                     Open Discord
                   </motion.button>
-                </a>
+                </a> */}
                 <Link passHref href='/group/dashboard'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
