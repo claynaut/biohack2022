@@ -9,7 +9,8 @@ import {
   HiX, 
   HiOutlineQuestionMarkCircle, 
   HiOutlineLogout,
-  HiOutlineUserGroup
+  HiOutlineUserGroup,
+  HiOutlineViewGrid
 } from 'react-icons/hi'
 
 export default function ProfileDropdown() {
@@ -71,7 +72,7 @@ export default function ProfileDropdown() {
                     Haven&apos;t applied yet!
                     <HiOutlineQuestionMarkCircle
                       className='mt-1 ml-px text-sm text-highlight hover:text-accent cursor-pointer'
-                      onClick={() => toast('Fill out the application form to participate in BioHack 2022!', {icon: '📝', id: 'applyInfo'})}
+                      onClick={() => toast('Fill out the application form to participate in BioHack 2022!', { icon: '📝', id: 'applyInfo' })}
                     />
                   </p>
                   <Link passHref href='/apply'>
@@ -122,6 +123,35 @@ export default function ProfileDropdown() {
                   </div>
                 </>
               }
+              { status === 'authenticated' 
+                && session.user.uid
+                && session.user.qualified === 'yes' &&
+                ( !session.user.checkedIn ?
+                  <>
+                    <p className='flex m-0 text-base font-semibold'>
+                      You Haven&apos;t Checked-In
+                      <HiOutlineQuestionMarkCircle 
+                        className='mt-1 ml-px text-sm text-highlight hover:text-accent cursor-pointer'
+                        onClick={() => toast('By checking in, you confirm your participation in BioHack 2022!', { icon: '📝', id: 'checkinInfo' })}
+                      />
+                    </p>
+                    <Link passHref href='/checkin'>
+                      <motion.button
+                        whileHover={{ scale: 1.05}} 
+                        whileTap={{ scale: 0.995 }}
+                        className='w-full py-1.5 rounded bg-accent hover:bg-accent-dark font-semibold text-text-dark'
+                        onClick={() => setProfileOpen(!open)}
+                      >
+                        Check-In Now!
+                      </motion.button>
+                    </Link>
+                  </>
+                  :
+                  <div className='w-full py-1.5 text-center rounded-md bg-primary-200 text-text-dark font-semibold'>
+                    Checked-In
+                  </div>
+                )
+              }
               {
                 status === 'authenticated' && session.user.qualified === 'yes' &&
                 <div className='flex flex-col gap-2 w-full'>
@@ -132,6 +162,21 @@ export default function ProfileDropdown() {
                       className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent font-semibold text-accent hover:text-text-dark'
                     >
                       <HiOutlineUserGroup className='text-2xl'/> View My Group
+                    </motion.button>
+                  </Link>
+                </div>
+              }
+              { status === 'authenticated' 
+                && session.user.uid
+                && session.user.admin &&
+                <div className='flex flex-col gap-2 w-full'>
+                  <Link passHref href='/admin'>
+                    <motion.button
+                      whileHover={{ scale: 1.03}} 
+                      whileTap={{ scale: 0.995 }}
+                      className='flex items-center gap-3 w-full px-3 py-1.5 rounded hover:bg-accent font-semibold text-accent hover:text-text-dark'
+                    >
+                      <HiOutlineViewGrid className='text-2xl'/> Admin Dashboard
                     </motion.button>
                   </Link>
                 </div>

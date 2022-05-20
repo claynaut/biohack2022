@@ -8,6 +8,7 @@ export default async function checkin(req: NextApiRequest, res: NextApiResponse)
   if (session) {
     const { 
       uid,
+      participating,
       address
     } = req.body
 
@@ -16,6 +17,7 @@ export default async function checkin(req: NextApiRequest, res: NextApiResponse)
     await db.collection('users').updateOne(
       { uid },
       { $set: { 
+          participating: participating === 'Yes',
           address: actualAddress,
           checkedIn: true
         } 

@@ -24,16 +24,20 @@ export default function ProtectedPage({ title = '', restrictions, children }) {
         })
         router.push('/')
       }
-      else if (session.user.uid && restrictions.includes('applied')) {
+      if (session.user.uid && restrictions.includes('applied')) {
         // toast.error('Access denied. You already applied!', {
         //   id: 'alreadyAppliedRestriction',
         // })
         router.push('/')
       }
-      else if (restrictions.includes('admin') && !session.user.admin) {
+      if (restrictions.includes('admin') && !session.user.admin) {
         toast.error('Access denied. Unauthorized user.', {
           id: 'adminRestriction'
         })
+        router.push('/')
+      }
+      if (restrictions.includes('checkedIn') && session.user.checkedIn) {
+        // toast.error('Access denied. You already checked in!', {id: 'checkedInAlreadyRestriction'})
         router.push('/')
       }
     }
@@ -53,7 +57,8 @@ export default function ProtectedPage({ title = '', restrictions, children }) {
         status === 'authenticated' && (restrictions.includes('signin')
         || (restrictions.includes('admin') && session.user.admin)
         || (restrictions.includes('applied') && !session.user.uid)
-        || (restrictions.includes('qualified') && session.user.qualified === 'yes')) && 
+        || (restrictions.includes('qualified') && session.user.qualified === 'yes')
+        || (restrictions.includes('checkedIn') && !session.user.checkedIn)) && 
         <>
           {children}
         </> 
