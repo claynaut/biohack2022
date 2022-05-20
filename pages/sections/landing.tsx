@@ -86,7 +86,7 @@ export default function Landing() {
               session.user.uid && 
               session.user.qualified === 'yes' &&
               <>
-                {/* <a target='_blank' rel='noreferrer noopener' href='/' className='flex justify-center'>
+                {/* <a target='_blank' rel='noreferrer noopener' href={process.env.discord} className='flex justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
