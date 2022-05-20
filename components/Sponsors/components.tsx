@@ -31,6 +31,14 @@ export const Sponsor = ({ image, width, height, link, shrink, tall }) => (
 
 const sponsors = [
   {
+    image: '/sponsors/bmes.png',
+    width: 995,
+    height: 422,
+    link: 'https://bmesucr.weebly.com/',
+    shrink: null,
+    tall: null,
+  },
+  {
     image: '/sponsors/aspb.png',
     width: 4823,
     height: 1807,

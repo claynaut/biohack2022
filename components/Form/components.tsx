@@ -101,12 +101,17 @@ export const Checkbox = ({ register, label, variable, options }) => (
   </div>
 )
 
-export const Radio = ({ register, label, variable, required, options, errors }) => (
+export const Radio = ({ register, label, variable, required, options, errors, subtext = undefined }) => (
   <div>
     <legend className='font-semibold'>
       {label}
       {required && <span className='text-red-400'>*</span>}
     </legend>
+    { subtext &&
+      <p className='m-0 mb-1 text-sm italic'>
+       {subtext}
+      </p>
+    }
     <div className='flex flex-col gap-2 pl-2'>
       {
         options.map((option) =>
