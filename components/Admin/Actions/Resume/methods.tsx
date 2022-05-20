@@ -14,7 +14,7 @@ export const loadFiles = (setDocs) => {
     res.items.forEach((itemRef) => {
       const doc = {
         ref: itemRef,
-        name: itemRef.toString().replace('gs://citrus-hack-2022.appspot.com/resumes/', '')
+        name: itemRef.toString().replace('gs://biohack-2022.appspot.com/resumes/', '')
       }
       currentDocs = [...currentDocs, doc]
     })
