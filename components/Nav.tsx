@@ -285,7 +285,7 @@ export default function Nav() {
                 </motion.button>
               </Link>
             } */}
-            { status === 'authenticated'
+            {/* { status === 'authenticated'
               ?
                 <>
                   <div
@@ -303,7 +303,7 @@ export default function Nav() {
                 >
                   Sign In
                 </motion.button>
-            }
+            } */}
           </div>
         </div>
       </div>
