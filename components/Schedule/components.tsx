@@ -76,8 +76,8 @@ const saturdaySchedule = {
     },
     {
       name: 'Opening Ceremony',
-      startTime: '10',
-      endTime: '11 AM',
+      startTime: '11:30 AM',
+      endTime: '12:30 PM',
     },
     {
       name: 'Hackathon Start',
@@ -119,11 +119,6 @@ const saturdaySchedule = {
     {
       name: 'Photo Competition',
       startTime: 'All Day',
-    },
-    {
-      name: 'Games',
-      startTime: '8:30',
-      endTime: '10 PM',
     },
     {
       name: 'Cute Animals',
