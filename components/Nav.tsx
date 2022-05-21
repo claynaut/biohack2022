@@ -231,7 +231,7 @@ export default function Nav() {
                       </NavLink>
                     </>
                   }
-                  <NavLink 
+                  {/* <NavLink 
                     activeClass='text-text-dark font-bold'
                     to='Sponsors'
                     spy={true}
@@ -244,7 +244,7 @@ export default function Nav() {
                     <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Sponsors
                     </motion.div>
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink 
                     activeClass='text-text-dark font-bold'
                     to='Team'

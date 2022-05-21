@@ -123,14 +123,14 @@ export default function Home() {
         </span>
       </Element>
       <Border bgColor='bg-primary-500' fillColor='primary-600'/>
-      <Element 
+      {/* <Element 
         name='Sponsors' 
         className='flex justify-center w-full bg-primary-600'
       >
         <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
           <Sponsors/>
         </span>
-      </Element>
+      </Element> */}
       <Border type={2} bgColor='bg-primary-600' fillColor='primary-300'/>
       <Element 
         name='Team' 
