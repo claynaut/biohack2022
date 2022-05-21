@@ -2,63 +2,65 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export const JudgeProfile = ({ image, name, role }) => (
-  <div className='flex flex-col w-full max-w-[8rem] md:max-w-[9rem] items-center'>
+  <div className='flex flex-col w-full max-w-[8rem] sm:max-w-[12rem] items-center'>
     <motion.span whileHover={{ y: -4 }}>
-      <Image
-        src={image}
-        width={150}
-        height={150}
-        objectFit='contain'
-        priority={true}
-        quality={100}
-        className='rounded-full'
-      />
+      <div className='flex border-2 border-text-dark rounded-full shadow-md w-full'>
+        <Image
+          src={image}
+          width={150}
+          height={150}
+          objectFit='contain'
+          priority={true}
+          quality={100}
+          className='rounded-full'
+        />
+      </div>
     </motion.span>
-    <p className='mb-0 w-max font-semibold'>{name}</p>
-    <p className='mt-0 leading-4 text-base text-center'>{role}</p>
+    <p className='mb-0 mt-2 w-max font-bold text-sm sm:text-base'>{name}</p>
+    <p className='mt-0 leading-4 text-sm text-center'>{role}</p>
   </div>
 )
 
 const judges = [
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/anna.png',
     name: 'Dr. Anna Hickerson',
     role: 'KGI Sponsor Representative',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/brian.png',
     name: 'Brian Crites',
     role: 'CS Faculty @ UCR',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/robert.png',
     name: 'Dr. Robert McKee',
     role: 'BIEN Faculty @ UCR',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/modha.png',
     name: 'Dr. Modha',
     role: 'BIEN PhD Candidate @ UCR',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/dwarak.png',
     name: 'Dwarak Ravichandran',
     role: 'BioHack 2021 Director',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/david.png',
     name: 'David Paul Villafuerte',
     role: 'BioHack 2021 Director',
   },
   {
-    image: '/assets/judges/.jpg',
+    image: '/judges/allexa.png',
     name: 'Allexa Ortiz',
     role: 'UCR BIEN Alumni',
   },
 ]
 
 export const JudgeGrid = () => (
-  <div className='flex flex-wrap justify-center gap-12 md:gap-16 md:gap-y-12'>
+  <div className='flex flex-wrap justify-center gap-6'>
     { judges.map(({ image, name, role }) =>
       <JudgeProfile
         key={name}
