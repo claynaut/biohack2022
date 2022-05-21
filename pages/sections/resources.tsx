@@ -10,7 +10,7 @@ export default function Resources() {
       <div className='flex flex-col gap-4 w-full'>
         <ButtonLink
           primary
-          link='/'
+          link='https://biohack-2022-15547.devpost.com'
           label='Devpost'
           external
         />
