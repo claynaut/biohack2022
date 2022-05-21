@@ -39,7 +39,7 @@ const judges = [
   },
   {
     image: '/judges/modha.png',
-    name: 'Dr. Modha',
+    name: 'Dr. Sidharth Modha',
     role: 'BIEN PhD Candidate @ UCR',
   },
   {
