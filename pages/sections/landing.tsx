@@ -54,7 +54,7 @@ export default function Landing() {
                 Sign In
               </motion.button>
             }
-            {
+            {/* {
               status === 'authenticated' && 
               !session.user.uid &&
               <Link passHref href='/apply'>
@@ -66,7 +66,7 @@ export default function Landing() {
                   Apply Now
                 </motion.button>
               </Link>
-            }
+            } */}
             { status === 'authenticated' 
               && session.user.uid
               && session.user.qualified === 'yes'
