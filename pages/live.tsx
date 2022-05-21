@@ -2,7 +2,7 @@ import React from 'react'
 import { Element } from 'react-scroll'
 import Image from 'next/image'
 
-import Page from '@/components/Page'
+import ProtectedPage from '@/components/ProtectedPage'
 import Landing from '@/sections/live-landing'
 import Judges from './sections/judges'
 import Resources from './sections/resources'
@@ -13,7 +13,7 @@ import { Border } from '@/components/Border'
 
 export default function Live() {
   return (
-    <Page title='Live'>
+    <ProtectedPage title='Live' restrictions={['signin', 'admin']}>
       <Element
         name='Home'
         className='relative flex justify-center w-full px-4 bg-primary-100'
@@ -65,14 +65,15 @@ export default function Live() {
         <Landing/>
       </Element>
       <Border bgColor='bg-primary-100' fillColor='primary-200'/>
-      <Element
+      {/* <Element
         name='Schedule'
         className='flex justify-center w-full bg-primary-200 text-text-dark'
       >
         <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
           <Schedule/>
         </span>
-      </Element><Border bgColor='bg-primary-200' fillColor='primary-300'/>
+      </Element> */}
+      <Border bgColor='bg-primary-200' fillColor='primary-300'/>
       <Element
         name='Judges'
         className='flex justify-center w-full bg-primary-300 text-text-dark'
@@ -108,6 +109,6 @@ export default function Live() {
           <Team/>
         </span>
       </Element>
-    </Page>
+    </ProtectedPage>
   )
 }

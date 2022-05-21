@@ -19,10 +19,11 @@ export default function Volunteer() {
           </div>
           <div>
             <p>
-              Not interested in hacking, but still interested in the behind-the-scenes of BioHack? 
-              Great! We&apos;d love to have you on our team. Just click a button below to sign up!
+              Not interested in hacking, but still interested in the behind-the-scenes 
+              of BioHack? Great! We&apos;d love to have you on our team. 
+              {/* Just click a button below to sign up! */}
             </p>
-            <div className='flex flex-col sm:flex-row justify-center lg:justify-start w-full gap-3 sm:gap-4'>
+            {/* <div className='flex flex-col sm:flex-row justify-center lg:justify-start w-full gap-3 sm:gap-4'>
               <a target='_blank' rel='noreferrer noopener' href='https://forms.gle/4Qu8FWoQ9rRAfBvJ8'>
                 <motion.button
                   whileHover={{ scale: 1.05}} 
@@ -41,7 +42,7 @@ export default function Volunteer() {
                   Join a Committee
                 </motion.button>
               </a>
-            </div>
+            </div> */}
           </div>
 
         </div>

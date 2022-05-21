@@ -87,7 +87,7 @@ export default function ProfileDropdown() {
                   </Link>
                 </>
               } */}
-              {
+              {/* {
                 status === 'authenticated' && session.user.uid &&
                 <>
                   <p className='flex m-0'>
@@ -122,8 +122,8 @@ export default function ProfileDropdown() {
                     { session.user.qualified === 'no' && 'Rejected' }
                   </div>
                 </>
-              }
-              { status === 'authenticated' 
+              } */}
+              {/* { status === 'authenticated' 
                 && session.user.uid
                 && session.user.qualified === 'yes' &&
                 ( !session.user.checkedIn ?
@@ -151,8 +151,8 @@ export default function ProfileDropdown() {
                     Checked-In
                   </div>
                 )
-              }
-              {
+              } */}
+              {/* {
                 status === 'authenticated' && session.user.qualified === 'yes' &&
                 <div className='flex flex-col gap-2 w-full'>
                   <Link passHref href='/group/dashboard'>
@@ -165,7 +165,7 @@ export default function ProfileDropdown() {
                     </motion.button>
                   </Link>
                 </div>
-              }
+              } */}
               { status === 'authenticated' 
                 && session.user.uid
                 && session.user.admin &&
