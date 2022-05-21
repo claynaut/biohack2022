@@ -77,7 +77,6 @@ const saturdaySchedule = {
     {
       name: 'Opening Ceremony',
       startTime: '11:30 AM',
-      endTime: '12:30 PM',
     },
     {
       name: 'Hackathon Start',
