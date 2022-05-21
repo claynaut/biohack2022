@@ -92,7 +92,7 @@ export default function Nav() {
                   </span>
                 </Link>
             }
-            { !navOpen &&
+            {/* { !navOpen &&
               ( status === 'authenticated' 
                 ?
                   <div
@@ -110,7 +110,7 @@ export default function Nav() {
                     Sign In
                   </button>
               )
-            }
+            } */}
           </div>
           
           <div

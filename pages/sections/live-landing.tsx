@@ -43,7 +43,7 @@ export default function LiveLanding() {
           </div>
           {/* <HackerCountdownWrapper date='2022-05-22T19:00:00Z' /> */}
           <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4'>
-            {
+            {/* {
               status !== 'authenticated' &&
               <motion.button
                 whileHover={{ scale: 1.05}} 
@@ -53,7 +53,7 @@ export default function LiveLanding() {
               >
                 Sign In
               </motion.button>
-            }
+            } */}
             {
               status === 'authenticated' && 
               session.user.uid && 
