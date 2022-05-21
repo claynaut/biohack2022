@@ -37,11 +37,11 @@ export default function Landing() {
                 Virtual <span className='font-bold'>Healthcare Hackathon</span>
               </h4>
               <h3 className='text-center 2xl:text-left text-accent font-extrabold'>
-                May 21-22, 2022
+                Coming in Late 2022
               </h3>
             </div>
           </div>
-          <CountdownWrapper date='2022-05-21T19:00:00Z' />
+          {/* <CountdownWrapper date='2022-05-21T19:00:00Z' /> */}
           <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4'>
             {
               status !== 'authenticated' &&
@@ -67,7 +67,7 @@ export default function Landing() {
                 </motion.button>
               </Link>
             } */}
-            { status === 'authenticated' 
+            {/* { status === 'authenticated' 
               && session.user.uid
               && session.user.qualified === 'yes'
               && !session.user.checkedIn &&
@@ -80,13 +80,13 @@ export default function Landing() {
                   Check-In Now!
                 </motion.button>
               </Link>
-            }
+            } */}
             {
               status === 'authenticated' && 
               session.user.uid && 
               session.user.qualified === 'yes' &&
               <>
-                <a target='_blank' rel='noreferrer noopener' href={process.env.discord} className='flex justify-center'>
+                {/* <a target='_blank' rel='noreferrer noopener' href={process.env.discord} className='flex justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
@@ -94,8 +94,8 @@ export default function Landing() {
                   >
                     Open Discord
                   </motion.button>
-                </a>
-                <Link passHref href='/group/dashboard'>
+                </a> */}
+                {/* <Link passHref href='/group/dashboard'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
@@ -103,7 +103,7 @@ export default function Landing() {
                   >
                     View My Group
                   </motion.button>
-                </Link>
+                </Link> */}
               </>
             }
           </div>

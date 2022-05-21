@@ -56,10 +56,10 @@ const questions = [
     question: 'How do I register?',
     answer: 'Priority registration will open soon. Please keep an eye out on our social media platforms to hear the announcement. Once applications are open, you will be able to register through this website.'
   },
-  {
-    question: 'When does registration close?',
-    answer: 'Registration closes on Friday, May 20 at midnight PT.'
-  },
+  // {
+  //   question: 'When does registration close?',
+  //   answer: 'Registration closes on Friday, May 20 at midnight PT.'
+  // },
   {
     question: 'How do I know if I\'m qualified to participate?',
     answer: 'You can view your application status via the website\'s profile dropdown. We will also send an email to you once we have reviewed your application.'

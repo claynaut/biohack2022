@@ -125,7 +125,7 @@ export default function Nav() {
               (router.pathname === '/' || router.pathname === '/live')
               ?
                 <>
-                  <NavLink 
+                  {/* <NavLink 
                     activeClass='text-text-dark font-bold'
                     to='Schedule'
                     spy={true}
@@ -138,7 +138,7 @@ export default function Nav() {
                     <motion.div whileHover={{ y: -2 }} className='lg:pb-6'>
                       Schedule
                     </motion.div>
-                  </NavLink>
+                  </NavLink> */}
                   {router.pathname === '/' &&
                     <>
                       <NavLink 

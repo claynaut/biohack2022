@@ -67,14 +67,14 @@ export default function Home() {
         <Landing/>
       </Element>
       <Border bgColor='bg-primary-100' fillColor='primary-200'/>
-      <Element
+      {/* <Element
         name='Schedule'
         className='flex justify-center w-full bg-primary-200 text-text-dark'
       >
         <span className='flex justify-center px-4 w-full bg-pattern bg-repeat'>
           <Schedule/>
         </span>
-      </Element>
+      </Element> */}
       <Border bgColor='bg-primary-200' fillColor='primary-600'/>
       <Element
         name='About'
