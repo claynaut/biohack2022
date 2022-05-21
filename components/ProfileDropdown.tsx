@@ -65,7 +65,7 @@ export default function ProfileDropdown() {
                 Signed in as <br/>
                 <span className='font-semibold'>{session.user.email}</span>
               </p>
-              {
+              {/* {
                 status === 'authenticated' && !session.user.uid &&
                 <>
                   <p className='flex m-0 text-base font-semibold'>
@@ -86,7 +86,7 @@ export default function ProfileDropdown() {
                     </motion.button>
                   </Link>
                 </>
-              }
+              } */}
               {
                 status === 'authenticated' && session.user.uid &&
                 <>

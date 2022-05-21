@@ -56,23 +56,10 @@ export default function LiveLanding() {
             }
             {
               status === 'authenticated' && 
-              !session.user.uid &&
-              <Link passHref href='/apply'>
-                <motion.button
-                  whileHover={{ scale: 1.05}} 
-                  whileTap={{ scale: 0.995 }}
-                  className='w-full sm:w-52 py-1.5 rounded bg-accent hover:bg-accent-dark'
-                >
-                  Apply Now
-                </motion.button>
-              </Link>
-            }
-            {
-              status === 'authenticated' && 
               session.user.uid && 
               session.user.qualified === 'yes' &&
               <>
-                <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full sm:w-52 justify-center'>
+                {/* <a target='_blank' rel='noreferrer noopener' href='/' className='flex w-full sm:w-52 justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
                     whileTap={{ scale: 0.995 }}
@@ -80,7 +67,7 @@ export default function LiveLanding() {
                   >
                     Devpost
                   </motion.button>
-                </a>
+                </a> */}
                 {/* <a target='_blank' rel='noreferrer noopener' href={process.env.discord} className='flex w-full sm:w-52 justify-center'>
                   <motion.button
                     whileHover={{ scale: 1.05}} 
