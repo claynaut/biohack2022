@@ -92,7 +92,7 @@ export default function Nav() {
                   </span>
                 </Link>
             }
-            { !navOpen &&
+            {/* { !navOpen &&
               ( status === 'authenticated' 
                 ?
                   <div
@@ -110,7 +110,7 @@ export default function Nav() {
                     Sign In
                   </button>
               )
-            }
+            } */}
           </div>
           
           <div
@@ -285,7 +285,7 @@ export default function Nav() {
                 </motion.button>
               </Link>
             } */}
-            { status === 'authenticated'
+            {/* { status === 'authenticated'
               ?
                 <>
                   <div
@@ -303,7 +303,7 @@ export default function Nav() {
                 >
                   Sign In
                 </motion.button>
-            }
+            } */}
           </div>
         </div>
       </div>
