@@ -6,7 +6,7 @@ const Button = ({ primary, label }) => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.995 }}
     className={
-      'flex justify-center items-center self-center w-full sm:w-52 py-1.5 rounded cursor-pointer '
+      'flex justify-center items-center self-center w-full sm:w-72 py-1.5 rounded cursor-pointer '
       + (primary ? 'bg-accent hover:bg-accent-dark ' : 'bg-highlight-dark hover:bg-primary-200 ')
     }
   >

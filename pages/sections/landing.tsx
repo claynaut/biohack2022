@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LoginModal from '@/components/LoginModal'
 import { CountdownWrapper } from '@/components/Countdown'
+import { ButtonLink } from '@/components/ButtonLink'
 
 export default function Landing() {
   const { data: session, status } = useSession()
@@ -42,7 +43,33 @@ export default function Landing() {
             </div>
           </div>
           {/* <CountdownWrapper date='2022-05-21T19:00:00Z' /> */}
-          <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4'>
+          <div className='flex flex-col 2xl:flex-row justify-center items-center 2xl:justify-start w-full gap-3 sm:gap-4 mt-8'>
+            <div className='flex flex-col gap-3 w-full sm:w-min'>
+              <ButtonLink
+                primary
+                label='Apply for Lead'
+                link='https://docs.google.com/forms/d/1Ofm7rsm-UIouZz4KSCS_-NYZBCchSnGhmOQ6wQUpI2A'
+                external
+              />
+              <ButtonLink
+                primary
+                label='Apply for Web Developer'
+                link='https://docs.google.com/forms/d/1aUQnitpLxcRkueuUFs8vkNJgbe9f_RprNUWt257vSVA'
+                external
+              />
+            </div>
+            <div className='flex flex-col gap-3 w-full sm:w-min'>
+              <ButtonLink
+                label='Join a Committee'
+                link='https://docs.google.com/forms/d/1ceVRzwBes5c3CQavdhr-a98ctjKCxQAHhw_tfyBLz9I'
+                external
+              />
+              <ButtonLink
+                label='Join the Web Dev Committee'
+                link='https://docs.google.com/forms/d/1WnQUlLoEbcFVND2Cnuwjbet4dSVsrMPChT_BF7Z0O_o'
+                external
+              />
+            </div>
             {/* {
               status !== 'authenticated' &&
               <motion.button
